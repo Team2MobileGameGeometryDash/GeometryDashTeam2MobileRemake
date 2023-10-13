@@ -27,22 +27,20 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnUpdate()
     {
         base.OnUpdate();
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        if (_playerController.isGrounded())
         {
-            if (!_playerController.data.isGravityChange)
-                GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, 1f);
-            else
-                GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, -1f);
-
-
-
-
+            _playerController.RotationWhenGrounded(_playerController.Ships[0]); //Da migliorare la parentesi
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (!_playerController.data.isGravityChange)
+                    GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, 1f);
+                else
+                    GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, -1f);
+            }
         }
-
-
+        else _playerController.RotationNotGrounded(_playerController.Ships[0], !_playerController.data.isGravityChange);
     }
-
 
     public override void OnFixedUpdate()
     {
