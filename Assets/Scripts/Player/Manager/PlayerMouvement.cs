@@ -9,17 +9,24 @@ public class PlayerMouvement
     public PlayerMouvement(PlayerController playerController)
     {
         _playerController = playerController;
-        GameManager.Instance.ObserverPattern.Register(GameEventEnum.GameEvent.DefaultJump, HandleJumpingBaseCharacter);
-        GameManager.Instance.ObserverPattern.Register(GameEventEnum.GameEvent.ShipJump, HandleJumpingShip);
+        GameManager.Instance.ObserverPatternPlayer.Register(GameEventEnum.PlayerGameEvent.DefaultJump, HandleJumpingBaseCharacter);
+        GameManager.Instance.ObserverPatternPlayer.Register(GameEventEnum.PlayerGameEvent.ShipJump, HandleJumpingShip);
     }
 
-
+    /// <summary>
+    /// Set the rotation to the 90° rotation more close 
+    /// 90° multiple
+    /// </summary>
     public void RotationWhenGroundedBaseCharacter(GameObject sprite)
     {
         Vector3 Rotation = sprite.transform.rotation.eulerAngles;
         Rotation.z = Mathf.Round(Rotation.z / 90) * 90;
         sprite.transform.rotation = Quaternion.Euler(Rotation);
     }
+
+    /// <summary>
+    /// make the rotation based on the gravity
+    /// </summary>
     public void RotationNotGroundedBaseCharacter(GameObject sprite, bool gravity)
     {
         if (gravity) sprite.transform.Rotate(Vector3.back * _playerController.Data.RotationSpeed * UnityEngine.Time.deltaTime);

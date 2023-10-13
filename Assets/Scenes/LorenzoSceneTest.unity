@@ -686,11 +686,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &1085357239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4280260272194876425, guid: 96af4461634162b40a8eea321c332899, type: 3}
-  m_PrefabInstance: {fileID: 1967106652889921972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1250094558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -894,11 +889,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 554571668}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1924837805 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 524753316522084958, guid: 96af4461634162b40a8eea321c332899, type: 3}
-  m_PrefabInstance: {fileID: 1967106652889921972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972539772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,65 +1158,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3440566457369618961, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3440566457369618961, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3440566457369618961, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3440566457369618961, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -68.6
-      objectReference: {fileID: 0}
     - target: {fileID: 5104540488486451807, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: EndMap
       value: 
       objectReference: {fileID: 1972539773}
-    - target: {fileID: 5911897683255164566, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: Data.JumpImpulse
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911897683255164566, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: Data.RotationSpeed
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911897683255164566, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: Data.Ships.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911897683255164566, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: Data.Ships.Array.data[0]
-      value: 
-      objectReference: {fileID: 1924837805}
-    - target: {fileID: 5911897683255164566, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: Data.Ships.Array.data[1]
-      value: 
-      objectReference: {fileID: 1085357239}
-    - target: {fileID: 6446517947717045816, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6446517947717045816, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999222253453166958, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999222253453166958, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_WholeNumbers
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999222253453166958, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1378,7 +1316,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4577326915883975382, guid: 43e2ac96a37017648864db8b512984bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.882698
+      value: 19.23
       objectReference: {fileID: 0}
     - target: {fileID: 4577326915883975382, guid: 43e2ac96a37017648864db8b512984bd, type: 3}
       propertyPath: m_LocalPosition.y

@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     Collider2D _playerCollider2D;
     public PlayerMovementData Data;
     public PlayerMouvement PlayerMouvement;
-
+    [HideInInspector]
+    public Vector2 InitialPosition;
 
     
     
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
-
+        InitialPosition= transform.position;
+        Debug.Log(InitialPosition);
     }
 
     private void Start()
@@ -59,7 +61,11 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// create a box around the player biggest 0.01f
+    /// Physics2D.OverlapBox return if the box collide the GroundLayer
+    /// </summary>
+    /// <returns></returns>
     public bool isGrounded()
     {
         Vector2 center = transform.position;
@@ -92,4 +98,8 @@ public struct PlayerMovementData
     [Header("PlayerShips")]
     public bool IsSpaceShip;
     public float JumpImpulse;
+    [Header("PlayerDeath")]
+    public float Death;
+    //[HideInInspector]
+    public bool IsDeath;
 }

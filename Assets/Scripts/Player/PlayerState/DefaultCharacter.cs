@@ -21,6 +21,7 @@ public class DefaultCharacter : State<PlayerState>
         
         if(_playerController==null) _playerController = _playerStateManager.PlayerController;
         _playerController.ChangeCharacter(true,0);
+        
 
     }
 
@@ -33,7 +34,8 @@ public class DefaultCharacter : State<PlayerState>
 
         if (_playerController.Data.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
-
+        else if (_playerController.Data.IsDeath)
+            _playerStateManager.ChangeState(PlayerState.Death);
     }
 
     public override void OnFixedUpdate()
@@ -59,9 +61,9 @@ public class DefaultCharacter : State<PlayerState>
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (!_playerController.Data.IsGravityChange)
-                    GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, 1f);
+                    GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
                 else
-                    GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, -1f);
+                    GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
             }
         }
         else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.Data.IsGravityChange);

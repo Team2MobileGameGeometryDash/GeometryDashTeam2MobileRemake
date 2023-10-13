@@ -33,6 +33,8 @@ public class SpaceshipCharacter : State<PlayerState>
 
         if (!_playerController.Data.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        else if (_playerController.Data.IsDeath)
+            _playerStateManager.ChangeState(PlayerState.Death);
     }
 
     public override void OnFixedUpdate()
@@ -53,9 +55,9 @@ public class SpaceshipCharacter : State<PlayerState>
     private void HandleAllMouvement()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
-            GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, 1f);
+            GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
         if (Input.GetKey(KeyCode.Mouse0))
-            GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.ShipJump);
+            GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.ShipJump);
     }
 
     

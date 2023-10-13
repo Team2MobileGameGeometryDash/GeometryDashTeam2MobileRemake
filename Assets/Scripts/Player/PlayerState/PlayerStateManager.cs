@@ -18,6 +18,7 @@ public class PlayerStateManager : StatesMachine<PlayerState>
     {
         AllStates.Add(PlayerState.DefaultCharacter, new DefaultCharacter(PlayerState.DefaultCharacter,this));
         AllStates.Add(PlayerState.SpaceshipCharacter, new SpaceshipCharacter(PlayerState.SpaceshipCharacter, this));
+        AllStates.Add(PlayerState.Death, new DeathState(PlayerState.Death, this));
 
 
         CurrentState = AllStates[PlayerState.DefaultCharacter];
@@ -33,5 +34,5 @@ public enum PlayerState
 {
     DefaultCharacter,
     SpaceshipCharacter,
-
+    Death,
 }
