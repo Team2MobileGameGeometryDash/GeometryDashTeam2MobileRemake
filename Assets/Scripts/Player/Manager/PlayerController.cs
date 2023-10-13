@@ -20,14 +20,14 @@ public class PlayerController : MonoBehaviour
     public PlayerMouvement PlayerMouvement;
 
 
-    public GameObject[] Ships;
+    
     
 
 
     private void Awake()
     {
         PlayerStateManager = new PlayerStateManager(this);
-        PlayerMouvement = new PlayerMouvement(Data,this);
+        PlayerMouvement = new PlayerMouvement(this);
 
     }
 
@@ -55,14 +55,14 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeCharacter(bool isActive,int index)
     {
-        Ships[index].SetActive(isActive);
+        Data.Ships[index].SetActive(isActive);
     }
 
 
 
     public bool isGrounded()
     {
-        Vector2 center = gameObject.transform.position;
+        Vector2 center = transform.position;
         Vector2 GroundCheckBox = new Vector2(_playerCollider2D.bounds.size.x + 0.01f, _playerCollider2D.bounds.size.y + 0.01f); //Size of collider + 0.01f
         return Physics2D.OverlapBox(center, GroundCheckBox, 0, Data.GroundLayer);
     }
@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
 [System.Serializable]
 public struct PlayerMovementData
 {
+    public GameObject[] Ships;
+
     [Header("PlayerWalkValue")]
     public float WalkingSpeed;
     [Header("PlayerJumpValue")]

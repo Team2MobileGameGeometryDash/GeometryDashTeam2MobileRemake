@@ -22,7 +22,6 @@ public class SpaceshipCharacter : State<PlayerState>
         
         //Debug.Log(" SECOND STATE ON ENTER _PlayerController : " + _playerController);
         //Debug.Log(_playerController);
-
     }
 
 
@@ -34,10 +33,6 @@ public class SpaceshipCharacter : State<PlayerState>
 
         if (!_playerController.Data.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
-
-       
-
-
     }
 
     public override void OnFixedUpdate()
@@ -51,31 +46,16 @@ public class SpaceshipCharacter : State<PlayerState>
     {
         base.OnExit();
         _playerController.ChangeCharacter(false, 1);
-        
-
     }
 
 
 
     private void HandleAllMouvement()
     {
-
         if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-
             GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, 1f);
-
-
-
-        }
         if (Input.GetKey(KeyCode.Mouse0))
-        {
-
             GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.ShipJump);
-
-
-        }
-
     }
 
     

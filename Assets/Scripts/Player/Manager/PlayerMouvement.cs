@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PlayerMouvement 
 {
-    PlayerMovementData _data;
     PlayerController _playerController;
 
-    public PlayerMouvement(PlayerMovementData data,PlayerController playerController)
+    public PlayerMouvement(PlayerController playerController)
     {
-        _data = data;
         _playerController = playerController;
         GameManager.Instance.ObserverPattern.Register(GameEventEnum.GameEvent.DefaultJump, HandleJumpingBaseCharacter);
         GameManager.Instance.ObserverPattern.Register(GameEventEnum.GameEvent.ShipJump, HandleJumpingShip);
@@ -24,8 +22,8 @@ public class PlayerMouvement
     }
     public void RotationNotGroundedBaseCharacter(GameObject sprite, bool gravity)
     {
-        if (gravity) sprite.transform.Rotate(Vector3.back * _data.RotationSpeed * UnityEngine.Time.deltaTime);
-        else sprite.transform.Rotate(Vector3.back * -_data.RotationSpeed * UnityEngine.Time.deltaTime);
+        if (gravity) sprite.transform.Rotate(Vector3.back * _playerController.Data.RotationSpeed * UnityEngine.Time.deltaTime);
+        else sprite.transform.Rotate(Vector3.back * -_playerController.Data.RotationSpeed * UnityEngine.Time.deltaTime);
     }
 
 
@@ -50,8 +48,8 @@ public class PlayerMouvement
     public void HandleJumpingShip(object[] jumpShip = null)
     {
         //_playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, _playerController.PlayerRigidBody2D.velocity.y * UnityEngine.Time.deltaTime * _playerController.Data.JumpImpulse);
-        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.Data.JumpImpulse, ForceMode2D.Force);
-    }
+        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.Data.JumpImpulse * UnityEngine.Time.deltaTime, ForceMode2D.Impulse);
+    } //testing maybe better modify the gravity
 
 
 }

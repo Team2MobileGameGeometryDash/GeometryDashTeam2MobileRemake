@@ -243,20 +243,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRigidBody2D: {fileID: 0}
-  data:
-    WalkingSpeed: 800
-    JumpHeight: 35
-    RotationSpeed: 450
+  Data:
+    Ships: []
+    WalkingSpeed: 0
+    JumpHeight: 0
+    RotationSpeed: 0
+    GroundLayer:
+      serializedVersion: 2
+      m_Bits: 0
     Time: 0
-    GravityScale: 12
-    isGravityChange: 0
-    Distance: 5
-  Ships:
-  - {fileID: 402301446}
-  - {fileID: 1704173646}
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 16
+    GravityScale: 0
+    IsGravityChange: 0
+    IsSpaceShip: 0
+    JumpImpulse: 0
 --- !u!61 &685169194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -545,9 +544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb32082cc6457864bada43dbc83f30cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 685169196}
+  Target: {fileID: 0}
   smoothSpeed: 0.5
-  offset: {x: 5, y: 0, z: 0}
+  Offset: {x: 0, y: 0, z: 0}
 --- !u!1 &965207261
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gravity: -1
-  isGravityChange: 1
+  IsGravityChange: 0
 --- !u!4 &1497107044
 Transform:
   m_ObjectHideFlags: 0
@@ -1068,7 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gravity: 1
-  isGravityChange: 0
+  IsGravityChange: 0
 --- !u!4 &1738032840
 Transform:
   m_ObjectHideFlags: 0

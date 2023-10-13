@@ -55,7 +55,7 @@ public class DefaultCharacter : State<PlayerState>
     {
         if (_playerController.isGrounded())
         {
-            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Ships[0]);
+            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Data.Ships[0]);
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (!_playerController.Data.IsGravityChange)
@@ -64,7 +64,7 @@ public class DefaultCharacter : State<PlayerState>
                     GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, -1f);
             }
         }
-        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Ships[0], !_playerController.Data.IsGravityChange);
+        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.Data.IsGravityChange);
     }
 
 
