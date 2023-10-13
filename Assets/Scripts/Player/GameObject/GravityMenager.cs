@@ -6,7 +6,7 @@ public class GravityMenager : MonoBehaviour
 {
 	[Range(-1, 1)]
 	public int Gravity;
-	public bool isGravityChange;
+	public bool IsGravityChange;
 
 	
 	
@@ -16,7 +16,7 @@ public class GravityMenager : MonoBehaviour
 		if (collision.gameObject.TryGetComponent(out PlayerController playerController))
 		{
 			playerController.PlayerRigidBody2D.gravityScale = playerController.Data.GravityScale * Gravity;
-			playerController.Data.isGravityChange = isGravityChange;
+			playerController.Data.IsGravityChange = IsGravityChange;
 			
 		}
 	}

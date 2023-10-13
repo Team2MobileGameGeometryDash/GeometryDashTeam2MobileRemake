@@ -6,7 +6,8 @@ public class DefaultCharacter : State<PlayerState>
 {
     PlayerController _playerController;
     PlayerStateManager _playerStateManager;
-    public Vector2 UpAxis = Vector2.up;
+
+
     public DefaultCharacter(PlayerState playerState, StatesMachine<PlayerState> stateManager = null) : base(playerState, stateManager)
     {
         _playerStateManager = (PlayerStateManager)m_stateMachine;
@@ -18,7 +19,7 @@ public class DefaultCharacter : State<PlayerState>
     {
         base.OnEnter();
         
-        if(_playerController==null) _playerController = _playerStateManager._playerController;
+        if(_playerController==null) _playerController = _playerStateManager.PlayerController;
         _playerController.ChangeCharacter(true,0);
 
     }
@@ -27,36 +28,44 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnUpdate()
     {
         base.OnUpdate();
+        HandleAllMouvement();
 
-        if (_playerController.isGrounded())
-        {
-            _playerController.PlayerMouvement.RotationWhenGrounded(_playerController.Ships[0]); 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                if (!_playerController.Data.isGravityChange)
-                    GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, 1f);
-                else
-                    GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, -1f);
-            }
-        }
-        else _playerController.PlayerMouvement.RotationNotGrounded(_playerController.Ships[0], !_playerController.Data.isGravityChange);
+
+        if (_playerController.Data.IsSpaceShip)
+            _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
+
     }
 
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        _playerController.PlayerMouvement.HandleMovement();
+        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
     }
 
     public override void OnExit()
     {
         base.OnExit();
         _playerController.ChangeCharacter(false, 0);
+        
     }
 
 
 
-
+    private void HandleAllMouvement()
+    {
+        if (_playerController.isGrounded())
+        {
+            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Ships[0]);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (!_playerController.Data.IsGravityChange)
+                    GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, 1f);
+                else
+                    GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, -1f);
+            }
+        }
+        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Ships[0], !_playerController.Data.IsGravityChange);
+    }
 
 
 

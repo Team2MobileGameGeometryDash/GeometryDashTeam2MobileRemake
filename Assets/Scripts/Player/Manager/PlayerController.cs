@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [Header("Player State Manager")]
-    public PlayerStateManager _playerStateManager;
+    public PlayerStateManager PlayerStateManager;
 
 
 
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _playerStateManager = new PlayerStateManager(this);
+        PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(Data,this);
 
     }
@@ -41,12 +41,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //Debug.Log(data.CanJump);
-        _playerStateManager.CurrentState.OnUpdate();
+        PlayerStateManager.CurrentState.OnUpdate();
 
     }
     private void FixedUpdate()
     {
-        _playerStateManager.CurrentState.OnFixedUpdate();
+        PlayerStateManager.CurrentState.OnFixedUpdate();
 
     }
 
@@ -75,16 +75,19 @@ public class PlayerController : MonoBehaviour
 [System.Serializable]
 public struct PlayerMovementData
 {
-    [Header("PlayerWalkingValue")]
+    [Header("PlayerWalkValue")]
     public float WalkingSpeed;
+    [Header("PlayerJumpValue")]
     public float JumpHeight;
     public float RotationSpeed;
     public LayerMask GroundLayer;
+    [Header("PlayerGravity")]
     [HideInInspector]
     public float Time;
     public float GravityScale;
     [HideInInspector]
-    public bool isGravityChange;
-
-    
+    public bool IsGravityChange;
+    [Header("PlayerShips")]
+    public bool IsSpaceShip;
+    public float JumpImpulse;
 }

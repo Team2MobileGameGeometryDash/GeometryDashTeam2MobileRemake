@@ -6,7 +6,8 @@ public static class GameEventEnum
 {
     public enum GameEvent
     {
-        GravitySwitch,
+        DefaultJump,
+
 
     }
 }

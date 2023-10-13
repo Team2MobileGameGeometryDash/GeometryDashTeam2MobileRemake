@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public ObserverPattern<GameEventEnum.GameEvent> observerPattern;
+    public ObserverPattern<GameEventEnum.GameEvent> ObserverPattern;
 
     protected override void Awake()
     {
         base.Awake();
 
-        observerPattern = new ObserverPattern<GameEventEnum.GameEvent>();
+        ObserverPattern = new ObserverPattern<GameEventEnum.GameEvent>();
 
 
     }

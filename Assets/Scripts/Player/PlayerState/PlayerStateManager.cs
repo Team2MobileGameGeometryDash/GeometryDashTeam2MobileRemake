@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerStateManager : StatesMachine<PlayerState>
 {
-    public PlayerController _playerController;
+    public PlayerController PlayerController;
 
     public PlayerStateManager(PlayerController playerController, Dictionary<PlayerState, State<PlayerState>> listOfSTtes = null, State<PlayerState> currentState = null, State<PlayerState> nextState = null)
     {
-        _playerController = playerController;
+        PlayerController = playerController;
         InitStatesManager();
     }
 
