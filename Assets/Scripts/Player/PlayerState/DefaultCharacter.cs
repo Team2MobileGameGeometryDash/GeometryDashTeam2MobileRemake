@@ -10,7 +10,7 @@ public class DefaultCharacter : State<PlayerState>
     public DefaultCharacter(PlayerState playerState, StatesMachine<PlayerState> stateManager = null) : base(playerState, stateManager)
     {
         _playerStateManager = (PlayerStateManager)m_stateMachine;
-        GameManager.Instance.observerPattern.Register(GameEventEnum.GameEvent.GravitySwitch, HandleJumping);
+        
     }
 
 
@@ -30,22 +30,22 @@ public class DefaultCharacter : State<PlayerState>
 
         if (_playerController.isGrounded())
         {
-            _playerController.RotationWhenGrounded(_playerController.Ships[0]); //Da migliorare la parentesi
+            _playerController.PlayerMouvement.RotationWhenGrounded(_playerController.Ships[0]); 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (!_playerController.data.isGravityChange)
+                if (!_playerController.Data.isGravityChange)
                     GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, 1f);
                 else
                     GameManager.Instance.observerPattern.TriggerEvent(GameEventEnum.GameEvent.GravitySwitch, -1f);
             }
         }
-        else _playerController.RotationNotGrounded(_playerController.Ships[0], !_playerController.data.isGravityChange);
+        else _playerController.PlayerMouvement.RotationNotGrounded(_playerController.Ships[0], !_playerController.Data.isGravityChange);
     }
 
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        HandleMovement();
+        _playerController.PlayerMouvement.HandleMovement();
     }
 
     public override void OnExit()
@@ -55,22 +55,6 @@ public class DefaultCharacter : State<PlayerState>
     }
 
 
-    private void HandleMovement()
-    {
-        float speed = _playerController.data.WalkingSpeed;
-        _playerController.PlayerRigidBody2D.velocity = new Vector2(speed * UnityEngine.Time.fixedDeltaTime, _playerController.PlayerRigidBody2D.velocity.y);
-        
-    }
-
-
-    float Time() => _playerController.data.Time = UnityEngine.Time.deltaTime;
-    public void HandleJumping(object[] jumpDirection)
-    {
-        float jumpForce = Mathf.Sqrt(_playerController.data.JumpHeight * 2f * -Physics2D.gravity.y );
-        float jump = jumpForce - (9.81f * Time());
-        _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump * ((float)jumpDirection[0]));
-            
-    }
 
 
 
