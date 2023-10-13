@@ -43,6 +43,9 @@ public class DeathState : State<PlayerState>
     {
         base.OnExit();
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.Data.GravityScale;
+        _playerController.ChangeCharacter(true, 0);
+        _playerController.ChangeCharacter(false, 1);
+        _playerController.Data.IsSpaceShip = false;
     }
 
 
