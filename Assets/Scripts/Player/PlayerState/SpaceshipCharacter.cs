@@ -63,33 +63,21 @@ public class SpaceshipCharacter : State<PlayerState>
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
 
-            HandleJumpingBaseCharacter();
-            Debug.Log("non ");
+            GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.DefaultJump, 1f);
+
 
 
         }
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Debug.Log("sto premendo");
-            HandleJumpingShip();
+
+            GameManager.Instance.ObserverPattern.TriggerEvent(GameEventEnum.GameEvent.ShipJump);
 
 
         }
 
     }
 
-    public void HandleJumpingBaseCharacter()
-    {
-        float jumpTime = Mathf.Sqrt(_playerController.Data.JumpHeight * 2f * -Physics2D.gravity.y);
-        float jump = jumpTime - (9.81f * Time());
-        _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump );
-
-    }
-    float Time() => _playerController.Data.Time = UnityEngine.Time.deltaTime;
-
-    private void HandleJumpingShip()
-    {
-        //_playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, _playerController.PlayerRigidBody2D.velocity.y * UnityEngine.Time.deltaTime * _playerController.Data.JumpImpulse);
-        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.Data.JumpImpulse ,ForceMode2D.Force);
-    }
+    
+  
 }

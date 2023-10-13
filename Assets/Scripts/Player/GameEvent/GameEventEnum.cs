@@ -7,6 +7,7 @@ public static class GameEventEnum
     public enum GameEvent
     {
         DefaultJump,
+        ShipJump,
 
 
     }

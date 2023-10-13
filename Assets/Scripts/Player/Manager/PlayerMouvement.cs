@@ -12,6 +12,7 @@ public class PlayerMouvement
         _data = data;
         _playerController = playerController;
         GameManager.Instance.ObserverPattern.Register(GameEventEnum.GameEvent.DefaultJump, HandleJumpingBaseCharacter);
+        GameManager.Instance.ObserverPattern.Register(GameEventEnum.GameEvent.ShipJump, HandleJumpingShip);
     }
 
 
@@ -26,6 +27,9 @@ public class PlayerMouvement
         if (gravity) sprite.transform.Rotate(Vector3.back * _data.RotationSpeed * UnityEngine.Time.deltaTime);
         else sprite.transform.Rotate(Vector3.back * -_data.RotationSpeed * UnityEngine.Time.deltaTime);
     }
+
+
+
 
 
     public void HandleMouvementBaseCharacter()
@@ -43,8 +47,11 @@ public class PlayerMouvement
 
     }
 
-
-
+    public void HandleJumpingShip(object[] jumpShip = null)
+    {
+        //_playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, _playerController.PlayerRigidBody2D.velocity.y * UnityEngine.Time.deltaTime * _playerController.Data.JumpImpulse);
+        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.Data.JumpImpulse, ForceMode2D.Force);
+    }
 
 
 }
