@@ -151,7 +151,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e06d179f3b8ff54b8a7b5d03dd59191, type: 2}
+  - {fileID: 2100000, guid: b259aae1157ddcc4e86cda951df50d9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -234,7 +234,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -312,6 +312,8 @@ MonoBehaviour:
     IsSpaceShip: 0
     JumpImpulse: 200
     Death: 0
+    IsDeath: 0
+  InitialPosition: {x: 0, y: 0}
 --- !u!114 &5104540488486451807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +464,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b259aae1157ddcc4e86cda951df50d9b, type: 2}
+  - {fileID: 2100000, guid: 3e06d179f3b8ff54b8a7b5d03dd59191, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
