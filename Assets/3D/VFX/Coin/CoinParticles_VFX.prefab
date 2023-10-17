@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 21.3
+      scalar: 15.02
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1.08
+      scalar: 0.72
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.5754001, b: 0, a: 0.72156864}
-      maxColor: {r: 1, g: 0.7876706, b: 0.031372547, a: 0.83137256}
+      minColor: {r: 1, g: 0.5754001, b: 0, a: 0.94509804}
+      maxColor: {r: 1, g: 0.6219209, b: 0.031372547, a: 0.7176471}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -611,7 +611,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.09
+      scalar: 0.08
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -665,14 +665,14 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 21.04
+    angle: 28.77
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: -180, y: 180, z: 0}
-    m_Scale: {x: 12.7, y: 1, z: 16.87}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4.92
+      scalar: 5.66
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -994,15 +994,6 @@ ParticleSystem:
           weightedMode: 0
           inWeight: 0
           outWeight: 0.1404682
-        - serializedVersion: 3
-          time: 0.19541028
-          value: 0.50593233
-          inSlope: -5.290545
-          outSlope: -5.290545
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.2667389
           value: 0
