@@ -4,15 +4,14 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
     #region VariablesInInspector
 
-    public Canvas MainMenuScreen;
-    public Canvas CreditScreen;
-    public Canvas OptionsScreen;
+    public Image MainMenuScreen;
+    public Image CreditScreen;
+    public Image OptionsScreen;
 
     #endregion
 
@@ -57,7 +56,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     /// <param name="selectedScreen">the panel you want to active or disactive</param>
     /// <param name="previousScreen">the previous panel</param>
-    public void ToggleUIScreen(Canvas selectedScreen, Canvas previousScreen)
+    public void ToggleUIScreen(Image selectedScreen, Image previousScreen)
     {
         if (!selectedScreen.gameObject.activeInHierarchy)
         {
