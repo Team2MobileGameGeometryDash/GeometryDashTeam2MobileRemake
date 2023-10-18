@@ -42,7 +42,7 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        HandleMouvement();
+        HandleAllMouvement();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
     }
 
@@ -66,7 +66,7 @@ public class DefaultCharacter : State<PlayerState>
 
 
 
-    private void HandleMouvement()
+    private void HandleAllMouvement()
     {
         if (_playerController.isGrounded())
         {
@@ -78,14 +78,13 @@ public class DefaultCharacter : State<PlayerState>
                 else
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
             }
-            else
-                _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
         }
+        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
     }
 
-    
 
-    
 
-    
+
+
+
 }

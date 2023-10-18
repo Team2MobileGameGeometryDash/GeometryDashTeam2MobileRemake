@@ -31,8 +31,9 @@ public class PlayerMouvement
     public void RotationNotGroundedBaseCharacter(GameObject sprite, bool gravity)
     {
         if (gravity) sprite.transform.Rotate(Vector3.back * _playerController.DefaultCharacterData.RotationSpeed * _multiplier * UnityEngine.Time.deltaTime);
-        else sprite.transform.Rotate(Vector3.back * -_playerController.DefaultCharacterData.RotationSpeed * UnityEngine.Time.deltaTime);
+        else sprite.transform.Rotate(Vector3.back * -_playerController.DefaultCharacterData.RotationSpeed * _multiplier * UnityEngine.Time.deltaTime);
     }
+
 
     public void HandleMouvementBaseCharacter()
     {
