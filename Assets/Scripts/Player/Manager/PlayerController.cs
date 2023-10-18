@@ -21,15 +21,17 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Vector2 InitialPosition;
 
-    [Header("DefaultPlayerData")]
-    public DefaultCharacterData DefaultCharacterData;
-    [Header("SpaceShip")]
-    public spaceShipCharacter SpaceshipCharacter;
 
+    public DefaultCharacterData DefaultCharacterData;
+
+    public SpaceShipCharacterData SpaceShipCharacterData;
+
+    public GearModeData GearModeData;
 
 
     private void Awake()
     {
+        PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
         InitialPosition = transform.position;
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _playerCollider2D = GetComponent<Collider2D>();
-        PlayerRigidBody2D = GetComponent<Rigidbody2D>();
+       
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
     }
 
@@ -56,7 +58,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
- 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
+    }
 
     public void ChangeCharacter(bool isActive,int index)
     {
@@ -73,14 +78,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 center = transform.position;
         Vector2 GroundCheckBox = new Vector2(_playerCollider2D.bounds.size.x + 0.01f, _playerCollider2D.bounds.size.y + 0.01f); //Size of collider + 0.01f
-        return Physics2D.OverlapBox(center, GroundCheckBox, 0, DefaultCharacterData.GroundLayer);
+        return Physics2D.OverlapBox(center, GroundCheckBox, 0, Data.GroundLayer);
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
-    }
+    
 
 }
 
@@ -93,6 +95,8 @@ public struct PlayerData
     public GameObject[] Ships;
     [Header("PlayerWalkValue")]
     public float WalkingSpeed;
+    [Header("PlayerLayer")]
+    public LayerMask GroundLayer;
     [Header("PlayerDeath")]
     public float Death;
 
@@ -100,27 +104,45 @@ public struct PlayerData
 [System.Serializable]
 public struct DefaultCharacterData
 {
+    [Header("PlayerShips")]
+    public bool IsDefaultCharacter;
     [Header("PlayerJumpValue")]
     public float JumpHeight;
     public float RotationSpeed;
-    public LayerMask GroundLayer;
+    
+    [Header("PlayerGravity")]
+    public float GravityScale;
     [HideInInspector]
     public bool IsGravityChange;
-    [Header("PlayerGravity")]
     [HideInInspector]
     public float Time;
-    public float GravityScale;
 
 }
 [System.Serializable]
-public struct spaceShipCharacter
+public struct SpaceShipCharacterData
 {
     [Header("PlayerShips")]
     public bool IsSpaceShip;
     public float JumpImpulse;
+    
     [Header("PlayerGravity")]
+    public float GravityScale;
     [HideInInspector]
     public float Time;
-    public float GravityScale;
 }
+
+[System.Serializable]
+public struct GearModeData
+{
+    [Header("PlayerShips")]
+    public bool IsGearMode;    
+
+    [Header("PlayerGravity")]
+    public float GravityScale;
+    [HideInInspector]
+    public bool IsGravityChange;
+    [HideInInspector]
+    public float Time;
+}
+
 

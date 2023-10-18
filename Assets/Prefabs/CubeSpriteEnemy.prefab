@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3444245911843927537}
   - component: {fileID: 3077629609631467996}
   - component: {fileID: 4365513707159790088}
-  m_Layer: 4
+  m_Layer: 3
   m_Name: CubeSpriteEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

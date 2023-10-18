@@ -21,7 +21,7 @@ public class DefaultCharacter : State<PlayerState>
         
         if(_playerController==null) _playerController = _playerStateManager.PlayerController;
         _playerController.ChangeCharacter(true,0);
-        
+        _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
 
     }
 
@@ -29,12 +29,12 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnUpdate()
     {
         base.OnUpdate();
-        HandleAllMouvement();
-
-
-        if (_playerController.SpaceshipCharacter.IsSpaceShip)
+        HandleRotation();
+        if (_playerController.SpaceShipCharacterData.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
-            
+        else if (_playerController.GearModeData.IsGearMode)
+            _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
+
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
@@ -51,6 +51,7 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
+        HandleMouvement();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
     }
 
@@ -58,16 +59,16 @@ public class DefaultCharacter : State<PlayerState>
     {
         base.OnExit();
         _playerController.ChangeCharacter(false, 0);
+        _playerController.DefaultCharacterData.IsDefaultCharacter = false;
         
     }
 
 
 
-    private void HandleAllMouvement()
+    private void HandleMouvement()
     {
         if (_playerController.isGrounded())
         {
-            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Data.Ships[0]);
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (!_playerController.DefaultCharacterData.IsGravityChange)
@@ -76,10 +77,15 @@ public class DefaultCharacter : State<PlayerState>
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
             }
         }
-        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
     }
 
-
+    private void HandleRotation()
+    {
+        if (_playerController.isGrounded())
+            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Data.Ships[0]);
+        else
+            _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
+    }       
 
     
 

@@ -33,16 +33,13 @@ public class PlayerMouvement
         else sprite.transform.Rotate(Vector3.back * -_playerController.DefaultCharacterData.RotationSpeed * UnityEngine.Time.deltaTime);
     }
 
-
-
-
-
     public void HandleMouvementBaseCharacter()
     {
         float speed = _playerController.Data.WalkingSpeed;
         _playerController.PlayerRigidBody2D.velocity = new Vector2(speed * UnityEngine.Time.fixedDeltaTime, _playerController.PlayerRigidBody2D.velocity.y);
 
     }
+
     float Time() => _playerController.DefaultCharacterData.Time = UnityEngine.Time.deltaTime;
     public void HandleJumpingBaseCharacter(object[] jumpDirection)
     {
@@ -55,8 +52,11 @@ public class PlayerMouvement
     public void HandleJumpingShip(object[] jumpShip = null)
     {
         //_playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, _playerController.PlayerRigidBody2D.velocity.y * UnityEngine.Time.deltaTime * _playerController.Data.JumpImpulse);
-        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceshipCharacter.JumpImpulse * UnityEngine.Time.deltaTime, ForceMode2D.Impulse);
+        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceShipCharacterData.JumpImpulse * UnityEngine.Time.fixedDeltaTime, ForceMode2D.Impulse);
     } //testing maybe better modify the gravity
+
+
+
 
 
 }

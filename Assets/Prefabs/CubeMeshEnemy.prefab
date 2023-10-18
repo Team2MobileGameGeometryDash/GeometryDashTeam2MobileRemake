@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4689738048308288323}
   - component: {fileID: 48104623182373469}
   - component: {fileID: 862350973448682266}
-  m_Layer: 4
+  m_Layer: 3
   m_Name: CubeMeshEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -17,7 +17,8 @@ public class PlayerStateManager : StatesMachine<PlayerState>
     protected override void InitStates()
     {
         AllStates.Add(PlayerState.DefaultCharacter, new DefaultCharacter(PlayerState.DefaultCharacter,this));
-        AllStates.Add(PlayerState.SpaceshipCharacter, new SpaceshipCharacter(PlayerState.SpaceshipCharacter, this));
+        AllStates.Add(PlayerState.SpaceshipCharacter, new SpaceShipCharacter(PlayerState.SpaceshipCharacter, this));
+        AllStates.Add(PlayerState.GearModeCharacter, new GearModeCharacter(PlayerState.GearModeCharacter, this));
         AllStates.Add(PlayerState.Death, new DeathState(PlayerState.Death, this));
 
 
@@ -34,5 +35,6 @@ public enum PlayerState
 {
     DefaultCharacter,
     SpaceshipCharacter,
+    GearModeCharacter,
     Death,
 }
