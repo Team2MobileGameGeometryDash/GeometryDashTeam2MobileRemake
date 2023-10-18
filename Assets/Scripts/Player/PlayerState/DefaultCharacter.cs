@@ -32,11 +32,21 @@ public class DefaultCharacter : State<PlayerState>
         HandleAllMouvement();
 
 
-        if (_playerController.Data.IsSpaceShip)
+        if (_playerController.SpaceshipCharacter.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
-        else if (_playerController.Data.IsDeath)
-            _playerStateManager.ChangeState(PlayerState.Death);
+            
     }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (collision.TryGetComponent(out Death death))
+        {
+            //Debug.Log(collision);
+            _playerStateManager.ChangeState(PlayerState.Death);
+        }
+    }
+
 
     public override void OnFixedUpdate()
     {
@@ -60,13 +70,13 @@ public class DefaultCharacter : State<PlayerState>
             _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Data.Ships[0]);
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                if (!_playerController.Data.IsGravityChange)
+                if (!_playerController.DefaultCharacterData.IsGravityChange)
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
                 else
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
             }
         }
-        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.Data.IsGravityChange);
+        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
     }
 
 

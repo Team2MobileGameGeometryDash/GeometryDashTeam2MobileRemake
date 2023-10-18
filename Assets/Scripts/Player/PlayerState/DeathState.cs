@@ -21,7 +21,6 @@ public class DeathState : State<PlayerState>
         GameManager.Instance.ObserverPatternGame.TriggerEvent(GameEventEnum.GameEvent.Death);
         _playerController.transform.position = _playerController.InitialPosition;
         _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
-        _playerController.Data.IsDeath = false;
     }
 
 
@@ -42,10 +41,10 @@ public class DeathState : State<PlayerState>
     public override void OnExit()
     {
         base.OnExit();
-        _playerController.PlayerRigidBody2D.gravityScale = _playerController.Data.GravityScale;
+        _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.ChangeCharacter(true, 0);
         _playerController.ChangeCharacter(false, 1);
-        _playerController.Data.IsSpaceShip = false;
+        _playerController.SpaceshipCharacter.IsSpaceShip = false;
     }
 
 

@@ -11,7 +11,7 @@ public class ChangeShipComponent : MonoBehaviour
 	{
 		if (collision.gameObject.TryGetComponent(out PlayerController playerController))
 		{
-			playerController.Data.IsSpaceShip = ChangeShip;
+			playerController.SpaceshipCharacter.IsSpaceShip = ChangeShip;
 
 		}
 	}

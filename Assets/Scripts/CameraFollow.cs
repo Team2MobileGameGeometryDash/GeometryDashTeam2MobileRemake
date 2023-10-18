@@ -9,8 +9,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 Offset;
 
 
-
-    private void Update()
+    private void LateUpdate()
     {
         HandleCameraFollow();
     }

@@ -42,5 +42,12 @@ public abstract class State<TStateIDType>
     {
         //Debug.Log("OnExit " + StateID);
     }
+
+
+    public virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+
+    }
+
 }
 

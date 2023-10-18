@@ -16,17 +16,23 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D PlayerRigidBody2D;
     Collider2D _playerCollider2D;
-    public PlayerMovementData Data;
+    public PlayerData Data;
     public PlayerMouvement PlayerMouvement;
     [HideInInspector]
     public Vector2 InitialPosition;
+
+    [Header("DefaultPlayerData")]
+    public DefaultCharacterData DefaultCharacterData;
+    [Header("SpaceShip")]
+    public spaceShipCharacter SpaceshipCharacter;
+
 
 
     private void Awake()
     {
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
-        InitialPosition= transform.position;
+        InitialPosition = transform.position;
         Debug.Log(InitialPosition);
     }
 
@@ -34,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerCollider2D = GetComponent<Collider2D>();
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
-        PlayerRigidBody2D.gravityScale = Data.GravityScale;
+        PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
     }
 
     private void Update()
@@ -67,51 +73,54 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 center = transform.position;
         Vector2 GroundCheckBox = new Vector2(_playerCollider2D.bounds.size.x + 0.01f, _playerCollider2D.bounds.size.y + 0.01f); //Size of collider + 0.01f
-        return Physics2D.OverlapBox(center, GroundCheckBox, 0, Data.GroundLayer);
+        return Physics2D.OverlapBox(center, GroundCheckBox, 0, DefaultCharacterData.GroundLayer);
     }
 
-    //Tutto da rifare bene, solo per test prima di farlo per bene
-    public void PlayerDeath(Transform respawn)
-    {
-        gameObject.transform.position = respawn.position;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out Death death))
-        {
-            PlayerDeath(Data.RespawnPoint);
-        }
+        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
     }
-    //Fine cose da mettere apposto
+
 }
 
 
 
 
 [System.Serializable]
-public struct PlayerMovementData
+public struct PlayerData
 {
     public GameObject[] Ships;
-
     [Header("PlayerWalkValue")]
     public float WalkingSpeed;
+    [Header("PlayerDeath")]
+    public float Death;
+
+}
+[System.Serializable]
+public struct DefaultCharacterData
+{
     [Header("PlayerJumpValue")]
     public float JumpHeight;
     public float RotationSpeed;
     public LayerMask GroundLayer;
+    [HideInInspector]
+    public bool IsGravityChange;
     [Header("PlayerGravity")]
     [HideInInspector]
     public float Time;
     public float GravityScale;
-    [HideInInspector]
-    public bool IsGravityChange;
+
+}
+[System.Serializable]
+public struct spaceShipCharacter
+{
     [Header("PlayerShips")]
     public bool IsSpaceShip;
     public float JumpImpulse;
-    [Header("PlayerDeath")]
-    public float Death;
-    public Transform RespawnPoint;
-    //[HideInInspector]
-    public bool IsDeath;
+    [Header("PlayerGravity")]
+    [HideInInspector]
+    public float Time;
+    public float GravityScale;
 }
+

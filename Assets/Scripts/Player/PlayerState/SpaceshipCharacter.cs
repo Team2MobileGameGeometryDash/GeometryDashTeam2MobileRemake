@@ -31,16 +31,24 @@ public class SpaceshipCharacter : State<PlayerState>
 
         HandleAllMouvement();
 
-        if (!_playerController.Data.IsSpaceShip)
+        if (!_playerController.SpaceshipCharacter.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
-        else if (_playerController.Data.IsDeath)
-            _playerStateManager.ChangeState(PlayerState.Death);
     }
+
 
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+    }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (collision.TryGetComponent(out Death death))
+        {
+            _playerStateManager.ChangeState(PlayerState.Death);
+        }
     }
 
 
@@ -49,8 +57,6 @@ public class SpaceshipCharacter : State<PlayerState>
         base.OnExit();
         _playerController.ChangeCharacter(false, 1);
     }
-
-
 
     private void HandleAllMouvement()
     {
