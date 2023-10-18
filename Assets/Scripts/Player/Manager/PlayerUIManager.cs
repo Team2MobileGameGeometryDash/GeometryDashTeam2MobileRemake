@@ -51,8 +51,8 @@ public class PlayerUIManager : MonoBehaviour
     private void UpdateDeathCount(object[] action = null)
     {
 
-        _playerController.Data.Death += 1;
-        DeathCount.text = _playerController.Data.Death.ToString();
+        _playerController.PlayerData.Death += 1;
+        DeathCount.text = _playerController.PlayerData.Death.ToString();
     }
 
 

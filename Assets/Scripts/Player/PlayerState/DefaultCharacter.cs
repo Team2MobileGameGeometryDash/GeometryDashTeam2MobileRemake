@@ -29,13 +29,23 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnUpdate()
     {
         base.OnUpdate();
-        HandleRotation();
         if (_playerController.SpaceShipCharacterData.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
 
     }
+
+
+
+
+    public override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+        HandleMouvement();
+        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+    }
+
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,15 +56,6 @@ public class DefaultCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.Death);
         }
     }
-
-
-    public override void OnFixedUpdate()
-    {
-        base.OnFixedUpdate();
-        HandleMouvement();
-        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
-    }
-
     public override void OnExit()
     {
         base.OnExit();
@@ -69,6 +70,7 @@ public class DefaultCharacter : State<PlayerState>
     {
         if (_playerController.isGrounded())
         {
+            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.PlayerData.Ships[0]);
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (!_playerController.DefaultCharacterData.IsGravityChange)
@@ -76,16 +78,12 @@ public class DefaultCharacter : State<PlayerState>
                 else
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
             }
+            else
+                _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
         }
     }
 
-    private void HandleRotation()
-    {
-        if (_playerController.isGrounded())
-            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Data.Ships[0]);
-        else
-            _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.Data.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
-    }       
+    
 
     
 

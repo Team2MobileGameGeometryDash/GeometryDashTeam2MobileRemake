@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D PlayerRigidBody2D;
     Collider2D _playerCollider2D;
-    public PlayerData Data;
+    public PlayerData PlayerData;
     public PlayerMouvement PlayerMouvement;
     [HideInInspector]
     public Vector2 InitialPosition;
@@ -34,14 +34,15 @@ public class PlayerController : MonoBehaviour
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
-        InitialPosition = transform.position;
-        Debug.Log(InitialPosition);
+        
+        //Debug.Log(InitialPosition);
     }
 
     private void Start()
     {
         _playerCollider2D = GetComponent<Collider2D>();
-       
+        InitialPosition = transform.position;
+        PlayerData.Direction = 1f;
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
     }
 
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeCharacter(bool isActive,int index)
     {
-        Data.Ships[index].SetActive(isActive);
+        PlayerData.Ships[index].SetActive(isActive);
     }
 
 
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 center = transform.position;
         Vector2 GroundCheckBox = new Vector2(_playerCollider2D.bounds.size.x + 0.01f, _playerCollider2D.bounds.size.y + 0.01f); //Size of collider + 0.01f
-        return Physics2D.OverlapBox(center, GroundCheckBox, 0, Data.GroundLayer);
+        return Physics2D.OverlapBox(center, GroundCheckBox, 0, PlayerData.GroundLayer);
     }
 
 
@@ -95,6 +96,8 @@ public struct PlayerData
     public GameObject[] Ships;
     [Header("PlayerWalkValue")]
     public float WalkingSpeed;
+    [HideInInspector]
+    public float Direction;
     [Header("PlayerLayer")]
     public LayerMask GroundLayer;
     [Header("PlayerDeath")]
@@ -139,6 +142,7 @@ public struct GearModeData
 
     [Header("PlayerGravity")]
     public float GravityScale;
+    public float GravityVelocity;
     [HideInInspector]
     public bool IsGravityChange;
     [HideInInspector]
