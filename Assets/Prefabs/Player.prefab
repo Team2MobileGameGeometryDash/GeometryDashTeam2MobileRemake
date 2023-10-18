@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -68.6}
+  m_AnchoredPosition: {x: 0, y: -11.7}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &7999222253453166958
@@ -297,28 +297,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRigidBody2D: {fileID: 0}
-  Data:
+  PlayerData:
     Ships:
     - {fileID: 524753316522084958}
     - {fileID: 4280260272194876425}
     - {fileID: 9155309200951308170}
-    WalkingSpeed: 800
+    WalkingSpeed: 8
+    Direction: 0
     GroundLayer:
       serializedVersion: 2
-      m_Bits: 16
+      m_Bits: 8
     Death: 0
   InitialPosition: {x: 0, y: 0}
   DefaultCharacterData:
+    IsDefaultCharacter: 0
     JumpHeight: 35
-    RotationSpeed: 400
+    RotationSpeed: 4
+    GravityScale: 12
     IsGravityChange: 0
     Time: 0
-    GravityScale: 12
   SpaceShipCharacterData:
     IsSpaceShip: 0
-    JumpImpulse: 0
+    JumpImpulse: 2
+    GravityScale: 12
     Time: 0
-    GravityScale: 0
+  GearModeData:
+    IsGearMode: 0
+    GravityScale: 12
+    GravityVelocity: 2
+    IsGravityChange: 0
+    Time: 0
 --- !u!114 &5104540488486451807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,7 +943,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e06d179f3b8ff54b8a7b5d03dd59191, type: 2}
+  - {fileID: 2100000, guid: 38b628d97142cf140bd0c662101dd4b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
