@@ -10,6 +10,7 @@ public class PlayerUIManager : MonoBehaviour
     public TextMeshProUGUI DeathCount;
     PlayerController _playerController;
 
+
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultCharacter : State<PlayerState>
+public class DefaultCharacter : State<PlayerState> 
 {
     PlayerController _playerController;
     PlayerStateManager _playerStateManager;
@@ -71,7 +71,7 @@ public class DefaultCharacter : State<PlayerState>
         if (_playerController.isGrounded())
         {
             _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.PlayerData.Ships[0]);
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.touchCount==1)
             {
                 if (!_playerController.DefaultCharacterData.IsGravityChange)
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
