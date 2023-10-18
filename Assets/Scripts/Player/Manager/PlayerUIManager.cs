@@ -6,14 +6,13 @@ public class PlayerUIManager : MonoBehaviour
 {
     
     public Transform EndMap;
-    Slider _slider;
+    public Slider Slider;
     public TextMeshProUGUI DeathCount;
     PlayerController _playerController;
 
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
-        _slider = GetComponentInChildren<Slider>();
         DistanceToEnd();
     }
 
@@ -34,17 +33,17 @@ public class PlayerUIManager : MonoBehaviour
     private void DistanceToEnd()
     {
         float distance = Vector2.Distance(transform.position, EndMap.position);
-        _slider.maxValue = distance;
+        Slider.maxValue = distance;
     }
 
     private void UpdateSlider()
     {
-        if(_slider.value == _slider.maxValue)
+        if(Slider.value == Slider.maxValue)
         {
-            _slider.value = _slider.maxValue;
+            Slider.value = Slider.maxValue;
             return;
         }
-        _slider.value = transform.position.x;
+        Slider.value = transform.position.x;
         
     }
 
