@@ -58,7 +58,7 @@ public class DefaultCharacter : State<PlayerState>
         if (_playerController.isGrounded())
         {
             _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.Data.Ships[0]);
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (!_playerController.Data.IsGravityChange)
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);

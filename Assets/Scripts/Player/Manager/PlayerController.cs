@@ -21,9 +21,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Vector2 InitialPosition;
 
-    
-    
-
 
     private void Awake()
     {
@@ -73,6 +70,20 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapBox(center, GroundCheckBox, 0, Data.GroundLayer);
     }
 
+    //Tutto da rifare bene, solo per test prima di farlo per bene
+    public void PlayerDeath(Transform respawn)
+    {
+        gameObject.transform.position = respawn.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out Death death))
+        {
+            PlayerDeath(Data.RespawnPoint);
+        }
+    }
+    //Fine cose da mettere apposto
 }
 
 
@@ -100,6 +111,7 @@ public struct PlayerMovementData
     public float JumpImpulse;
     [Header("PlayerDeath")]
     public float Death;
+    public Transform RespawnPoint;
     //[HideInInspector]
     public bool IsDeath;
 }
