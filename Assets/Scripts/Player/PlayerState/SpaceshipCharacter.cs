@@ -61,9 +61,9 @@ public class SpaceShipCharacter : State<PlayerState>
 
     private void HandleAllMouvement()
     {
-        if (_playerController.IsTouchBegan)
-            GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
-        else if (_playerController.IsTouchStationary)
+        //if (_playerController.IsTouchBegan)
+        //    GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
+        if (_playerController.IsTouchStationary)
             GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.ShipJump);
     }
 

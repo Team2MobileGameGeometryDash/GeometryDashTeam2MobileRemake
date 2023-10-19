@@ -19,6 +19,7 @@ public class PlayerStateManager : StatesMachine<PlayerState>
         AllStates.Add(PlayerState.DefaultCharacter, new DefaultCharacter(PlayerState.DefaultCharacter,this));
         AllStates.Add(PlayerState.SpaceshipCharacter, new SpaceShipCharacter(PlayerState.SpaceshipCharacter, this));
         AllStates.Add(PlayerState.GearModeCharacter, new GearModeCharacter(PlayerState.GearModeCharacter, this));
+        AllStates.Add(PlayerState.Win, new WinState(PlayerState.Win, this));
         AllStates.Add(PlayerState.Death, new DeathState(PlayerState.Death, this));
 
 
@@ -36,5 +37,6 @@ public enum PlayerState
     DefaultCharacter,
     SpaceshipCharacter,
     GearModeCharacter,
+    Win,
     Death,
 }

@@ -14,6 +14,7 @@ public static class GameEventEnum
 
     public enum GameEvent
     {
+        win,
         Death
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public static Transform PlayerTransform;
 
     [Header("Player State Manager")]
     public PlayerStateManager PlayerStateManager;
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
-        
+
         //Debug.Log(InitialPosition);
     }
 
@@ -54,8 +55,9 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
         if (!isTouching()) return;
-        CheckDirection();
+        InputManager();
 
+       
     }
     private void FixedUpdate()
     {
@@ -94,7 +96,8 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void CheckDirection()
+    //da sistemare
+    private void InputManager()
     {
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Began) IsTouchBegan = true;
@@ -110,6 +113,12 @@ public class PlayerController : MonoBehaviour
         }
         else IsTouchBegan = false;
     }
+
+
+
+   
+
+
 
 }
 

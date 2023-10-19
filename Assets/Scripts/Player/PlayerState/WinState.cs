@@ -18,7 +18,9 @@ public class WinState : State<PlayerState>
     {
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
-        
+        //Debug.Log("winn");
+        GameManager.Instance.ObserverPatternGame.TriggerEvent(GameEventEnum.GameEvent.win);
+
     }
 
 

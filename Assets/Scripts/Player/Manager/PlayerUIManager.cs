@@ -9,6 +9,7 @@ public class PlayerUIManager : MonoBehaviour
     public Slider Slider;
     public TextMeshProUGUI DeathCount;
     PlayerController _playerController;
+    public GameObject winButton;
 
 
     private void Awake()
@@ -20,6 +21,7 @@ public class PlayerUIManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.ObserverPatternGame.Register(GameEventEnum.GameEvent.Death, UpdateDeathCount);
+        GameManager.Instance.ObserverPatternGame.Register(GameEventEnum.GameEvent.win, LoadWinScene);
     }
 
     private void OnDisable()
@@ -34,14 +36,18 @@ public class PlayerUIManager : MonoBehaviour
     private void DistanceToEnd()
     {
         float distance = Vector2.Distance(transform.position, EndMap.position);
-        Slider.maxValue = distance;
+        Slider.maxValue = Mathf.Abs(distance);
+        
     }
 
     private void UpdateSlider()
     {
-        if(Slider.value == Slider.maxValue)
+
+        if(Mathf.Approximately(Slider.maxValue ,Slider.value))
         {
+            //Debug.Log("sono uguale");
             Slider.value = Slider.maxValue;
+            _playerController.PlayerStateManager.ChangeState(PlayerState.Win);
             return;
         }
         Slider.value = transform.position.x;
@@ -55,5 +61,12 @@ public class PlayerUIManager : MonoBehaviour
         DeathCount.text = _playerController.PlayerData.Death.ToString();
     }
 
+
+
+    private void LoadWinScene(object[] s=null)
+    {
+        winButton.SetActive(true);
+        
+    }
 
 }
