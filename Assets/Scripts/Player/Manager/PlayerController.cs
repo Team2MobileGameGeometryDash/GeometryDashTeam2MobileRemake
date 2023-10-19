@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
     public GearModeData GearModeData;
 
+    [HideInInspector] public bool IsTouchBegan;
+    [HideInInspector] public bool IsTouchStationary;
+
 
     private void Awake()
     {
@@ -50,6 +53,8 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
+        if (!isTouching()) return;
+        CheckDirection();
 
     }
     private void FixedUpdate()
@@ -82,8 +87,29 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapBox(center, GroundCheckBox, 0, PlayerData.GroundLayer);
     }
 
+    private bool isTouching()
+    {
+        if (Input.touchCount <= 0) return false;
+        else return true;
+    }
 
-    
+
+    private void CheckDirection()
+    {
+        Touch touch = Input.GetTouch(0);
+        if (touch.phase == TouchPhase.Began) IsTouchBegan = true;
+        else if (touch.phase == TouchPhase.Stationary)
+        {
+            IsTouchStationary = true;
+        }
+        else if (touch.phase == TouchPhase.Ended)
+        {
+            IsTouchStationary = false;
+            IsTouchBegan = false;
+
+        }
+        else IsTouchBegan = false;
+    }
 
 }
 

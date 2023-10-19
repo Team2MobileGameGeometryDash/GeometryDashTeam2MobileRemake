@@ -42,8 +42,10 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        HandleAllMouvement();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+
+        HandleAllMouvement();
+        
     }
 
 
@@ -68,23 +70,24 @@ public class DefaultCharacter : State<PlayerState>
 
     private void HandleAllMouvement()
     {
+
+
         if (_playerController.isGrounded())
         {
-            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.PlayerData.Ships[0]);
-            if (Input.touchCount==1)
+            if (_playerController.IsTouchBegan)
             {
                 if (!_playerController.DefaultCharacterData.IsGravityChange)
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
                 else
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
             }
+            _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.PlayerData.Ships[0]);
         }
         else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
     }
 
 
-
-
+   
 
 
 }
