@@ -18,13 +18,9 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    private void OnEnable()
-    {
-        ObserverPatternGame.Register(GameEventEnum.GameEvent.win, Pause);
-    }
 
     //da sistemare
-    public void Pause(object[] pause = null)
+    public void Pause()
     {
         //Debug.Log("premo");
         if (Time.timeScale == 0) Time.timeScale = 1;
