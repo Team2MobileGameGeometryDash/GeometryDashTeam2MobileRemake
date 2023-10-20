@@ -57,7 +57,7 @@ public class GearModeCharacter : State<PlayerState>
     }
 
 
-
+    //to fix
     private void HandleMouvement()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))

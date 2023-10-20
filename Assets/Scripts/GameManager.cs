@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
-    public Button PauseButton;
-    public Button ResumeButton;
     public ObserverPattern<GameEventEnum.PlayerGameEvent> ObserverPatternPlayer;
     public ObserverPattern<GameEventEnum.GameEvent> ObserverPatternGame;
     protected override void Awake()
@@ -19,20 +17,7 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    //da sistemare
-    public void Pause()
-    {
-        //Debug.Log("premo");
-        if (Time.timeScale == 0) Time.timeScale = 1;
-        else Time.timeScale = 0;
-
-    }
-
-  
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-    }
+   
 
 
 

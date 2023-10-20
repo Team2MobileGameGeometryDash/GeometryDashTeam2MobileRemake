@@ -59,10 +59,12 @@ public class SpaceShipCharacter : State<PlayerState>
         _playerController.SpaceShipCharacterData.IsSpaceShip = false;
     }
 
+
+    //to fix
     private void HandleAllMouvement()
     {
-        //if (_playerController.IsTouchBegan)
-        //    GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
+        if (_playerController.IsTouchBegan)
+            GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
         if (_playerController.IsTouchStationary)
             GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.ShipJump);
     }

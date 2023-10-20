@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public GearModeData GearModeData;
 
+    //to fix
     [HideInInspector] public bool IsTouchBegan;
     [HideInInspector] public bool IsTouchStationary;
 
@@ -89,6 +90,10 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapBox(center, GroundCheckBox, 0, PlayerData.GroundLayer);
     }
 
+
+
+
+    //to fix
     private bool isTouching()
     {
         if (Input.touchCount <= 0) return false;
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //da sistemare
+    //to fix
     private void InputManager()
     {
         Touch touch = Input.GetTouch(0);
