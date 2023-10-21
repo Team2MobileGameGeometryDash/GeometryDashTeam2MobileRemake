@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,9 +132,610 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PortalsTileset_01a_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2375
+        width: 169
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2b3f074c77b8da468e07bcd29f704e6
+      internalID: -282912868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_1
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2377
+        width: 271
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f86433b0d3234754ba664b2229c98faf
+      internalID: -1353473029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_2
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 2984
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e63b2ee5f1c3af4d888eb84a7dff01c
+      internalID: 3714174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_3
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 2375
+        width: 169
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e25b66c7cad64b40821ae3d6144b113
+      internalID: 1904755658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_4
+      rect:
+        serializedVersion: 2
+        x: 1714
+        y: 2377
+        width: 270
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df38df9939b8bd847875e559bc7111d4
+      internalID: 55104586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_5
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 2984
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d21e416481f0ad44a38ce9a91a57571
+      internalID: 1427765006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_6
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 2314
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e206c536e74dd44894912f4c333eab1
+      internalID: 1898619775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_7
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 2314
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f0ad21549dda1498d5b8fa5f088fc3
+      internalID: -944909494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_8
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1608
+        width: 169
+        height: 628
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34651a4e4cd18c84baf59c8ccec9cfe0
+      internalID: 1529099792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_9
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1610
+        width: 271
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8f7942aae807a4795711ead8581afe
+      internalID: -200941719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_10
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 2217
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81df5f8ea5e06bf4787965114928ce5b
+      internalID: -1533881523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_11
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 1608
+        width: 169
+        height: 628
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513796213c0a7a646a9262dadb4d769a
+      internalID: 1587123361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_12
+      rect:
+        serializedVersion: 2
+        x: 1714
+        y: 1610
+        width: 270
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0740d8733cf02a479f76d3488f3ae2e
+      internalID: 273747692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_13
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 2217
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0361b0a959bf8944d9b0a85d38fb11aa
+      internalID: -666927345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_14
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 1546
+        width: 82
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b4eb9e0a32c8b4693cf0689e161471
+      internalID: 1543748031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_15
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 1546
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c24c801b4b8f4644954597b9f194ba9
+      internalID: 833459691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_16
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 840
+        width: 169
+        height: 628
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e37c2f30ef6ea4c8e34db935af9f7d
+      internalID: -302113938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_17
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 842
+        width: 271
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94527bf23b62b549b5ee0eb65ebcf22
+      internalID: 405946408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_18
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 1449
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c01f0343461b344a90684fcf76aa57e
+      internalID: 846785506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_19
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 839
+        width: 169
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e4ae8972cdc1d47a624ce03671e434
+      internalID: -886469685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_20
+      rect:
+        serializedVersion: 2
+        x: 1714
+        y: 841
+        width: 270
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ac29a369edafa4e9a344c68f344a37
+      internalID: -24249725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_21
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 1448
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc9171e66c29d3745949e05c17158165
+      internalID: -1186331761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_22
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 778
+        width: 82
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98407c3ae1ac67f4299ff517847fc39b
+      internalID: -1013286767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_23
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 778
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b762604a2f741a64ea676e0abd0b31fb
+      internalID: 911815744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_24
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 71
+        width: 169
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d1faf4696cd2d438dc39334d4820bf
+      internalID: -246446194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_25
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 73
+        width: 271
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16fac9431306adb4c808bed58eaa082a
+      internalID: -994229688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_26
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 680
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4145212fab96c0e4b8f54ce576669f11
+      internalID: 1037711022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PortalsTileset_01a_27
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 10
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0af5e2dac8e5d34ab53b2ec7a1d1806
+      internalID: -1996980776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +746,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PortalsTileset_01a_0: -282912868
+      PortalsTileset_01a_1: -1353473029
+      PortalsTileset_01a_10: -1533881523
+      PortalsTileset_01a_11: 1587123361
+      PortalsTileset_01a_12: 273747692
+      PortalsTileset_01a_13: -666927345
+      PortalsTileset_01a_14: 1543748031
+      PortalsTileset_01a_15: 833459691
+      PortalsTileset_01a_16: -302113938
+      PortalsTileset_01a_17: 405946408
+      PortalsTileset_01a_18: 846785506
+      PortalsTileset_01a_19: -886469685
+      PortalsTileset_01a_2: 3714174
+      PortalsTileset_01a_20: -24249725
+      PortalsTileset_01a_21: -1186331761
+      PortalsTileset_01a_22: -1013286767
+      PortalsTileset_01a_23: 911815744
+      PortalsTileset_01a_24: -246446194
+      PortalsTileset_01a_25: -994229688
+      PortalsTileset_01a_26: 1037711022
+      PortalsTileset_01a_27: -1996980776
+      PortalsTileset_01a_3: 1904755658
+      PortalsTileset_01a_4: 55104586
+      PortalsTileset_01a_5: 1427765006
+      PortalsTileset_01a_6: 1898619775
+      PortalsTileset_01a_7: -944909494
+      PortalsTileset_01a_8: 1529099792
+      PortalsTileset_01a_9: -200941719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
