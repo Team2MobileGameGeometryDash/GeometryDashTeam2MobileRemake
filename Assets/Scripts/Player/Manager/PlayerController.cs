@@ -55,8 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
-        if (!isTouching()) return;
-        InputManager();
+        
 
        
     }

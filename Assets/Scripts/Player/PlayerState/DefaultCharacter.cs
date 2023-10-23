@@ -79,7 +79,7 @@ public class DefaultCharacter : State<PlayerState>
         if (_playerController.isGrounded())
         {
             
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Stationary)
             {
                 if (!_playerController.DefaultCharacterData.IsGravityChange)
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
