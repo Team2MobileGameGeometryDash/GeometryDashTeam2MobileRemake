@@ -27,17 +27,21 @@ public class GearModeCharacter : State<PlayerState>
     public override void OnUpdate()
     {
         base.OnUpdate();
-        HandleMouvement();
+
         if (_playerController.DefaultCharacterData.IsDefaultCharacter)
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
         else if (_playerController.SpaceShipCharacterData.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
 
+
+        if (!isTouching()) return;
+        HandleMouvement();
     }
 
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
+
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
     }
 
@@ -57,10 +61,17 @@ public class GearModeCharacter : State<PlayerState>
     }
 
 
+    private bool isTouching()
+    {
+        if (Input.touchCount <= 0) return false;
+        else return true;
+    }
+
     //to fix
     private void HandleMouvement()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        Touch touch = Input.GetTouch(0);
+        if (touch.phase == TouchPhase.Began)
         {
             if (_playerController.PlayerRigidBody2D.gravityScale < 0)
                 _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;

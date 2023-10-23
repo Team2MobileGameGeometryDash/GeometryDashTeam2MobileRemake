@@ -104,19 +104,10 @@ public class PlayerController : MonoBehaviour
     //to fix
     private void InputManager()
     {
-        Touch touch = Input.GetTouch(0);
-        if (touch.phase == TouchPhase.Began) IsTouchBegan = true;
-        else if (touch.phase == TouchPhase.Stationary)
-        {
-            IsTouchStationary = true;
-        }
-        else if (touch.phase == TouchPhase.Ended)
-        {
-            IsTouchStationary = false;
-            IsTouchBegan = false;
+        //Touch touch = Input.GetTouch(0);
+        //IsTouchBegan = touch.phase == TouchPhase.Began;
+        //IsTouchBegan = touch.phase == TouchPhase.Stationary;
 
-        }
-        else IsTouchBegan = false;
     }
 
 

@@ -43,7 +43,7 @@ public class DefaultCharacter : State<PlayerState>
     {
         base.OnFixedUpdate();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
-
+        if (!isTouching()) return;
         HandleAllMouvement();
         
     }
@@ -66,15 +66,20 @@ public class DefaultCharacter : State<PlayerState>
         
     }
 
-
+    private bool isTouching()
+    {
+        if (Input.touchCount <= 0) return false;
+        else return true;
+    }
 
     private void HandleAllMouvement()
     {
-
+        Touch touch = Input.GetTouch(0);
 
         if (_playerController.isGrounded())
         {
-            if (_playerController.IsTouchBegan)
+            
+            if (touch.phase == TouchPhase.Began)
             {
                 if (!_playerController.DefaultCharacterData.IsGravityChange)
                     GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
