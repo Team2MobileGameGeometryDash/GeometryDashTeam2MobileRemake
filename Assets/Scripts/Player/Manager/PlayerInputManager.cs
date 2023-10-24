@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerInputManager : MonoBehaviour
 {
 
-    
+    [HideInInspector]
     public bool IsTouchBegan;
+    [HideInInspector]
     public bool IsTouchStationary;
 
 
@@ -30,16 +31,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Began) IsTouchBegan = true;
-        //else if (touch.phase == TouchPhase.Stationary)
-        //{
-        //    IsTouchStationary = true;
-        //}
-        else if (touch.phase == TouchPhase.Ended)
-        {
-            IsTouchStationary = false;
-            IsTouchBegan = false;
-
-        }
+        else if (touch.phase == TouchPhase.Ended) IsTouchBegan = false;
 
     }
 }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player State Manager")]
     public PlayerStateManager PlayerStateManager;
+    [HideInInspector]
     public PlayerInputManager PlayerInputManager;
 
 
