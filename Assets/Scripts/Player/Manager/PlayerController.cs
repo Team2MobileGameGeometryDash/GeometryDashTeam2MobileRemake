@@ -29,9 +29,11 @@ public class PlayerController : MonoBehaviour
 
     public GearModeData GearModeData;
 
+    private bool isCrash;
     //to fix
     [HideInInspector] public bool IsTouchBegan;
     [HideInInspector] public bool IsTouchStationary;
+
 
 
     private void Awake()
@@ -70,6 +72,11 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
+        //  bitwise operations and bit shifting to correctly identify the layer, online solution
+        if (((1<< collision.gameObject.layer) & PlayerData.GroundLayer) != 0)
+        {
+            isCrash = true;
+        }
     }
 
     public void ChangeCharacter(bool isActive,int index)
@@ -100,6 +107,15 @@ public class PlayerController : MonoBehaviour
         else return true;
     }
 
+    public bool isCrashed()
+    {
+        return isCrash;
+    }
+
+    public void ResetCrash()
+    {
+        isCrash = false;
+    }
 
     //to fix
     private void InputManager()

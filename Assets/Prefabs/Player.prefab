@@ -153,6 +153,8 @@ MonoBehaviour:
     GravityVelocity: 2
     IsGravityChange: 0
     Time: 0
+  IsTouchBegan: 0
+  IsTouchStationary: 0
 --- !u!114 &5831583573758004537
 MonoBehaviour:
   m_ObjectHideFlags: 0

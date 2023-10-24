@@ -57,6 +57,7 @@ public class DefaultCharacter : State<PlayerState>
             //Debug.Log(collision);
             _playerStateManager.ChangeState(PlayerState.Death);
         }
+
     }
     public override void OnExit()
     {
@@ -70,7 +71,11 @@ public class DefaultCharacter : State<PlayerState>
 
     private void HandleAllMouvement()
     {
-
+        if (_playerController.isCrashed())
+        {
+            _playerStateManager.ChangeState(PlayerState.Death);
+            _playerController.ResetCrash();
+        }
 
         if (_playerController.isGrounded())
         {
