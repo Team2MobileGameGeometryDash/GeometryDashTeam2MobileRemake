@@ -4,14 +4,6 @@ using UnityEngine;
 
 public static class GameEventEnum 
 {
-    public enum PlayerGameEvent
-    {
-        DefaultJump,
-        ShipJump,
-
-    }
-
-
     public enum GameEvent
     {
         win,

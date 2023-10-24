@@ -16,11 +16,12 @@ public class PlayerController : MonoBehaviour
     [Header("Player input and Player locomotion")]
     [HideInInspector]
     public Rigidbody2D PlayerRigidBody2D;
-    Collider2D _playerCollider2D;
+    [HideInInspector]
+    public Collider2D PlayerCollider2D;
     public PlayerData PlayerData;
     public PlayerMouvement PlayerMouvement;
     [HideInInspector]
-    public Vector2 InitialPosition;
+    public Vector3 InitialPosition;
 
 
     public DefaultCharacterData DefaultCharacterData;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _playerCollider2D = GetComponent<Collider2D>();
+        PlayerCollider2D = GetComponent<Collider2D>();
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
@@ -57,9 +58,10 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
+        RaycastDetection();
         if (!isTouching()) return;
         InputManager();
-
+        
        
     }
     private void FixedUpdate()
@@ -73,11 +75,18 @@ public class PlayerController : MonoBehaviour
     {
         PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
         //  bitwise operations and bit shifting to correctly identify the layer, online solution
-        if (((1<< collision.gameObject.layer) & PlayerData.GroundLayer) != 0)
-        {
-            isCrash = true;
-        }
+        
     }
+
+  
+    private void RaycastDetection()
+    {
+        Vector2 rayCastPosition = transform.position ;
+        float maxDistance = 0.6f; 
+        if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance , PlayerData.GroundLayer)) 
+            PlayerStateManager.ChangeState(PlayerState.Death);  
+    }
+
 
     public void ChangeCharacter(bool isActive,int index)
     {
@@ -85,17 +94,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// create a box around the player biggest 0.01f
-    /// Physics2D.OverlapBox return if the box collide the GroundLayer
-    /// </summary>
-    /// <returns></returns>
-    public bool isGrounded()
-    {
-        Vector2 center = transform.position;
-        Vector2 GroundCheckBox = new Vector2(_playerCollider2D.bounds.size.x + 0.01f, _playerCollider2D.bounds.size.y + 0.01f); //Size of collider + 0.01f
-        return Physics2D.OverlapBox(center, GroundCheckBox, 0, PlayerData.GroundLayer);
-    }
+    
 
 
 
@@ -107,15 +106,6 @@ public class PlayerController : MonoBehaviour
         else return true;
     }
 
-    public bool isCrashed()
-    {
-        return isCrash;
-    }
-
-    public void ResetCrash()
-    {
-        isCrash = false;
-    }
 
     //to fix
     private void InputManager()
@@ -132,7 +122,7 @@ public class PlayerController : MonoBehaviour
             IsTouchBegan = false;
 
         }
-        else IsTouchBegan = false;
+        
     }
 
 

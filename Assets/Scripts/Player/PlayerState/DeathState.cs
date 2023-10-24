@@ -18,24 +18,13 @@ public class DeathState : State<PlayerState>
     {
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
-        GameManager.Instance.ObserverPatternGame.TriggerEvent(GameEventEnum.GameEvent.Death);
+        
         _playerController.transform.position = _playerController.InitialPosition;
         _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        
+        
     }
 
-
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
-
-
-    }
-
-    public override void OnFixedUpdate()
-    {
-        base.OnFixedUpdate();
-
-    }
 
 
     public override void OnExit()
@@ -43,6 +32,7 @@ public class DeathState : State<PlayerState>
         base.OnExit();
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.PlayerRigidBody2D.velocity = Vector2.zero;
+        GameManager.Instance.ObserverPatternGame.TriggerEvent(GameEventEnum.GameEvent.Death);
 
 
 
