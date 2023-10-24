@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -132,6 +132,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -144,7 +157,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +178,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,12 +194,12 @@ TextureImporter:
       name: O_BlackSpikes_2
       rect:
         serializedVersion: 2
-        x: 768
+        x: 512
         y: 318
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,12 +215,12 @@ TextureImporter:
       name: O_BlackSpikes_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 62
+        x: 768
+        y: 318
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,12 +236,12 @@ TextureImporter:
       name: O_BlackSpikes_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 0
         y: 62
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,12 +257,12 @@ TextureImporter:
       name: O_BlackSpikes_5
       rect:
         serializedVersion: 2
-        x: 512
+        x: 256
         y: 62
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,12 +278,12 @@ TextureImporter:
       name: O_BlackSpikes_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 512
         y: 62
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -278,6 +291,27 @@ TextureImporter:
       bones: []
       spriteID: 49065463f4a46c34199f9c40818fccdc
       internalID: -2092089890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: O_BlackSpikes_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 62
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2753fb0c5a5ec409834a4511783089
+      internalID: 434296801
       vertices: []
       indices: 
       edges: []
@@ -300,6 +334,7 @@ TextureImporter:
       O_BlackSpikes_4: -90380031
       O_BlackSpikes_5: -1750257829
       O_BlackSpikes_6: -2092089890
+      O_BlackSpikes_7: 434296801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
