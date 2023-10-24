@@ -405,9 +405,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.041615725, y: -0.011890054}
+  m_Offset: {x: -0.16802979, y: -0.04807329}
   serializedVersion: 2
-  m_Radius: 1.4096034
+  m_Radius: 1.0958357
 --- !u!114 &4519195078563606409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,5 +421,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseCharacter: 0
-  IsSpaceShip: 0
+  IsSpaceShip: 1
   IsGearMode: 0

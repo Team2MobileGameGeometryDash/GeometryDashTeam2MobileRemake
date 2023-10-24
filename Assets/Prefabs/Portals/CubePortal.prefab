@@ -261,6 +261,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2474520205049133630}
+  - component: {fileID: 1255169192207150792}
+  - component: {fileID: 5461373370271169807}
   m_Layer: 0
   m_Name: CubePortal
   m_TagString: Untagged
@@ -287,6 +289,56 @@ Transform:
   - {fileID: 4484847963744570045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255169192207150792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443021434023894646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89f35fc977c96f459bb89a21fa99481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBaseCharacter: 1
+  IsSpaceShip: 0
+  IsGearMode: 0
+--- !u!58 &5461373370271169807
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443021434023894646}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16542041, y: 0.026981711}
+  serializedVersion: 2
+  m_Radius: 1.1305686
 --- !u!1 &7903123697421550426
 GameObject:
   m_ObjectHideFlags: 0
