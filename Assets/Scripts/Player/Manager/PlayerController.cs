@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
+        PlayerInputManager = GetComponent<PlayerInputManager>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        PlayerInputManager = GetComponent<PlayerInputManager>();
+        
         PlayerCollider2D = GetComponent<Collider2D>();
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;

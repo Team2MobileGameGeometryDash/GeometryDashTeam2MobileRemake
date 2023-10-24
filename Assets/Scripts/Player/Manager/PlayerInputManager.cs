@@ -30,10 +30,10 @@ public class PlayerInputManager : MonoBehaviour
     {
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Began) IsTouchBegan = true;
-        else if (touch.phase == TouchPhase.Stationary)
-        {
-            IsTouchStationary = true;
-        }
+        //else if (touch.phase == TouchPhase.Stationary)
+        //{
+        //    IsTouchStationary = true;
+        //}
         else if (touch.phase == TouchPhase.Ended)
         {
             IsTouchStationary = false;
