@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static Transform PlayerTransform;
-
     [Header("Player State Manager")]
     public PlayerStateManager PlayerStateManager;
-
+    public PlayerInputManager PlayerInputManager;
 
 
     [Header("Player input and Player locomotion")]
@@ -30,16 +28,15 @@ public class PlayerController : MonoBehaviour
 
     public GearModeData GearModeData;
 
-    private bool isCrash;
-    //to fix
-    [HideInInspector] public bool IsTouchBegan;
-    [HideInInspector] public bool IsTouchStationary;
+    
+
 
 
 
     private void Awake()
     {
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
+        PlayerInputManager = GetComponent<PlayerInputManager>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
 
@@ -48,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        
         PlayerCollider2D = GetComponent<Collider2D>();
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
@@ -59,10 +57,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
         RaycastDetection();
-        if (!isTouching()) return;
-        InputManager();
-        
-       
+ 
     }
     private void FixedUpdate()
     {
@@ -99,31 +94,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //to fix
-    private bool isTouching()
-    {
-        if (Input.touchCount <= 0) return false;
-        else return true;
-    }
-
-
-    //to fix
-    private void InputManager()
-    {
-        Touch touch = Input.GetTouch(0);
-        if (touch.phase == TouchPhase.Began) IsTouchBegan = true;
-        else if (touch.phase == TouchPhase.Stationary)
-        {
-            IsTouchStationary = true;
-        }
-        else if (touch.phase == TouchPhase.Ended)
-        {
-            IsTouchStationary = false;
-            IsTouchBegan = false;
-
-        }
-        
-    }
+   
 
 
 

@@ -60,7 +60,7 @@ public class SpaceShipCharacter : State<PlayerState>
     }
 
 
-    //to fix
+   
     private void HandleAllMouvement()
     {
         

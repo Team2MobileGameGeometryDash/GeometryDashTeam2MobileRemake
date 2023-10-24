@@ -6,7 +6,7 @@ public class DefaultCharacter : State<PlayerState>
 {
     PlayerController _playerController;
     PlayerStateManager _playerStateManager;
-
+    PlayerInputManager _playerInputManager;
 
     public DefaultCharacter(PlayerState playerState, StatesMachine<PlayerState> stateManager = null) : base(playerState, stateManager)
     {
@@ -20,6 +20,7 @@ public class DefaultCharacter : State<PlayerState>
         base.OnEnter();
         
         if(_playerController==null) _playerController = _playerStateManager.PlayerController;
+        _playerInputManager = _playerController.PlayerInputManager;
         _playerController.ChangeCharacter(true,0);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.DefaultCharacterData.IsGravityChange = false;
@@ -76,7 +77,7 @@ public class DefaultCharacter : State<PlayerState>
     {
         if (_playerController.PlayerMouvement.isGrounded())
         {
-            if (_playerController.IsTouchBegan)
+            if (_playerInputManager.IsTouchBegan)
             {
                 _playerController.PlayerMouvement.HandleJumpingBaseCharacter();
             }
