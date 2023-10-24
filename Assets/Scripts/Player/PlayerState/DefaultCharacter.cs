@@ -23,6 +23,8 @@ public class DefaultCharacter : State<PlayerState>
         _playerController.ChangeCharacter(true,0);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.DefaultCharacterData.IsGravityChange = false;
+        
+        
     }
 
 
@@ -34,6 +36,7 @@ public class DefaultCharacter : State<PlayerState>
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
 
+        
     }
 
 
@@ -57,7 +60,7 @@ public class DefaultCharacter : State<PlayerState>
             //Debug.Log(collision);
             _playerStateManager.ChangeState(PlayerState.Death);
         }
-
+        
     }
     public override void OnExit()
     {
@@ -71,20 +74,11 @@ public class DefaultCharacter : State<PlayerState>
 
     private void HandleAllMouvement()
     {
-        if (_playerController.isCrashed())
-        {
-            _playerStateManager.ChangeState(PlayerState.Death);
-            _playerController.ResetCrash();
-        }
-
-        if (_playerController.isGrounded())
+        if (_playerController.PlayerMouvement.isGrounded())
         {
             if (_playerController.IsTouchBegan)
             {
-                if (!_playerController.DefaultCharacterData.IsGravityChange)
-                    GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, 1f);
-                else
-                    GameManager.Instance.ObserverPatternPlayer.TriggerEvent(GameEventEnum.PlayerGameEvent.DefaultJump, -1f);
+                _playerController.PlayerMouvement.HandleJumpingBaseCharacter();
             }
             _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.PlayerData.Ships[0]);
         }
