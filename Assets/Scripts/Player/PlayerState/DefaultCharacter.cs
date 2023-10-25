@@ -63,6 +63,7 @@ public class DefaultCharacter : State<PlayerState>
         }
         
     }
+
     public override void OnExit()
     {
         base.OnExit();

@@ -143,6 +143,7 @@ public struct SpaceShipCharacterData
 {
     [Header("PlayerShips")]
     public bool IsSpaceShip;
+    public float JumpHeight;
     public float JumpImpulse;
     
     [Header("PlayerGravity")]

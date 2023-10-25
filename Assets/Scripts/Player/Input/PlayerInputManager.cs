@@ -5,38 +5,28 @@ using UnityEngine;
 public class PlayerInputManager : MonoBehaviour
 {
 
-    
+    BaseInput currentInput;
+
     public static bool IsTouchEnded;
     public static bool IsTouchStationary;
 
 
     public float TimeDelay;
-    float time;
-    bool startTimer;
+    public float time;
+    public bool startTimer;
 
     private void Start()
     {
         time = TimeDelay;
+        currentInput = new BaseCharacterInput();
     }
 
     private void Update()
     {
-
-        
-
-        if (!isTouching()) return;
+        currentInput.GetInput(this);
         if (startTimer) Timer();
-        InputNew();
     }
     
-
-    
-    private bool isTouching()
-    {
-        if (Input.touchCount <= 0) return false;
-        else return true;
-    }
-
     private float Timer()
     {
         if (time > 0)
@@ -49,39 +39,21 @@ public class PlayerInputManager : MonoBehaviour
 
     }
 
-    private void InputNew()
+
+    private void OnEnable()
     {
+        ChangeShipComponent.OnChangeShip += OnChangeShip;
+    }
 
-        Touch touch = Input.GetTouch(0);
-        if (touch.phase == TouchPhase.Began)
-        {
-            startTimer = true;
-
-        }
-        else if (touch.phase == TouchPhase.Moved)
-        {
-            if (time <= 0) IsTouchStationary = true;
-            
-
-        }
-        else if (touch.phase == TouchPhase.Stationary)
-        {
-            if (time <= 0) IsTouchStationary = true;
-            
-        }
-        else if (touch.phase == TouchPhase.Ended)
-        {
-            if(!IsTouchStationary)
-                IsTouchEnded = true;
-
-            IsTouchStationary = false;
-
-            startTimer = false;
-            time = TimeDelay;
-        }
-     
+    private void OnDisable()
+    {
+        ChangeShipComponent.OnChangeShip -= OnChangeShip;
+    }
 
 
+    private void OnChangeShip(BaseInput newInput)
+    {
+        currentInput = newInput;
     }
 
 
