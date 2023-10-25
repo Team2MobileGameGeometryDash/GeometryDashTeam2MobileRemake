@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6551016024953706923}
   m_Layer: 0
-  m_Name: Victory
+  m_Name: PariclesVictory_VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
