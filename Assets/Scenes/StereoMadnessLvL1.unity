@@ -189,29 +189,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerData.WalkingSpeed
-      value: 5.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: SpaceShipCharacterData.IsSpaceShip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: SpaceShipCharacterData.JumpImpulse
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2898993248877707728, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2898993248877707728, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3483646696757760253, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,21 +242,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 734485383}
     - target: {fileID: 5831583573758004537, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: winButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5831583573758004537, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: DeathCount
       value: 
       objectReference: {fileID: 1414210160}
-    - target: {fileID: 6707310233220062754, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7899246669664419290, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
