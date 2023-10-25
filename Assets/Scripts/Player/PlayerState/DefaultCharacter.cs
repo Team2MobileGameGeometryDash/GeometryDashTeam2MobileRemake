@@ -77,7 +77,7 @@ public class DefaultCharacter : State<PlayerState>
     {
         if (_playerController.PlayerMouvement.isGrounded())
         {
-            if (_playerInputManager.IsTouchBegan)
+            if (PlayerInputManager.IsTouchEnded || PlayerInputManager.IsTouchStationary)
             {
                 _playerController.PlayerMouvement.HandleJumpingBaseCharacter();
             }

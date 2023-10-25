@@ -51,6 +51,9 @@ public class PlayerMouvement
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump );
         else
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+
+        PlayerInputManager.IsTouchEnded = false;
+
     }
 
     public void HandleJumpingShip()
