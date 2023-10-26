@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public Image MainMenuScreen;
     public Image CreditScreen;
     public Image OptionsScreen;
+    public Image LevelsScreen;
 
     #endregion
 
@@ -50,6 +51,14 @@ public class MainMenu : MonoBehaviour
     public void ToggleOptions()
     {
         ToggleUIScreen(OptionsScreen, MainMenuScreen);
+    }
+
+    /// <summary>
+    /// Levels screen handler
+    /// </summary>
+    public void ToggleLevels()
+    {
+        ToggleUIScreen(LevelsScreen, MainMenuScreen);
     }
 
     /// <summary>

@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestMenu.unity
+    path: Assets/Scenes/Michele/TestMenu.unity
     guid: cb9fcce020faa114a8b55c2b7e4a3698
   - enabled: 1
-    path: Assets/Scenes/TestingDesign.unity
-    guid: c53c7d599e63e2441b90159404625f18
+    path: Assets/Scenes/StereoMadnessLvL1.unity
+    guid: 97eed0afaddb537498e4bda53583ad09
   m_configObjects: {}
