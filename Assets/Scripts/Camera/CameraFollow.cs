@@ -1,28 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform Target;
+    public Transform player;
     public float smoothSpeed = 0.125f;
-    public Vector3 Offset;
+    public Vector3 offset;
+    public float thresholdY;
 
+    private float startPositionY;
+    private float currentPositionY;
 
+    private void Start()
+    {
+        ResetCamera();
+    }
 
     private void Update()
     {
-        HandleCameraFollow();
+        if (Mathf.Abs(player.position.y - currentPositionY) >= thresholdY)
+        {
+            currentPositionY = player.position.y;
+        }
+        SmoothFollow();
     }
 
 
-    private void HandleCameraFollow()
+    private void SmoothFollow()
     {
-        Vector3 desiredPosition = Target.position + Offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        smoothedPosition.z = transform.position.z;
+        Vector3 Position = new Vector3(player.position.x + offset.x, currentPositionY + offset.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, Position, smoothSpeed * Time.deltaTime);
+    }
 
-        transform.position = smoothedPosition;
+    public void ResetCamera()
+    {
+        Vector3 cameraStart = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
+        startPositionY = cameraStart.y;
+        currentPositionY = startPositionY;
+        transform.position = cameraStart;
     }
 
 }
