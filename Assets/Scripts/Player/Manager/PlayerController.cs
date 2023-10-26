@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour
 
     public GearModeData GearModeData;
 
-    
 
 
+    private Coins[] coinList;
 
 
     private void Awake()
@@ -51,15 +51,15 @@ public class PlayerController : MonoBehaviour
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
+        coinList = FindObjectsOfType<Coins>();
     }
+
 
     private void Update()
     {
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
         RaycastDetection();
-        
-
     }
     private void FixedUpdate()
     {
@@ -70,9 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
-        
-        
+        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);  
     }
 
     
@@ -81,10 +79,15 @@ public class PlayerController : MonoBehaviour
         Vector3 offset = new Vector3(0, 0.3f,0);
         Vector2 rayCastPosition = transform.position + offset;
         float maxDistance = 0.6f;
-        Debug.DrawRay(rayCastPosition, Vector2.right * maxDistance);
-        if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance , PlayerData.GroundLayer)) 
-            PlayerStateManager.ChangeState(PlayerState.Death);  
+        Debug.DrawRay(rayCastPosition, Vector2.right * maxDistance,Color.black);
+        if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance , PlayerData.GroundLayer))
+            PlayerStateManager.ChangeState(PlayerState.Death);
 
+        Vector3 offsetN2 = new Vector3(0, -0.3f, 0);
+        Vector2 raycastPositionN2 = transform.position + offsetN2;
+        Debug.DrawRay(raycastPositionN2, Vector2.right * maxDistance, Color.black);
+        if (Physics2D.Raycast(raycastPositionN2, Vector2.right, maxDistance, PlayerData.GroundLayer))
+            PlayerStateManager.ChangeState(PlayerState.Death);
     }
 
 
@@ -95,9 +98,34 @@ public class PlayerController : MonoBehaviour
 
 
 
-   
+    //TOOOOOOO FIXXXXXXXXXXX
+    private void CoinsDetectionWin()
+    {
+        foreach (Coins coin in coinList)
+        {
+            coin.SaveCoins();
+        }
+    }
 
+    private void CoinsDetectionDeath()
+    {
+        foreach (Coins coin in coinList)
+        {
+            coin.ResetCoins();
+        }
+    }
 
+    private void OnEnable()
+    {
+        PlayerUIManager.OnDeath += CoinsDetectionDeath;
+        PlayerUIManager.OnWin += CoinsDetectionWin;
+    }
+
+    private void OnDisable()
+    {
+        PlayerUIManager.OnDeath -= CoinsDetectionDeath;
+        PlayerUIManager.OnWin -= CoinsDetectionWin;
+    }
 }
 
 

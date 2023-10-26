@@ -7,6 +7,7 @@ using System;
 public class PlayerUIManager : MonoBehaviour
 {
     public static Action OnDeath;
+    public static Action OnWin;
     public static Action OnUpdateScoreProgress;
 
 
@@ -22,6 +23,7 @@ public class PlayerUIManager : MonoBehaviour
     {
         _playerController = GetComponent<PlayerController>();
         DistanceToEnd();
+
     }
 
     private void OnEnable()
@@ -47,9 +49,10 @@ public class PlayerUIManager : MonoBehaviour
 
     private void UpdateSlider()
     {
-        if(Mathf.Approximately(Slider.maxValue ,Slider.value))
+        if(Slider.value >= Slider.maxValue)
         {
             Slider.value = Slider.maxValue;
+            Debug.Log("fine");
             _playerController.PlayerStateManager.ChangeState(PlayerState.Win);
             return;
         }

@@ -35,7 +35,6 @@ public class SpaceShipCharacter : State<PlayerState>
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
 
-        if (_playerController.PlayerRigidBody2D.velocity.x <= 10) _playerStateManager.ChangeState(PlayerState.Death);
     }
 
 

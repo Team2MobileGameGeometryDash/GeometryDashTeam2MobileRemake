@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinState : State<PlayerState>
 {
@@ -20,30 +21,15 @@ public class WinState : State<PlayerState>
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
         //Debug.Log("winn");
         PlayerUIManager.OnUpdateScoreProgress?.Invoke();
+        LoadScene();
 
     }
 
 
-    public override void OnUpdate()
+    public void LoadScene()
     {
-        base.OnUpdate();
-
-
-    }
-
-    public override void OnFixedUpdate()
-    {
-        base.OnFixedUpdate();
-
-    }
-
-
-    public override void OnExit()
-    {
-        base.OnExit();
-
-
-
+        SceneManager.LoadScene("TestMenu", LoadSceneMode.Single);
+        
     }
 
 
