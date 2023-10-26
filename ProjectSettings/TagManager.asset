@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Props2D
+    uniqueID: 3642730045
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
