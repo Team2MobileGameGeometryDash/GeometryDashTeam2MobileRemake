@@ -12,7 +12,9 @@ public class PlayerInputManager : MonoBehaviour
 
 
     public float TimeDelay;
+    [HideInInspector]
     public float time;
+    [HideInInspector]
     public bool startTimer;
 
     private void Start()

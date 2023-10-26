@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player State Manager")]
     public PlayerStateManager PlayerStateManager;
+    [HideInInspector]
     public PlayerInputManager PlayerInputManager;
 
 
@@ -57,7 +58,8 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
         RaycastDetection();
- 
+        
+
     }
     private void FixedUpdate()
     {
@@ -69,17 +71,20 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
-        //  bitwise operations and bit shifting to correctly identify the layer, online solution
+        
         
     }
 
-  
+    
     private void RaycastDetection()
     {
-        Vector2 rayCastPosition = transform.position ;
-        float maxDistance = 0.6f; 
+        Vector3 offset = new Vector3(0, 0.3f,0);
+        Vector2 rayCastPosition = transform.position + offset;
+        float maxDistance = 0.6f;
+        Debug.DrawRay(rayCastPosition, Vector2.right * maxDistance);
         if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance , PlayerData.GroundLayer)) 
             PlayerStateManager.ChangeState(PlayerState.Death);  
+
     }
 
 
