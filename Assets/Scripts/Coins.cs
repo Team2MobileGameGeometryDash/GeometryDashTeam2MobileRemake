@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Coins : MonoBehaviour
 {
+    [Range(1,3)]
     public int CoinNumber;
     private bool isCollected;
 
@@ -31,7 +32,7 @@ public class Coins : MonoBehaviour
 
     public void SaveCoins()
     {
-        if (isCollected) PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + CoinNumber, 1);
+        if (isCollected) PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + (CoinNumber-1), 1);
     }
     /*
     Da vedere dove metterlo
