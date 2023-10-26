@@ -63,7 +63,14 @@ public class SpaceShipCharacter : State<PlayerState>
    
     private void HandleAllMouvement()
     {
-        
+        if (PlayerInputManager.IsTouchEnded)
+        {
+            _playerController.PlayerMouvement.HandleJumpingShipCharacter();
+        }
+        else if (PlayerInputManager.IsTouchStationary)
+        {
+            _playerController.PlayerMouvement.HandleJumpingForceShipCharacter();
+        }
     }
 
     

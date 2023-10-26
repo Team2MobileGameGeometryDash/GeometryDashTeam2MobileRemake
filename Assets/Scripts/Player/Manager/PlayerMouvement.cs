@@ -51,9 +51,22 @@ public class PlayerMouvement
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump );
         else
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+
+        PlayerInputManager.IsTouchEnded = false;
+
     }
 
-    public void HandleJumpingShip()
+    public void HandleJumpingShipCharacter()
+    {
+        float jumpTime = Mathf.Sqrt(_playerController.SpaceShipCharacterData.JumpHeight * 2f * -Physics2D.gravity.y);
+        float jump = jumpTime - (9.81f * Time());
+        _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+
+        PlayerInputManager.IsTouchEnded = false;
+
+    }
+
+    public void HandleJumpingForceShipCharacter()
     {
         
         _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceShipCharacterData.JumpImpulse * _multiplier * UnityEngine.Time.fixedDeltaTime, ForceMode2D.Impulse);

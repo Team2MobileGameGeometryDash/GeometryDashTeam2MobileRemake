@@ -57,15 +57,21 @@ public class GearModeCharacter : State<PlayerState>
     }
 
 
-    //to fix
+    
     private void HandleMouvement()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (PlayerInputManager.IsTouchEnded)
         {
             if (_playerController.PlayerRigidBody2D.gravityScale < 0)
+            {
                 _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;
-            else _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * -1 * _playerController.GearModeData.GravityVelocity;
+                PlayerInputManager.IsTouchEnded = false;
+            }
+            else
+            {
+                _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * -1 * _playerController.GearModeData.GravityVelocity;
+                PlayerInputManager.IsTouchEnded = false;
+            }
         }
-
     }
 }

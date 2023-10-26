@@ -598,6 +598,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
+      propertyPath: GearModeData.IsGearMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: PlayerData.WalkingSpeed
       value: 8
       objectReference: {fileID: 0}
@@ -607,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 243.18
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.y
@@ -657,6 +661,10 @@ PrefabInstance:
       propertyPath: DeathCount
       value: 
       objectReference: {fileID: 1414210160}
+    - target: {fileID: 8152388252648489631, guid: 96af4461634162b40a8eea321c332899, type: 3}
+      propertyPath: TimeDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
