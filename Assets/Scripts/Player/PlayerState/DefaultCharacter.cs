@@ -36,8 +36,6 @@ public class DefaultCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
-
-        
     }
 
 

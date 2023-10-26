@@ -2,14 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using System;
+
 public class PlayerUIManager : MonoBehaviour
 {
-    
+    public static Action OnDeath;
+    public static Action OnUpdateScoreProgress;
+
+
+
     public Transform EndMap;
     public Slider Slider;
     public TextMeshProUGUI DeathCount;
     PlayerController _playerController;
-
+    float _saveScore;
 
 
     private void Awake()
@@ -20,10 +26,10 @@ public class PlayerUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.ObserverPatternGame.Register(GameEventEnum.GameEvent.Death, UpdateDeathCount);
+        OnDeath += UpdateDeathCount;
+        OnUpdateScoreProgress += SaveSliderValue;
     }
 
-   
     private void Update()
     {
         UpdateSlider();
@@ -36,11 +42,13 @@ public class PlayerUIManager : MonoBehaviour
         
     }
 
+  
+
+
     private void UpdateSlider()
     {
         if(Mathf.Approximately(Slider.maxValue ,Slider.value))
         {
-            //Debug.Log("sono uguale");
             Slider.value = Slider.maxValue;
             _playerController.PlayerStateManager.ChangeState(PlayerState.Win);
             return;
@@ -49,7 +57,10 @@ public class PlayerUIManager : MonoBehaviour
         
     }
 
-    private void UpdateDeathCount(object[] action = null)
+
+
+
+    private void UpdateDeathCount()
     {
 
         _playerController.PlayerData.Death += 1;
@@ -57,8 +68,18 @@ public class PlayerUIManager : MonoBehaviour
     }
 
 
+    private void SaveSliderValue()
+    {
+        if (Slider.value > _saveScore) _saveScore = Slider.value;
+    }
+
     private void OnDisable()
     {
-        GameManager.Instance.ObserverPatternGame.Unregister(GameEventEnum.GameEvent.Death, UpdateDeathCount);
+        OnDeath -= UpdateDeathCount;
+        OnUpdateScoreProgress -= SaveSliderValue;
     }
+
+
+
+  
 }

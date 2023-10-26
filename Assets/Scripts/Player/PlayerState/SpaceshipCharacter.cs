@@ -34,6 +34,8 @@ public class SpaceShipCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
+
+        if (_playerController.PlayerRigidBody2D.velocity.x <= 10) _playerStateManager.ChangeState(PlayerState.Death);
     }
 
 
@@ -43,6 +45,10 @@ public class SpaceShipCharacter : State<PlayerState>
 
         HandleAllMouvement();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+
+        
+
+
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)

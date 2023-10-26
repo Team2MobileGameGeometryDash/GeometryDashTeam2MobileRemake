@@ -94,17 +94,8 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    
-
-
-
 
    
-
-
-
-   
-
 
 
 }

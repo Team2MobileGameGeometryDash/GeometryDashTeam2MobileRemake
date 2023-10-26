@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+
+    public static Action OnResetCamera;
     public Transform player;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
@@ -13,10 +16,18 @@ public class CameraFollow : MonoBehaviour
     private float startPositionY;
     private float currentPositionY;
 
-    private void Start()
+
+    private void OnEnable()
     {
-        ResetCamera();
+        OnResetCamera += ResetCamera;
     }
+
+    private void OnDisable()
+    {
+        OnResetCamera -= ResetCamera;
+    }
+
+
 
     private void Update()
     {
