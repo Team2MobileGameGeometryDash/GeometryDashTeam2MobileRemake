@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,9 +14,15 @@ public class MainMenu : MonoBehaviour
     public Image CreditScreen;
     public Image OptionsScreen;
     public Image LevelsScreen;
+    public Image PauseScreen;
+    private AudioListener[] audioListeners;
 
     #endregion
 
+    private void Start()
+    {
+        audioListeners = FindObjectsOfType<AudioListener>();
+    }
 
     #region ButtonsFunctions
 
@@ -59,6 +66,16 @@ public class MainMenu : MonoBehaviour
     public void ToggleLevels()
     {
         ToggleUIScreen(LevelsScreen, MainMenuScreen);
+    }
+
+    public void TogglePause()
+    {
+        ToggleUIScreen(PauseScreen, MainMenuScreen);
+        Time.timeScale = PauseScreen.IsActive() ? 0 : 1;
+        foreach (var listener in audioListeners)
+        {
+            listener.enabled = PauseScreen.IsActive() ? false : true;
+        }
     }
 
     /// <summary>

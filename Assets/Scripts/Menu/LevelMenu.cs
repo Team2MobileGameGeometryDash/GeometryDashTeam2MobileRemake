@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
-    //public SceneAsset Level;
+    public string LevelName;
     private float ScoreProgress;
     public TextMeshProUGUI ScoreText;
     public Slider ScoreSlider;
@@ -17,16 +17,16 @@ public class LevelMenu : MonoBehaviour
 
     private void Start()
     {
-        //ScoreProgress = PlayerPrefs.GetFloat(Level.name);
-        //if (ScoreProgress > 0) ScoreSlider.value = ScoreProgress;
-        //else ScoreSlider.value = 0;
-        //ScoreText.text = (ScoreSlider.value * 100).ToString() + "%" ;
-        //for (int i = 0; i < MissCoins.Length; i++)
-        //{
-        //    if (PlayerPrefs.GetInt(Level.name + i) == 1)
-        //        MissCoins[i].enabled = false;
-        //    else MissCoins[i].enabled = true;
-        //}
+        ScoreProgress = PlayerPrefs.GetFloat(LevelName);
+        if (ScoreProgress > 0) ScoreSlider.value = ScoreProgress;
+        else ScoreSlider.value = 0;
+        ScoreText.text = (ScoreSlider.value * 100).ToString() + "%";
+        for (int i = 0; i < MissCoins.Length; i++)
+        {
+            if (PlayerPrefs.GetInt(LevelName + i) == 1)
+                MissCoins[i].enabled = false;
+            else MissCoins[i].enabled = true;
+        }
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public class LevelMenu : MonoBehaviour
     /// <param name="sceneName"></param>
     public void LoadLevelScene()
     {
-        SceneManager.LoadScene("StereoMadnessLvL1");
+        SceneManager.LoadScene(LevelName);
         Time.timeScale = 1;
     }
 }
