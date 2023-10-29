@@ -5385,7 +5385,7 @@ GameObject:
   - component: {fileID: 7347892056091687064}
   - component: {fileID: 6530197159659217619}
   m_Layer: 0
-  m_Name: P_JumpRingBlue
+  m_Name: P_JumpRingRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10188,7 +10188,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdf8f90a83f0a794981da1ec190c55a3, type: 2}
+  - {fileID: 2100000, guid: 812802952b7c3ba4eb6748479bc555f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
