@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4022353145
+    locked: 0
   - name: Props2D
     uniqueID: 3642730045
     locked: 0
