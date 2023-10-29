@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7347892056091687064}
   - component: {fileID: 6530197159659217619}
   m_Layer: 0
-  m_Name: P_Star_VFX
+  m_Name: P_ExclamationPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4813,7 +4813,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8964ea6116de814f890b5cfff774c6b, type: 2}
+  - {fileID: 2100000, guid: 46268c20a1dbaa64f838a2f050a4a3cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
