@@ -143,7 +143,7 @@ MonoBehaviour:
   InitialPosition: {x: 0, y: 0, z: 0}
   DefaultCharacterData:
     IsDefaultCharacter: 0
-    JumpHeight: 32
+    JumpHeight: 33
     RotationSpeed: 4
     GravityScale: 12
     IsGravityChange: 0
