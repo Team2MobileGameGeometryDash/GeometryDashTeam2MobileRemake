@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4379172974447694743}
   - component: {fileID: 690290833629223448}
   m_Layer: 0
-  m_Name: JumpWithObject_VFX
+  m_Name: P_JumpWithObject_VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
