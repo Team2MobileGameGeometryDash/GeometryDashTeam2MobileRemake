@@ -6,7 +6,7 @@ public class DeathState : State<PlayerState>
 {
     PlayerController _playerController;
     PlayerStateManager _playerStateManager;
-    float _time = 0.4f;
+    float _time = 0.5f;
 
 
 
@@ -49,8 +49,7 @@ public class DeathState : State<PlayerState>
         _playerController.PlayerRigidBody2D.velocity = Vector2.zero;
         AnimationController.OnDisableVFX?.Invoke();
         CameraFollow.OnResetCamera?.Invoke();
-        _time = 0.4f;
-
+        _time = 0.5f;
 
     }
 
@@ -66,6 +65,5 @@ public class DeathState : State<PlayerState>
         else return _time;
 
     }
-
 
 }

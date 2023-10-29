@@ -53,7 +53,7 @@ public class PlayerUIManager : MonoBehaviour
         {
             Slider.value = Slider.maxValue;
             Debug.Log("fine");
-            _playerController.PlayerStateManager.ChangeState(PlayerState.Win);
+            //_playerController.PlayerStateManager.ChangeState(PlayerState.Win);
             return;
         }
         Slider.value = transform.position.x;

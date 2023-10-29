@@ -29,7 +29,7 @@ public class WinState : State<PlayerState>
     public void LoadScene()
     {
         SceneManager.LoadScene("TestMenu", LoadSceneMode.Single);
-        
+
     }
 
 

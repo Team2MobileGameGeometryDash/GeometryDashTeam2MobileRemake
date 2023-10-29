@@ -24,10 +24,8 @@ public class DefaultCharacter : State<PlayerState>
         _playerController.ChangeCharacter(true,0);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.DefaultCharacterData.IsGravityChange = false;
-        
-        
-    }
 
+    }
 
     public override void OnUpdate()
     {
@@ -68,6 +66,7 @@ public class DefaultCharacter : State<PlayerState>
         _playerController.ChangeCharacter(false, 0);
         _playerController.DefaultCharacterData.IsDefaultCharacter = false;
         
+
     }
 
 

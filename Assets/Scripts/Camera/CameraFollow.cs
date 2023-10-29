@@ -45,6 +45,7 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, Position, smoothSpeed * Time.deltaTime);
     }
 
+
     public void ResetCamera()
     {
         Vector3 cameraStart = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
