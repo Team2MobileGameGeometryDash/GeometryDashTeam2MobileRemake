@@ -18,6 +18,8 @@ public class SpaceShipCharacter : State<PlayerState>
     {
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
+        PlayerInputManager.IsTouchEnded = false;
+        PlayerInputManager.IsTouchStationary = false;
         _playerController.ChangeCharacter(true, 1);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.SpaceShipCharacterData.GravityScale;
 

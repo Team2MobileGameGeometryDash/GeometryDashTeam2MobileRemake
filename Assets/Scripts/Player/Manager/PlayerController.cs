@@ -76,11 +76,19 @@ public class PlayerController : MonoBehaviour
     
     private void RaycastDetection()
     {
-        Vector3 offset = new Vector3(0, 0.48f, 0);
+
+        Vector3 offset = new Vector3(0, 0, 0);
         Vector2 rayCastPosition = transform.position + offset;
         float maxDistance = 0.6f;
         Debug.DrawRay(rayCastPosition, Vector2.right * maxDistance, Color.black);
         if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance, PlayerData.GroundLayer))
+            PlayerStateManager.ChangeState(PlayerState.Death);
+
+        Vector3 offset3 = new Vector3(0, 0.48f, 0);
+        Vector2 rayCastPosition3 = transform.position + offset3;
+        float maxDistance3 = 0.6f;
+        Debug.DrawRay(rayCastPosition3, Vector2.right * maxDistance3, Color.black);
+        if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance3, PlayerData.GroundLayer))
             PlayerStateManager.ChangeState(PlayerState.Death);
 
         if (!SpaceShipCharacterData.IsSpaceShip) return;
@@ -89,6 +97,8 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(raycastPositionN2, Vector2.right * maxDistance, Color.black);
         if (Physics2D.Raycast(raycastPositionN2, Vector2.right, maxDistance, PlayerData.GroundLayer))
             PlayerStateManager.ChangeState(PlayerState.Death);
+
+       
     }
 
 
