@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         Vector2 rayCastPosition3 = transform.position + offset3;
         float maxDistance3 = 0.6f;
         Debug.DrawRay(rayCastPosition3, Vector2.right * maxDistance3, Color.black);
-        if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance3, PlayerData.GroundLayer))
+        if (Physics2D.Raycast(rayCastPosition3, Vector2.right, maxDistance3, PlayerData.GroundLayer))
             PlayerStateManager.ChangeState(PlayerState.Death);
 
         if (!SpaceShipCharacterData.IsSpaceShip) return;
