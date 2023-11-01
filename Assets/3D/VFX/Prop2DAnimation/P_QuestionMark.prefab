@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7347892056091687064}
   - component: {fileID: 6530197159659217619}
   m_Layer: 0
-  m_Name: P_JumpRingBlue
+  m_Name: P_QuestionMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.50980395, g: 0.9706273, b: 1, a: 0.5529412}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1013,17 +1013,8 @@ ParticleSystem:
           inWeight: 0.42610568
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.7455454
-          value: 0.4959182
-          inSlope: -2.9813707
-          outSlope: -2.9813707
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.99105835
-          value: 0
+          time: 0.99435425
+          value: 0.4375
           inSlope: 1
           outSlope: 1
           tangentMode: 0
@@ -4813,7 +4804,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdf8f90a83f0a794981da1ec190c55a3, type: 2}
+  - {fileID: 2100000, guid: 3d06531f2935085479ae3c8ab0cac69d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
