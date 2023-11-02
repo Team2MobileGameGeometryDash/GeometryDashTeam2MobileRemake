@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1313445946143345091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4375869848678932882}
+  m_Layer: 6
+  m_Name: UfoSpriteShip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4375869848678932882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313445946143345091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5465404703075232734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2898993248877707728
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,6 +70,7 @@ Transform:
   - {fileID: 8515438563627221304}
   - {fileID: 6711826238903316915}
   - {fileID: 891938781592707832}
+  - {fileID: 4375869848678932882}
   - {fileID: 6573158156529656240}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,6 +192,12 @@ MonoBehaviour:
     GravityScale: 12
     GravityVelocity: 2
     IsGravityChange: 0
+    Time: 0
+  UfoCharacterData:
+    IsUfo: 0
+    JumpImpulse: 0
+    GravityScale: 0
+    GravityVelocity: 0
     Time: 0
 --- !u!114 &5831583573758004537
 MonoBehaviour:
@@ -520,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1529911023241492926, guid: 86eec823e1d07d04899a5cba710968e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4220154796929055409, guid: 86eec823e1d07d04899a5cba710968e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -631,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2163481053559155428, guid: 84dcbdf7b7eceb84589b2c7df0a9ed2d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -42,7 +42,7 @@ public class PlayerMouvement
 
     }
 
-    float Time() => _playerController.DefaultCharacterData.Time = UnityEngine.Time.deltaTime;
+    float Time() => _playerController.PlayerData.Time = UnityEngine.Time.deltaTime;
     public void HandleJumpingBaseCharacter()
     {
         float jumpTime = Mathf.Sqrt(_playerController.DefaultCharacterData.JumpHeight * 2f * -Physics2D.gravity.y);
@@ -53,6 +53,7 @@ public class PlayerMouvement
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
 
         PlayerInputManager.IsTouchEnded = false;
+        
 
     }
 
@@ -70,8 +71,18 @@ public class PlayerMouvement
     {
         
         _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceShipCharacterData.JumpImpulse * _multiplier * UnityEngine.Time.fixedDeltaTime, ForceMode2D.Impulse);
-    } 
+    }
 
+
+    public void HandleJumpingUfoCharacter()
+    {
+        float jumpTime = Mathf.Sqrt(_playerController.UfoCharacterData.JumpHeight * 2f * -Physics2D.gravity.y);
+        float jump = jumpTime - (9.81f * Time());
+        _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+
+        PlayerInputManager.IsTouchEnded = false;
+
+    }
 
 
     /// <summary>

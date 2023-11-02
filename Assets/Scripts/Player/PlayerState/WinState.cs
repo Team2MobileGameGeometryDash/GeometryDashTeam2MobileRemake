@@ -7,7 +7,7 @@ public class WinState : State<PlayerState>
 {
     PlayerController _playerController;
     PlayerStateManager _playerStateManager;
-    float _time = 0.5f;
+    float _time = 1f;
     public WinState(PlayerState playerState, StatesMachine<PlayerState> stateManager = null) : base(playerState, stateManager)
     {
         _playerStateManager = (PlayerStateManager)m_stateMachine;
@@ -30,17 +30,17 @@ public class WinState : State<PlayerState>
         base.OnUpdate();
         ActionManager.OnWin?.Invoke();
         Timer();
-        //if (_time <= 0)
-        //{
-        //    LoadScene();
-        //}
+        if (_time <= 0)
+        {
+            LoadScene();
+        }
     }
 
 
     public override void OnExit()
     {
         base.OnExit();
-        _time = 0.5f;
+        _time = 1f;
     }
 
     public void LoadScene()

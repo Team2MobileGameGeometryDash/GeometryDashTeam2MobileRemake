@@ -37,7 +37,8 @@ public class SpaceShipCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
-
+        else if (_playerController.UfoCharacterData.IsUfo)
+            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
     }
 
 
@@ -46,7 +47,7 @@ public class SpaceShipCharacter : State<PlayerState>
         base.OnFixedUpdate();
 
         HandleAllMouvement();
-        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+        
 
         
 
@@ -76,6 +77,8 @@ public class SpaceShipCharacter : State<PlayerState>
    
     private void HandleAllMouvement()
     {
+        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+
         if (PlayerInputManager.IsTouchEnded)
         {
             _playerController.PlayerMouvement.HandleJumpingShipCharacter();

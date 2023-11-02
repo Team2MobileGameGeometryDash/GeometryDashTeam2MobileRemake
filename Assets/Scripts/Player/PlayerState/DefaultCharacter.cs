@@ -36,6 +36,8 @@ public class DefaultCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
         else if (_playerController.GearModeData.IsGearMode)
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
+        else if (_playerController.UfoCharacterData.IsUfo)
+            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
     }
 
 
@@ -44,7 +46,7 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+        
         HandleAllMouvement();
         
     }
@@ -76,6 +78,9 @@ public class DefaultCharacter : State<PlayerState>
 
     private void HandleAllMouvement()
     {
+        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+
+
         if (_playerController.PlayerMouvement.isGrounded())
         {
             //maybe better place

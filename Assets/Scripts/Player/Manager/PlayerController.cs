@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public GearModeData GearModeData;
 
-
+    public UfoCharacterData UfoCharacterData;
 
     private Coins[] coinList;
 
@@ -41,13 +41,12 @@ public class PlayerController : MonoBehaviour
         PlayerInputManager = GetComponent<PlayerInputManager>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
-
+        PlayerData.WalkingSpeed = PlayerData.DefaultWalkingSpeed;
         //Debug.Log(InitialPosition);
     }
 
     private void Start()
     {
-        
         PlayerCollider2D = GetComponent<Collider2D>();
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
@@ -60,6 +59,8 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
+        //Debug.Log("istouchended"  +  PlayerInputManager.IsTouchEnded );
+        //Debug.Log("istouchedstationary"  +  PlayerInputManager.IsTouchStationary );
     }
 
     private void FixedUpdate()
@@ -119,6 +120,8 @@ public struct PlayerData
 {
     public GameObject[] Ships;
     [Header("PlayerWalkValue")]
+    public float DefaultWalkingSpeed;
+    [HideInInspector]
     public float WalkingSpeed;
     [HideInInspector]
     public float Direction;
@@ -126,7 +129,10 @@ public struct PlayerData
     public LayerMask GroundLayer;
     [Header("PlayerDeath")]
     public float Death;
+    [HideInInspector]
     public bool isWin;
+    [HideInInspector]
+    public float Time;
 
 }
 [System.Serializable]
@@ -142,8 +148,7 @@ public struct DefaultCharacterData
     public float GravityScale;
     [HideInInspector]
     public bool IsGravityChange;
-    [HideInInspector]
-    public float Time;
+    
 
 }
 [System.Serializable]
@@ -156,8 +161,7 @@ public struct SpaceShipCharacterData
     
     [Header("PlayerGravity")]
     public float GravityScale;
-    [HideInInspector]
-    public float Time;
+
 }
 
 [System.Serializable]
@@ -171,8 +175,18 @@ public struct GearModeData
     public float GravityVelocity;
     [HideInInspector]
     public bool IsGravityChange;
-    [HideInInspector]
-    public float Time;
+ 
+}
+
+[System.Serializable]
+public struct UfoCharacterData
+{
+    [Header("PlayerShips")]
+    public bool IsUfo;
+    public float JumpHeight;
+    [Header("PlayerGravity")]
+    public float GravityScale;
+
 }
 
 
