@@ -134,7 +134,7 @@ MonoBehaviour:
     - {fileID: 6707310233220062754}
     - {fileID: 3483646696757760253}
     - {fileID: 7899246669664419290}
-    WalkingSpeed: 5.5
+    WalkingSpeed: 5.8
     Direction: 0
     GroundLayer:
       serializedVersion: 2
@@ -143,9 +143,9 @@ MonoBehaviour:
   InitialPosition: {x: 0, y: 0, z: 0}
   DefaultCharacterData:
     IsDefaultCharacter: 0
-    JumpHeight: 34
+    JumpHeight: 32
     RotationSpeed: 4
-    GravityScale: 12
+    GravityScale: 12.4
     IsGravityChange: 0
     Time: 0
   SpaceShipCharacterData:
