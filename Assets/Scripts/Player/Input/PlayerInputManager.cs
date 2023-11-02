@@ -21,6 +21,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         time = TimeDelay;
         currentInput = new BaseCharacterInput();
+        
     }
 
     private void Update()
@@ -44,12 +45,12 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ChangeShipComponent.OnChangeShip += OnChangeShip;
+        ActionManager.OnChangeShip += OnChangeShip;
     }
 
     private void OnDisable()
     {
-        ChangeShipComponent.OnChangeShip -= OnChangeShip;
+        ActionManager.OnChangeShip -= OnChangeShip;
     }
 
 

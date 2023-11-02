@@ -21,8 +21,8 @@ public class DeathState : State<PlayerState>
     {
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
-        PlayerUIManager.OnUpdateScoreProgress?.Invoke();
-        PlayerUIManager.OnDeath?.Invoke();
+        ActionManager.OnUpdateScoreProgress?.Invoke();
+        ActionManager.OnDeath?.Invoke();
 
 
         
@@ -47,8 +47,8 @@ public class DeathState : State<PlayerState>
         base.OnExit();
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.PlayerRigidBody2D.velocity = Vector2.zero;
-        AnimationController.OnDisableVFX?.Invoke();
-        CameraFollow.OnResetCamera?.Invoke();
+        ActionManager.OnDisableVFX?.Invoke();
+        ActionManager.OnResetCamera?.Invoke();
         _time = 0.5f;
 
     }

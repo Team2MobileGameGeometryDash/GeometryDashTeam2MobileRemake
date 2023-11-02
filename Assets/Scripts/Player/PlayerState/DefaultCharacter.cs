@@ -19,9 +19,10 @@ public class DefaultCharacter : State<PlayerState>
     {
         base.OnEnter();
         
-        if(_playerController==null) _playerController = _playerStateManager.PlayerController;
-        _playerInputManager = _playerController.PlayerInputManager;
+        if(_playerController == null) _playerController = _playerStateManager.PlayerController;
+        _playerInputManager = _playerController.PlayerInputManager;  
         PlayerInputManager.IsTouchEnded = false;
+        ActionManager.OnChangeShip?.Invoke(new BaseCharacterInput());
         _playerController.ChangeCharacter(true,0);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.DefaultCharacterData.IsGravityChange = false;
@@ -44,7 +45,6 @@ public class DefaultCharacter : State<PlayerState>
     {
         base.OnFixedUpdate();
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
-
         HandleAllMouvement();
         
     }
@@ -64,10 +64,12 @@ public class DefaultCharacter : State<PlayerState>
     public override void OnExit()
     {
         base.OnExit();
-        _playerController.ChangeCharacter(false, 0);
-        _playerController.DefaultCharacterData.IsDefaultCharacter = false;
         
-
+        if (!_playerController.PlayerData.isWin)
+        {
+            _playerController.ChangeCharacter(false, 0);
+            _playerController.DefaultCharacterData.IsDefaultCharacter = false;
+        }
     }
 
 
@@ -76,13 +78,20 @@ public class DefaultCharacter : State<PlayerState>
     {
         if (_playerController.PlayerMouvement.isGrounded())
         {
+            //maybe better place
+            ActionManager.OnCubeCollision?.Invoke();
             if (PlayerInputManager.IsTouchEnded || PlayerInputManager.IsTouchStationary)
             {
                 _playerController.PlayerMouvement.HandleJumpingBaseCharacter();
             }
             _playerController.PlayerMouvement.RotationWhenGroundedBaseCharacter(_playerController.PlayerData.Ships[0]);
         }
-        else _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
+        else
+        {
+            //maybe better place
+            ActionManager.OnNoCubeCollision?.Invoke();
+            _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
+        }
     }
 
 

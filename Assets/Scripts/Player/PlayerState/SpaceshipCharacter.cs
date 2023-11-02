@@ -20,6 +20,7 @@ public class SpaceShipCharacter : State<PlayerState>
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
         PlayerInputManager.IsTouchEnded = false;
         PlayerInputManager.IsTouchStationary = false;
+        ActionManager.OnChangeShip?.Invoke(new SpaceShipInput());
         _playerController.ChangeCharacter(true, 1);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.SpaceShipCharacterData.GravityScale;
 
@@ -62,8 +63,13 @@ public class SpaceShipCharacter : State<PlayerState>
     public override void OnExit()
     {
         base.OnExit();
-        _playerController.ChangeCharacter(false, 1);
-        _playerController.SpaceShipCharacterData.IsSpaceShip = false;
+        
+
+        if (!_playerController.PlayerData.isWin)
+        {
+            _playerController.ChangeCharacter(false, 1);
+            _playerController.SpaceShipCharacterData.IsSpaceShip = false;
+        }
     }
 
 

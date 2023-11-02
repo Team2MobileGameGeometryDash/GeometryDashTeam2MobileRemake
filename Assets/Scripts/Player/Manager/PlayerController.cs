@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerInputManager = GetComponent<PlayerInputManager>();
         PlayerStateManager = new PlayerStateManager(this);
@@ -59,46 +60,17 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(data.CanJump);
         PlayerStateManager.CurrentState.OnUpdate();
-        RaycastDetection();
     }
+
     private void FixedUpdate()
     {
         PlayerStateManager.CurrentState.OnFixedUpdate();
 
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);  
-    }
-
-    
-    private void RaycastDetection()
-    {
-
-        Vector3 offset = new Vector3(0, 0, 0);
-        Vector2 rayCastPosition = transform.position + offset;
-        float maxDistance = 0.6f;
-        Debug.DrawRay(rayCastPosition, Vector2.right * maxDistance, Color.black);
-        if (Physics2D.Raycast(rayCastPosition, Vector2.right, maxDistance, PlayerData.GroundLayer))
-            PlayerStateManager.ChangeState(PlayerState.Death);
-
-        Vector3 offset3 = new Vector3(0, 0.48f, 0);
-        Vector2 rayCastPosition3 = transform.position + offset3;
-        float maxDistance3 = 0.6f;
-        Debug.DrawRay(rayCastPosition3, Vector2.right * maxDistance3, Color.black);
-        if (Physics2D.Raycast(rayCastPosition3, Vector2.right, maxDistance3, PlayerData.GroundLayer))
-            PlayerStateManager.ChangeState(PlayerState.Death);
-
-        if (!SpaceShipCharacterData.IsSpaceShip) return;
-        Vector3 offsetN2 = new Vector3(0, -0.48f, 0);
-        Vector2 raycastPositionN2 = transform.position + offsetN2;
-        Debug.DrawRay(raycastPositionN2, Vector2.right * maxDistance, Color.black);
-        if (Physics2D.Raycast(raycastPositionN2, Vector2.right, maxDistance, PlayerData.GroundLayer))
-            PlayerStateManager.ChangeState(PlayerState.Death);
-
-       
     }
 
 
@@ -128,14 +100,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerUIManager.OnDeath += CoinsDetectionDeath;
-        PlayerUIManager.OnWin += CoinsDetectionWin;
+        ActionManager.OnDeath += CoinsDetectionDeath;
+        ActionManager.OnWin += CoinsDetectionWin;
     }
 
     private void OnDisable()
     {
-        PlayerUIManager.OnDeath -= CoinsDetectionDeath;
-        PlayerUIManager.OnWin -= CoinsDetectionWin;
+        ActionManager.OnDeath -= CoinsDetectionDeath;
+        ActionManager.OnWin -= CoinsDetectionWin;
     }
 }
 
@@ -154,6 +126,7 @@ public struct PlayerData
     public LayerMask GroundLayer;
     [Header("PlayerDeath")]
     public float Death;
+    public bool isWin;
 
 }
 [System.Serializable]

@@ -7,7 +7,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public static Action OnResetCamera;
+    
     public Transform player;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
@@ -19,12 +19,12 @@ public class CameraFollow : MonoBehaviour
 
     private void OnEnable()
     {
-        OnResetCamera += ResetCamera;
+        ActionManager.OnResetCamera += ResetCamera;
     }
 
     private void OnDisable()
     {
-        OnResetCamera -= ResetCamera;
+        ActionManager.OnResetCamera -= ResetCamera;
     }
 
 

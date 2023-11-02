@@ -6,12 +6,7 @@ using System;
 
 public class PlayerUIManager : MonoBehaviour
 {
-    public static Action OnDeath;
-    public static Action OnWin;
-    public static Action OnUpdateScoreProgress;
-
-
-
+ 
     public Transform EndMap;
     public Slider Slider;
     public TextMeshProUGUI DeathCount;
@@ -28,8 +23,8 @@ public class PlayerUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        OnDeath += UpdateDeathCount;
-        OnUpdateScoreProgress += SaveSliderValue;
+        ActionManager.OnDeath += UpdateDeathCount;
+        ActionManager.OnUpdateScoreProgress += SaveSliderValue;
     }
 
     private void Update()
@@ -51,16 +46,15 @@ public class PlayerUIManager : MonoBehaviour
     {
         if(Slider.value >= Slider.maxValue)
         {
+            _playerController.PlayerData.isWin = true;
             Slider.value = Slider.maxValue;
-            Debug.Log("fine");
-            //_playerController.PlayerStateManager.ChangeState(PlayerState.Win);
+            //Debug.Log("fine");
+            _playerController.PlayerStateManager.ChangeState(PlayerState.Win);
             return;
         }
         Slider.value = transform.position.x;
         
     }
-
-
 
 
     private void UpdateDeathCount()
@@ -78,8 +72,8 @@ public class PlayerUIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        OnDeath -= UpdateDeathCount;
-        OnUpdateScoreProgress -= SaveSliderValue;
+        ActionManager.OnDeath -= UpdateDeathCount;
+        ActionManager.OnUpdateScoreProgress -= SaveSliderValue;
     }
 
 

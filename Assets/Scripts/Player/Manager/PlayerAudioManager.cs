@@ -11,12 +11,12 @@ public class PlayerAudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerUIManager.OnDeath += EnableSoundDeath;
+        ActionManager.OnDeath += EnableSoundDeath;
     }
 
     private void OnDisable()
     {
-        PlayerUIManager.OnDeath -= EnableSoundDeath;
+        ActionManager.OnDeath -= EnableSoundDeath;
     }
 
     private void EnableSoundDeath()
