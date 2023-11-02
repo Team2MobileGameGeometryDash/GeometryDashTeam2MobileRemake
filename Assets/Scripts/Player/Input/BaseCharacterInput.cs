@@ -8,6 +8,7 @@ public class BaseCharacterInput : BaseInput
     public override void GetInput(PlayerInputManager playerInputManager)
     {
         if (isTouching()) return;
+        //Debug.Log("input 1");
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Began)
         {

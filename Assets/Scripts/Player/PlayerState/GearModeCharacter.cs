@@ -18,6 +18,7 @@ public class GearModeCharacter : State<PlayerState>
     {
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
+        ActionManager.OnChangeShip?.Invoke(new GearModeInput());
         _playerController.ChangeCharacter(true, 2);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;
 
