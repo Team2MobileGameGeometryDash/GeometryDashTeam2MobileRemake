@@ -35,6 +35,8 @@ public class UfoCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
         else if (_playerController.DefaultCharacterData.IsDefaultCharacter)
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        else if (_playerController.MeteoraModeData.IsMeteora)
+            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
 
 
@@ -63,7 +65,7 @@ public class UfoCharacter : State<PlayerState>
     {
         base.OnExit();
 
-        if (!_playerController.PlayerData.isWin)
+        if (!_playerController.PlayerData.isWin && !_playerController.MeteoraModeData.IsMeteora)
         {
             _playerController.ChangeCharacter(false, 3);
             _playerController.UfoCharacterData.IsUfo = false;

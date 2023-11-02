@@ -35,6 +35,8 @@ public class GearModeCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
         else if (_playerController.UfoCharacterData.IsUfo)
             _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.MeteoraModeData.IsMeteora)
+            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
 
     public override void OnFixedUpdate()
@@ -55,7 +57,7 @@ public class GearModeCharacter : State<PlayerState>
     {
         base.OnExit();
 
-        if (!_playerController.PlayerData.isWin)
+        if (!_playerController.PlayerData.isWin && !_playerController.MeteoraModeData.IsMeteora)
         {
             _playerController.ChangeCharacter(false, 2);
             _playerController.GearModeData.IsGearMode = false;

@@ -22,5 +22,7 @@ public static class ActionManager
     public static Action OnDisableVFX;
     public static Action OnCubeCollision;
     public static Action OnNoCubeCollision;
+    public static Action OnMeteoraActiveVFX;
+    public static Action OnMeteoraDisactiveVFX;
     #endregion
 }

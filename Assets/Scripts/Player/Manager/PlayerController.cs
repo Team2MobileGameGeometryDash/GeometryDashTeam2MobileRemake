@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public GearModeData GearModeData;
 
     public UfoCharacterData UfoCharacterData;
+
+    public MeteoraModeData MeteoraModeData;
 
     private Coins[] coinList;
 
@@ -186,6 +185,15 @@ public struct UfoCharacterData
     public float JumpHeight;
     [Header("PlayerGravity")]
     public float GravityScale;
+
+}
+
+[System.Serializable]
+public struct MeteoraModeData
+{
+    [Header("PlayerShips")]
+    public bool IsMeteora;
+
 
 }
 

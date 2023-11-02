@@ -39,6 +39,8 @@ public class SpaceShipCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
         else if (_playerController.UfoCharacterData.IsUfo)
             _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.MeteoraModeData.IsMeteora)
+            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
 
 
@@ -66,7 +68,7 @@ public class SpaceShipCharacter : State<PlayerState>
         base.OnExit();
         
 
-        if (!_playerController.PlayerData.isWin)
+        if (!_playerController.PlayerData.isWin && !_playerController.MeteoraModeData.IsMeteora)
         {
             _playerController.ChangeCharacter(false, 1);
             _playerController.SpaceShipCharacterData.IsSpaceShip = false;
