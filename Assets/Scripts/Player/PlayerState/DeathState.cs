@@ -50,6 +50,7 @@ public class DeathState : State<PlayerState>
         ActionManager.OnDisableVFX?.Invoke();
         ActionManager.OnResetCamera?.Invoke();
         _time = 0.5f;
+        _playerController.PlayerData.WalkingSpeed = _playerController.PlayerData.DefaultWalkingSpeed;
 
     }
 

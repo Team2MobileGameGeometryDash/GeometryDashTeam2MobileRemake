@@ -27,6 +27,11 @@ public class ChangeShipComponent : MonoBehaviour
                     playerController.GearModeData.IsGearMode = true;
                     
                     break;
+
+                case EShip.UfoShip:
+                    playerController.UfoCharacterData.IsUfo = true;
+
+                    break;
             }
         
         }
@@ -39,6 +44,7 @@ public enum EShip
 {
     BaseShip,
     SpaceShip,
-    GearMode
+    GearMode,
+    UfoShip
 
 }

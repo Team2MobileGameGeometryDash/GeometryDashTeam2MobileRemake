@@ -33,13 +33,14 @@ public class GearModeCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
         else if (_playerController.SpaceShipCharacterData.IsSpaceShip)
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
-
+        else if (_playerController.UfoCharacterData.IsUfo)
+            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
     }
 
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+        
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
@@ -53,14 +54,24 @@ public class GearModeCharacter : State<PlayerState>
     public override void OnExit()
     {
         base.OnExit();
-        _playerController.ChangeCharacter(false, 2);
-        _playerController.GearModeData.IsGearMode = false;
+
+        if (!_playerController.PlayerData.isWin)
+        {
+            _playerController.ChangeCharacter(false, 2);
+            _playerController.GearModeData.IsGearMode = false;
+        }
+
+
+        
     }
 
 
     
     private void HandleMouvement()
     {
+
+        _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
+
         if (PlayerInputManager.IsTouchEnded)
         {
             if (_playerController.PlayerRigidBody2D.gravityScale < 0)
