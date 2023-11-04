@@ -21,6 +21,7 @@ public class BackgroundChange : MonoBehaviour
     [Tooltip("Duration in Second of the Music")]
     private float MusicDurationInSeconds;
     private float timer = 0.0f;
+    private float colorTimer = 0.0f;
     private float MaxDistance;
     private Vector3 initialPosContainer;
 
@@ -54,17 +55,19 @@ public class BackgroundChange : MonoBehaviour
         _camera = GetComponentInParent<CameraFollow>();
         MaxDistance = LastBackground.position.x - FirstBackground.position.x;
         initialPosContainer = AllBackgroundObject.position;
+        _currentChangePoint = 0;
     }
 
     private void Update()
-    { 
+    {
         _cameraPosition = transform.position.x - _camera.offset.x;
         if (_cameraPosition > ChangePoint[_currentChangePoint].Target.position.x)
         {
-            SetNewBackgroundColors();
-            _currentChangePoint++;
+            SetNewBackgroundColors();            
         }
         MoveBackground();
+        //if (Input.GetKeyDown(KeyCode.F)) ResetBackGround();
+        Debug.Log(colorTimer);
     }
 
     /// <summary>
@@ -90,20 +93,33 @@ public class BackgroundChange : MonoBehaviour
             gradientRenderer.material.color = StartGradientColor;
         }
     }
-    
+
     /// <summary>
     /// Change Background, use it when reach the new target
     /// </summary>
     private void SetNewBackgroundColors()
     {
-        foreach (Renderer baseRenderer in BaseBackground)
+        if (colorTimer < 1f)
         {
-            baseRenderer.material.color = ChangePoint[_currentChangePoint].BaseBackgroundColor;
-        }
+            colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;            
+            
+            foreach (Renderer baseRenderer in BaseBackground)
+            {
+                Color CurrentColor = baseRenderer.material.color;
+                baseRenderer.material.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer * Time.deltaTime);
+            }
 
-        foreach (Renderer gradientRenderer in Gradient)
+            foreach (Renderer gradientRenderer in Gradient)
+            {
+                Color CurrentColor = gradientRenderer.material.color;
+                gradientRenderer.material.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer * Time.deltaTime);
+            }
+        }
+        else
         {
-            gradientRenderer.material.color = ChangePoint[_currentChangePoint].GradientColor;
+            if (_currentChangePoint == ChangePoint.Count - 1) return;
+            _currentChangePoint++;
+            colorTimer = 0f;
         }
     }
 
@@ -112,8 +128,11 @@ public class BackgroundChange : MonoBehaviour
     /// </summary>
     public void ResetBackGround()
     {
-        SetInitialColors();
+        colorTimer = 0f;
         _currentChangePoint = 0;
+        SetInitialColors();
+        AllBackgroundObject.position = initialPosContainer;
+        timer = 0f;
     }
 
     private void MoveBackground()
@@ -133,4 +152,5 @@ public class BackgroundChangeData
     public Color BaseBackgroundColor;
     public Color GradientColor;
     public Transform Target;
+    public float colorTransitionDuration;
 }

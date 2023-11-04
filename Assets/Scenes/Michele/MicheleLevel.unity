@@ -47394,6 +47394,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &932643817 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 461920046367330377, guid: a041785816fc82648abe1d7df7201603, type: 3}
+  m_PrefabInstance: {fileID: 945394408}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &941684048
 GameObject:
   m_ObjectHideFlags: 0
@@ -47683,18 +47688,22 @@ MonoBehaviour:
   FirstBackground: {fileID: 882899329}
   LastBackground: {fileID: 1226836386}
   AllBackgroundObject: {fileID: 1831790685}
-  MusicDurationInSeconds: 50
-  BaseBackground: []
-  StartBaseBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  Gradient: []
-  StartGradientColor: {r: 0, g: 0, b: 0, a: 0}
+  MusicDurationInSeconds: 60
+  BaseBackground:
+  - {fileID: 1752685359}
+  StartBaseBackgroundColor: {r: 0.04221201, g: 0, b: 1, a: 0.5882353}
+  Gradient:
+  - {fileID: 932643817}
+  StartGradientColor: {r: 1, g: 1, b: 1, a: 0}
   ChangePoint:
-  - BaseBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    GradientColor: {r: 1, g: 1, b: 1, a: 0}
+  - BaseBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    GradientColor: {r: 1, g: 1, b: 1, a: 1}
     Target: {fileID: 84890822}
-  - BaseBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    GradientColor: {r: 0.990566, g: 0.062299643, b: 0.062299643, a: 0}
+    colorTransitionDuration: 5
+  - BaseBackgroundColor: {r: 1, g: 0, b: 0, a: 1}
+    GradientColor: {r: 0.990566, g: 0.062299643, b: 0.062299643, a: 1}
     Target: {fileID: 1694039077}
+    colorTransitionDuration: 10
 --- !u!1 &946445755
 GameObject:
   m_ObjectHideFlags: 0
@@ -62637,7 +62646,7 @@ Transform:
   m_GameObject: {fileID: 1694039076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.133732, y: 0.26734352, z: 2.4852123}
+  m_LocalPosition: {x: 9, y: 0.26734352, z: 2.4852123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63700,6 +63709,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1752685359 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5004462613986572114, guid: a041785816fc82648abe1d7df7201603, type: 3}
+  m_PrefabInstance: {fileID: 945394408}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756209542
 GameObject:
   m_ObjectHideFlags: 0
