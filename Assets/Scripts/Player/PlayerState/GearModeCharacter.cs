@@ -21,7 +21,7 @@ public class GearModeCharacter : State<PlayerState>
         ActionManager.OnChangeShip?.Invoke(new GearModeInput());
         _playerController.ChangeCharacter(true, 2);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;
-
+        _playerController.GearModeData.IsGearMode = true;
     }
 
 
@@ -29,19 +29,10 @@ public class GearModeCharacter : State<PlayerState>
     {
         base.OnUpdate();
         HandleMouvement();
-        if (_playerController.DefaultCharacterData.IsDefaultCharacter)
-            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
-        else if (_playerController.SpaceShipCharacterData.IsSpaceShip)
-            _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
-        else if (_playerController.UfoCharacterData.IsUfo)
-            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        ChangeState();
     }
 
-    public override void OnFixedUpdate()
-    {
-        base.OnFixedUpdate();
-        
-    }
+ 
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,7 +46,7 @@ public class GearModeCharacter : State<PlayerState>
     {
         base.OnExit();
 
-        if (!_playerController.PlayerData.isWin)
+        if (!_playerController.PlayerData.isWin && !_playerController.MeteoraModeData.IsMeteora)
         {
             _playerController.ChangeCharacter(false, 2);
             _playerController.GearModeData.IsGearMode = false;
@@ -85,5 +76,18 @@ public class GearModeCharacter : State<PlayerState>
                 PlayerInputManager.IsTouchEnded = false;
             }
         }
+    }
+
+
+    private void ChangeState()
+    {
+        if (_playerController.DefaultCharacterData.IsDefaultCharacter)
+            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        else if (_playerController.SpaceShipCharacterData.IsSpaceShip)
+            _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
+        else if (_playerController.UfoCharacterData.IsUfo)
+            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.MeteoraModeData.IsMeteora)
+            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
 }

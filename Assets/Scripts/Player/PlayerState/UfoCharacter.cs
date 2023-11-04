@@ -23,18 +23,14 @@ public class UfoCharacter : State<PlayerState>
         ActionManager.OnChangeShip?.Invoke(new UfoInput());
         _playerController.ChangeCharacter(true, 3);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.UfoCharacterData.GravityScale;
+        _playerController.UfoCharacterData.IsUfo = true;
 
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (_playerController.SpaceShipCharacterData.IsSpaceShip)
-            _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
-        else if (_playerController.GearModeData.IsGearMode)
-            _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
-        else if (_playerController.DefaultCharacterData.IsDefaultCharacter)
-            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        ChangeState();
     }
 
 
@@ -63,7 +59,7 @@ public class UfoCharacter : State<PlayerState>
     {
         base.OnExit();
 
-        if (!_playerController.PlayerData.isWin)
+        if (!_playerController.PlayerData.isWin && !_playerController.MeteoraModeData.IsMeteora)
         {
             _playerController.ChangeCharacter(false, 3);
             _playerController.UfoCharacterData.IsUfo = false;
@@ -85,7 +81,17 @@ public class UfoCharacter : State<PlayerState>
     }
 
 
-
+    private void ChangeState()
+    {
+        if (_playerController.SpaceShipCharacterData.IsSpaceShip)
+            _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
+        else if (_playerController.GearModeData.IsGearMode)
+            _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
+        else if (_playerController.DefaultCharacterData.IsDefaultCharacter)
+            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        else if (_playerController.MeteoraModeData.IsMeteora)
+            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
+    }
 
 
 }

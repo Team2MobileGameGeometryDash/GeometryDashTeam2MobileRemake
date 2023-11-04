@@ -7,6 +7,7 @@ public class VFXManager : MonoBehaviour
     public GameObject DeathVFX;
     public GameObject WinVFX;
     public ParticleSystem CubeCollision;
+    public GameObject Meteora;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class VFXManager : MonoBehaviour
         ActionManager.OnWin += ActiveWinVFX;
         ActionManager.OnCubeCollision += ActiveCubeCollisionVFX;
         ActionManager.OnNoCubeCollision += DisactiveCubeCollisionVFX;
+        ActionManager.OnMeteoraActiveVFX += ActiveMeteoraVFX;
+        ActionManager.OnMeteoraDisactiveVFX += DisactiveMeteoraVFX;
     }
 
     private void ActiveDeathVFX()
@@ -29,20 +32,17 @@ public class VFXManager : MonoBehaviour
         
     }
 
-
     private void DisactiveDeathVFX()
     {
         DeathVFX.SetActive(false);
         WinVFX.SetActive(false);
-        
+        Meteora.SetActive(false);
     }
-
 
     private void ActiveWinVFX()
     {
         WinVFX.SetActive(true);
     }
-
 
     private void ActiveCubeCollisionVFX()
     {
@@ -54,6 +54,17 @@ public class VFXManager : MonoBehaviour
         CubeCollision.Stop();
     }
 
+    private void ActiveMeteoraVFX()
+    {
+        Meteora.SetActive(true);
+    }
+
+    private void DisactiveMeteoraVFX()
+    {
+        Meteora.SetActive(false);
+    }
+
+
     private void OnDisable()
     {
         ActionManager.OnDeath -= ActiveDeathVFX;
@@ -61,6 +72,8 @@ public class VFXManager : MonoBehaviour
         ActionManager.OnWin -= ActiveWinVFX;
         ActionManager.OnCubeCollision -= ActiveCubeCollisionVFX;
         ActionManager.OnNoCubeCollision -= DisactiveCubeCollisionVFX;
+        ActionManager.OnMeteoraActiveVFX -= ActiveMeteoraVFX;
+        ActionManager.OnMeteoraDisactiveVFX -= DisactiveMeteoraVFX;
     }
 
    

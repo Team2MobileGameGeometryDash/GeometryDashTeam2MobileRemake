@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public GearModeData GearModeData;
 
     public UfoCharacterData UfoCharacterData;
+
+    public MeteoraModeData MeteoraModeData;
+
 
     private Coins[] coinList;
 
@@ -71,9 +71,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);  
+        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            PlayerStateManager.ChangeState(PlayerState.Death);
     }
 
+    
 
     public void ChangeCharacter(bool isActive,int index)
     {
@@ -134,6 +137,7 @@ public struct PlayerData
     [HideInInspector]
     public float Time;
 
+
 }
 [System.Serializable]
 public struct DefaultCharacterData
@@ -186,6 +190,15 @@ public struct UfoCharacterData
     public float JumpHeight;
     [Header("PlayerGravity")]
     public float GravityScale;
+
+}
+
+[System.Serializable]
+public struct MeteoraModeData
+{
+    [Header("PlayerShips")]
+    public bool IsMeteora;
+    public float MeteoraVelocity;
 
 }
 
