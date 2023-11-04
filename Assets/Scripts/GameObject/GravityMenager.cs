@@ -8,8 +8,6 @@ public class GravityMenager : MonoBehaviour
 	public int Gravity;
 	public bool IsGravityChange;
 
-	
-	
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public MeteoraModeData MeteoraModeData;
 
+
     private Coins[] coinList;
 
 
@@ -70,9 +71,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);  
+        PlayerStateManager.CurrentState.OnTriggerEnter2D(collision);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            PlayerStateManager.ChangeState(PlayerState.Death);
     }
 
+    
 
     public void ChangeCharacter(bool isActive,int index)
     {
@@ -132,6 +136,7 @@ public struct PlayerData
     public bool isWin;
     [HideInInspector]
     public float Time;
+
 
 }
 [System.Serializable]
@@ -193,7 +198,7 @@ public struct MeteoraModeData
 {
     [Header("PlayerShips")]
     public bool IsMeteora;
-
+    public float MeteoraVelocity;
 
 }
 

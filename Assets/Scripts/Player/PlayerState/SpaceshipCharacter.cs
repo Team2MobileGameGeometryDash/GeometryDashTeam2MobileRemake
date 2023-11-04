@@ -23,6 +23,7 @@ public class SpaceShipCharacter : State<PlayerState>
         ActionManager.OnChangeShip?.Invoke(new SpaceShipInput());
         _playerController.ChangeCharacter(true, 1);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.SpaceShipCharacterData.GravityScale;
+        _playerController.SpaceShipCharacterData.IsSpaceShip = true;
 
         //Debug.Log(" SECOND STATE ON ENTER _PlayerController : " + _playerController);
         //Debug.Log(_playerController);
@@ -32,15 +33,8 @@ public class SpaceShipCharacter : State<PlayerState>
     public override void OnUpdate()
     {
         base.OnUpdate();
-
-        if (_playerController.DefaultCharacterData.IsDefaultCharacter)
-            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
-        else if (_playerController.GearModeData.IsGearMode)
-            _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
-        else if (_playerController.UfoCharacterData.IsUfo)
-            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
-        else if (_playerController.MeteoraModeData.IsMeteora)
-            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
+        ChangeState();
+       
     }
 
 
@@ -49,10 +43,6 @@ public class SpaceShipCharacter : State<PlayerState>
         base.OnFixedUpdate();
 
         HandleAllMouvement();
-        
-
-        
-
 
     }
 
@@ -92,5 +82,15 @@ public class SpaceShipCharacter : State<PlayerState>
     }
 
     
-  
+  private void ChangeState()
+  {
+        if (_playerController.DefaultCharacterData.IsDefaultCharacter)
+            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        else if (_playerController.GearModeData.IsGearMode)
+            _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
+        else if (_playerController.UfoCharacterData.IsUfo)
+            _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.MeteoraModeData.IsMeteora)
+            _playerStateManager.ChangeState(PlayerState.MeteoraMode);
+  }
 }
