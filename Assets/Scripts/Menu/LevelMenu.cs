@@ -1,41 +1,54 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
-    public string LevelName;
-    private float ScoreProgress;
-    public TextMeshProUGUI ScoreText;
-    public Slider ScoreSlider;
-    public Image[] MissCoins;
+    public Image PauseScreen;
+    public Image WinScreen;
+    private int currentSceneIndex;
 
     private void Start()
     {
-        ScoreProgress = PlayerPrefs.GetFloat(LevelName);
-        if (ScoreProgress > 0) ScoreSlider.value = ScoreProgress;
-        else ScoreSlider.value = 0;
-        ScoreText.text = (ScoreSlider.value * 100).ToString() + "%";
-        for (int i = 0; i < MissCoins.Length; i++)
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+    public void TogglePause()
+    {
+        ToggleUIScreen(PauseScreen);
+    }
+
+    private void ToggleUIScreen(Image selectedScreen)
+    {
+        if (!selectedScreen.gameObject.activeInHierarchy)
         {
-            if (PlayerPrefs.GetInt(LevelName + i) == 1)
-                MissCoins[i].enabled = false;
-            else MissCoins[i].enabled = true;
+            selectedScreen.gameObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            selectedScreen.gameObject.SetActive(false);
+            return;
         }
     }
 
-    /// <summary>
-    ///  for PLAY button
-    /// </summary>
-    /// <param name="sceneName"></param>
-    public void LoadLevelScene()
+    public void LoadNextScene()
     {
-        SceneManager.LoadScene(LevelName);
-        Time.timeScale = 1;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene(0);
     }
 }
