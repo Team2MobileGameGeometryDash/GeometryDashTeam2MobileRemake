@@ -143,16 +143,16 @@ MonoBehaviour:
   InitialPosition: {x: 0, y: 0, z: 0}
   DefaultCharacterData:
     IsDefaultCharacter: 0
-    JumpHeight: 32
+    JumpHeight: 32.2
     RotationSpeed: 4
     GravityScale: 12.4
     IsGravityChange: 0
     Time: 0
   SpaceShipCharacterData:
     IsSpaceShip: 0
-    JumpHeight: 15
-    JumpImpulse: 1
-    GravityScale: 5
+    JumpHeight: 0.85
+    JumpImpulse: 0.4
+    GravityScale: 1.7
     Time: 0
   GearModeData:
     IsGearMode: 0
