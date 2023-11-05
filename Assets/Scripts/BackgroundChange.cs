@@ -54,7 +54,7 @@ public class BackgroundChange : MonoBehaviour
         SortChangePointByX();
         _camera = GetComponentInParent<CameraFollow>();
         MaxDistance = LastBackground.position.x - FirstBackground.position.x;
-        initialPosContainer = AllBackgroundObject.position;
+        initialPosContainer = AllBackgroundObject.localPosition;
         _currentChangePoint = 0;
     }
 
@@ -131,7 +131,7 @@ public class BackgroundChange : MonoBehaviour
         colorTimer = 0f;
         _currentChangePoint = 0;
         SetInitialColors();
-        AllBackgroundObject.position = initialPosContainer;
+        AllBackgroundObject.localPosition = initialPosContainer;
         timer = 0f;
     }
 
@@ -142,7 +142,7 @@ public class BackgroundChange : MonoBehaviour
         float t = timer / MusicDurationInSeconds;
         Vector3 newPosContainer = Vector3.Lerp(initialPosContainer, initialPosContainer - new Vector3(MaxDistance, 0, 0), t);
 
-        AllBackgroundObject.position = newPosContainer;
+        AllBackgroundObject.localPosition = newPosContainer;
     }
 }
 
