@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -20,7 +19,7 @@ public class GameManager : Singleton<GameManager>
         _audioSources = FindObjectsOfType<AudioSource>();
         _uiManager = GetComponentInChildren<UIManager>();
         _coinList = FindObjectsOfType<Coins>();
-        _startPosition = transform.position.x;
+        _startPosition = Player.position.x;
         _attemptCount = 0;
         UpdateAttemptCount();
     }
@@ -43,6 +42,7 @@ public class GameManager : Singleton<GameManager>
     {
         SaveSliderValue();
         CoinsDetectionWin();
+        levelMenu.WinPanelCoins();
         _uiManager.ActiveWinPanel();
     }
 
@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
 
     public float UpdatedSliderValue()
     {
-        return (transform.position.x - _startPosition) / (EndMap.position.x - _startPosition);
+        return (Player.position.x - _startPosition) / (EndMap.position.x - _startPosition);
     }
 
     private void SaveSliderValue()

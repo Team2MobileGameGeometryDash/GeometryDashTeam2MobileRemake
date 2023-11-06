@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
+    [Header("Level Menu")]
     public Image PauseScreen;
     public Image WinScreen;
     public Slider sliderProgress;
     private int currentSceneIndex;
+
+    [Header("Win Panel - Coins Panel")]
+    [Tooltip("Add sorted by number")]
+    public Image[] MissCoins;
 
     private void Start()
     {
@@ -50,6 +52,16 @@ public class LevelMenu : MonoBehaviour
         else
         {
             SceneManager.LoadScene(0);
+        }
+    }
+
+    public void WinPanelCoins()
+    {
+        for (int i = 0; i < MissCoins.Length; i++)
+        {
+            if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + i) == 1)
+                MissCoins[i].enabled = false;
+            else MissCoins[i].enabled = true;
         }
     }
 
