@@ -1,41 +1,72 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
-    public string LevelName;
-    private float ScoreProgress;
-    public TextMeshProUGUI ScoreText;
-    public Slider ScoreSlider;
+    [Header("Level Menu")]
+    public Image PauseScreen;
+    public Image WinScreen;
+    public Slider sliderProgress;
+    private int currentSceneIndex;
+
+    [Header("Win Panel - Coins Panel")]
+    [Tooltip("Add sorted by number")]
     public Image[] MissCoins;
 
     private void Start()
     {
-        ScoreProgress = PlayerPrefs.GetFloat(LevelName);
-        if (ScoreProgress > 0) ScoreSlider.value = ScoreProgress;
-        else ScoreSlider.value = 0;
-        ScoreText.text = (ScoreSlider.value * 100).ToString() + "%";
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+    public void TogglePause()
+    {
+        ToggleUIScreen(PauseScreen);
+    }
+
+    private void ToggleUIScreen(Image selectedScreen)
+    {
+        if (!selectedScreen.gameObject.activeInHierarchy)
+        {
+            selectedScreen.gameObject.SetActive(true);
+            GameManager.Instance.PauseAudio();
+            Time.timeScale = 0.0f;
+            return;
+        }
+        else
+        {
+            selectedScreen.gameObject.SetActive(false);
+            GameManager.Instance.ResumeAudio();
+            Time.timeScale = 1.0f;
+            return;
+        }
+    }
+
+    public void LoadNextScene()
+    {
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void WinPanelCoins()
+    {
         for (int i = 0; i < MissCoins.Length; i++)
         {
-            if (PlayerPrefs.GetInt(LevelName + i) == 1)
+            if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + i) == 1)
                 MissCoins[i].enabled = false;
             else MissCoins[i].enabled = true;
         }
     }
 
-    /// <summary>
-    ///  for PLAY button
-    /// </summary>
-    /// <param name="sceneName"></param>
-    public void LoadLevelScene()
+    public void ReturnToTitle()
     {
-        SceneManager.LoadScene(LevelName);
-        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 }
