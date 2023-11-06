@@ -60,8 +60,14 @@ public class GameManager : Singleton<GameManager>
         SaveSliderValue();
         CoinsDetectionWin();
         levelMenu.WinPanelCoins();
-        _uiManager.ActiveWinPanel();
+
+        Invoke("InvokeActivePannelWithDelay", 2f);
         
+    }
+
+    private void InvokeActivePannelWithDelay()
+    {
+        _uiManager.ActiveWinPanel();
     }
 
     #region Generic void
