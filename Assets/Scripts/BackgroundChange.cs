@@ -47,8 +47,12 @@ public class BackgroundChange : MonoBehaviour
 
     private void Start()
     {
+        
         SetInitialColors();
-        SortChangePointByX();
+
+        if(ChangePoint.Count != 0)
+            SortChangePointByX();
+
         _camera = GetComponentInParent<CameraFollow>();
         MaxDistance = LastBackground.position.x - FirstBackground.position.x;
         initialPosContainer = AllBackgroundObject.localPosition;
@@ -58,7 +62,8 @@ public class BackgroundChange : MonoBehaviour
     private void Update()
     {
         _cameraPosition = transform.position.x - _camera.offset.x;
-        if (_cameraPosition > ChangePoint[_currentChangePoint].Target.position.x)
+
+        if (ChangePoint.Count !=0 && _cameraPosition > ChangePoint[_currentChangePoint].Target.position.x )
         {
             SetNewBackgroundColors();            
         }
@@ -73,6 +78,7 @@ public class BackgroundChange : MonoBehaviour
     private void SortChangePointByX()
     {
         ChangePoint.Sort((a, b) => a.Target.position.x.CompareTo(b.Target.position.x));
+        
     }
 
     /// <summary>

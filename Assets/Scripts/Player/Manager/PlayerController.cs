@@ -85,34 +85,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //TOOOOOOO FIXXXXXXXXXXX
-    private void CoinsDetectionWin()
-    {
-        foreach (Coins coin in coinList)
-        {
-            coin.SaveCoins();
-        }
-    }
-
-    private void CoinsDetectionDeath()
-    {
-        foreach (Coins coin in coinList)
-        {
-            coin.ResetCoins();
-        }
-    }
-
-    private void OnEnable()
-    {
-        ActionManager.OnDeath += CoinsDetectionDeath;
-        ActionManager.OnWin += CoinsDetectionWin;
-    }
-
-    private void OnDisable()
-    {
-        ActionManager.OnDeath -= CoinsDetectionDeath;
-        ActionManager.OnWin -= CoinsDetectionWin;
-    }
 }
 
 

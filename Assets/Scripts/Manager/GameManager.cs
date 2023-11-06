@@ -13,9 +13,11 @@ public class GameManager : Singleton<GameManager>
     float _startPosition;
     int _attemptCount;
     float _sliderValue => UpdatedSliderValue();
+    PlayerController _playerController;
 
     private void Start()
     {
+        _playerController =  Player.GetComponent<PlayerController>();
         _audioSources = FindObjectsOfType<AudioSource>();
         _uiManager = GetComponentInChildren<UIManager>();
         _coinList = FindObjectsOfType<Coins>();
@@ -24,10 +26,25 @@ public class GameManager : Singleton<GameManager>
         UpdateAttemptCount();
     }
 
+    private void OnEnable()
+    {
+        ActionManager.OnWin += onWin;
+        ActionManager.OnDeath += onDeath;
+    }
+
+    private void OnDisable()
+    {
+        ActionManager.OnWin -= onWin;
+        ActionManager.OnDeath -= onDeath;
+    }
+
 
     private void Update()
     {
         _uiManager.SetSliderValue(_sliderValue);
+
+        if(_sliderValue >= 1 )
+            _playerController.PlayerStateManager.ChangeState(PlayerState.Win);
     }
 
     public void onDeath()
@@ -44,6 +61,7 @@ public class GameManager : Singleton<GameManager>
         CoinsDetectionWin();
         levelMenu.WinPanelCoins();
         _uiManager.ActiveWinPanel();
+        
     }
 
     #region Generic void
@@ -97,5 +115,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+
+
+   
 
 }

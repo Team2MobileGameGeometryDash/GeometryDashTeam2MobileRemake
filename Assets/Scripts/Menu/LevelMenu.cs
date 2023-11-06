@@ -18,8 +18,11 @@ public class LevelMenu : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
+
     public void TogglePause()
     {
+        PlayerInputManager.IsTouchEnded = false;
+        PlayerInputManager.IsTouchStationary = false;
         ToggleUIScreen(PauseScreen);
     }
 

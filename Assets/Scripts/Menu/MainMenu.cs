@@ -80,5 +80,13 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     #endregion
+
+
 }

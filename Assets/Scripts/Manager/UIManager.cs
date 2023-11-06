@@ -6,11 +6,12 @@ public class UIManager : MonoBehaviour
 {
     public Slider sliderProgress;
     public TextMeshProUGUI attemptCount;
-    public Image WinPanel;
+    public GameObject WinPanel;
 
     public void SetSliderValue(float value)
     {
         sliderProgress.value = value;
+
     }
 
     public void UpdateAttempt(int value)
@@ -20,6 +21,6 @@ public class UIManager : MonoBehaviour
 
     public void ActiveWinPanel()
     {
-        WinPanel.enabled = true;
+        WinPanel.SetActive(true);
     }
 }

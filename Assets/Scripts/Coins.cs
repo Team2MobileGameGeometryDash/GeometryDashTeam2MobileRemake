@@ -14,16 +14,6 @@ public class Coins : MonoBehaviour
         isCollected = false;
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision.name);

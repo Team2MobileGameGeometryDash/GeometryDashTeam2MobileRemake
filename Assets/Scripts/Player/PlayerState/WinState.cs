@@ -29,11 +29,8 @@ public class WinState : State<PlayerState>
     {
         base.OnUpdate();
         ActionManager.OnWin?.Invoke();
-        Timer();
-        if (_time <= 0)
-        {
-            LoadScene();
-        }
+        
+        
     }
 
 
@@ -43,23 +40,5 @@ public class WinState : State<PlayerState>
         _time = 1f;
     }
 
-    public void LoadScene()
-    {
-        SceneManager.LoadScene("TestMenu", LoadSceneMode.Single);
-
-    }
-
-
-
-    private float Timer()
-    {
-        if (_time > 0)
-        {
-            _time -= Time.deltaTime;
-
-            return _time;
-        }
-        else return _time;
-
-    }
+ 
 }
