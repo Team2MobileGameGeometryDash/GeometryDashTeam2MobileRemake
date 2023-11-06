@@ -67,7 +67,7 @@ public class BackgroundChange : MonoBehaviour
         }
         MoveBackground();
         //if (Input.GetKeyDown(KeyCode.F)) ResetBackGround();
-        Debug.Log(colorTimer);
+        //Debug.Log(colorTimer);
     }
 
     /// <summary>
