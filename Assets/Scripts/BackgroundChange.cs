@@ -26,16 +26,18 @@ public class BackgroundChange : MonoBehaviour
     [Header("BaseBackground")]
     [SerializeField]
     [Tooltip("Add one by one the Base Backgrounds")]
-    private List<Renderer> BaseBackground;
+    private List<SpriteRenderer> BaseBackground;
     [SerializeField]
     private Color StartBaseBackgroundColor;
+    private Color ActualBaseBackgroundColor;
 
     [Header("Gradient")]
     [SerializeField]
     [Tooltip("Add one by one the Gradients of Backgrounds")]
-    private List<Renderer> Gradient;
+    private List<SpriteRenderer> Gradient;
     [SerializeField]
     private Color StartGradientColor;
+    private Color ActualGradientColor;
 
     [Header("Target")]
     [SerializeField]
@@ -68,7 +70,10 @@ public class BackgroundChange : MonoBehaviour
         {
             SetNewBackgroundColors();
         }
-        else colorTimer = 0f;
+        else
+        {
+            colorTimer = 0f;
+        }
         MoveBackground();
         //if (Input.GetKeyDown(KeyCode.F)) ResetBackGround();
         //Debug.Log(colorTimer);
@@ -104,20 +109,28 @@ public class BackgroundChange : MonoBehaviour
     /// </summary>
     private void SetNewBackgroundColors()
     {
+        if (_currentChangePoint == 0)
+        {
+            ActualBaseBackgroundColor = StartBaseBackgroundColor;
+            ActualGradientColor = StartGradientColor;
+        }
+        else
+        {
+            ActualBaseBackgroundColor = ChangePoint[_currentChangePoint].BaseBackgroundColor;
+            ActualGradientColor = ChangePoint[_currentChangePoint].GradientColor;
+        }
         if (colorTimer < 1f)
         {
             colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;
 
             foreach (SpriteRenderer baseRenderer in BaseBackground)
             {
-                Color CurrentColor = baseRenderer.color;
-                baseRenderer.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
+                baseRenderer.color = Color.Lerp(ActualBaseBackgroundColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
             }
 
             foreach (SpriteRenderer gradientRenderer in Gradient)
             {
-                Color CurrentColor = gradientRenderer.color;
-                gradientRenderer.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
+                gradientRenderer.color = Color.Lerp(ActualGradientColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
             }
         }
         else
