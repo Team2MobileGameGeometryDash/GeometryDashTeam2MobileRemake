@@ -48,10 +48,10 @@ public class BackgroundChange : MonoBehaviour
 
     private void Start()
     {
-        
+
         SetInitialColors();
 
-        if(ChangePoint.Count != 0)
+        if (ChangePoint.Count != 0)
             SortChangePointByX();
 
         _camera = GetComponentInParent<CameraFollow>();
@@ -71,7 +71,7 @@ public class BackgroundChange : MonoBehaviour
         else colorTimer = 0f;
         MoveBackground();
         //if (Input.GetKeyDown(KeyCode.F)) ResetBackGround();
-        Debug.Log(colorTimer);
+        //Debug.Log(colorTimer);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class BackgroundChange : MonoBehaviour
     private void SortChangePointByX()
     {
         ChangePoint.Sort((a, b) => a.Target.position.x.CompareTo(b.Target.position.x));
-        
+
     }
 
     /// <summary>
@@ -106,8 +106,8 @@ public class BackgroundChange : MonoBehaviour
     {
         if (colorTimer < 1f)
         {
-            colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;            
-            
+            colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;
+
             foreach (SpriteRenderer baseRenderer in BaseBackground)
             {
                 Color CurrentColor = baseRenderer.color;
@@ -139,9 +139,9 @@ public class BackgroundChange : MonoBehaviour
     /// Reset on Death
     /// </summary>
     public void ResetBackGround()
-    {              
-        Invoke("SetInitialColors",0.5f);
-        Invoke("ResetInitialPosContainer", 0.5f);        
+    {
+        Invoke("SetInitialColors", 0.5f);
+        Invoke("ResetInitialPosContainer", 0.5f);
     }
 
     private void MoveBackground()

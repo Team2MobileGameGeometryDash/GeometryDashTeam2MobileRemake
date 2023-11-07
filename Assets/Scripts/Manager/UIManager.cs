@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI attemptCount;
     public GameObject WinPanel;
 
+
     public void SetSliderValue(float value)
     {
         sliderProgress.value = value;

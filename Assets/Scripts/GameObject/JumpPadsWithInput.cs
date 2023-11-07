@@ -21,5 +21,11 @@ public class JumpPadsWithInput : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        PlayerInputManager.IsTouchEnded = false;
+        PlayerInputManager.IsTouchStationary = false;
+    }
+
 
 }

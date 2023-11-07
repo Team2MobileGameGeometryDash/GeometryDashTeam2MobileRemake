@@ -25,7 +25,7 @@ public class DefaultCharacter : State<PlayerState>
         ActionManager.OnChangeShip?.Invoke(new BaseCharacterInput());
         _playerController.ChangeCharacter(true,0);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
-        _playerController.DefaultCharacterData.IsGravityChange = false;
+        _playerController.PlayerData.IsGravityChange = false;
         _playerController.DefaultCharacterData.IsDefaultCharacter = true;
 
     }
@@ -34,7 +34,12 @@ public class DefaultCharacter : State<PlayerState>
     {
         base.OnUpdate();
         ChangeState();
-    }
+
+        if (!_playerController.PlayerData.IsGravityChange)
+            _playerController.VFXManager.CubeCollision.transform.localPosition = new Vector3(-0.26f, -0.31f, 0f);
+        else
+            _playerController.VFXManager.CubeCollision.transform.localPosition = new Vector3(-0.26f, 0.29f, 0);
+    }                                                          
 
 
 
@@ -92,7 +97,7 @@ public class DefaultCharacter : State<PlayerState>
         {
             //maybe better place
             ActionManager.OnNoCubeCollision?.Invoke();
-            _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.DefaultCharacterData.IsGravityChange);
+            _playerController.PlayerMouvement.RotationNotGroundedBaseCharacter(_playerController.PlayerData.Ships[0], !_playerController.PlayerData.IsGravityChange);
         }
     }
 
@@ -106,6 +111,8 @@ public class DefaultCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
         else if (_playerController.UfoCharacterData.IsUfo)
             _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.RobotData.IsRobot)
+            _playerStateManager.ChangeState(PlayerState.RobotCharacter);
         else if (_playerController.MeteoraModeData.IsMeteora)
             _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
