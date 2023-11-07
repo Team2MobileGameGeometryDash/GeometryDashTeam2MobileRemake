@@ -177,6 +177,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5484782837789401915}
+  - component: {fileID: 8241501622581496234}
+  - component: {fileID: 5464801294398223567}
   m_Layer: 0
   m_Name: UfoPortal
   m_TagString: Untagged
@@ -204,6 +206,54 @@ Transform:
   - {fileID: 6676936582273775332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &8241501622581496234
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293834183663673818}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.2559837, y: -0.06769812}
+  serializedVersion: 2
+  m_Radius: 0.7432902
+--- !u!114 &5464801294398223567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293834183663673818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89f35fc977c96f459bb89a21fa99481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eShip: 3
 --- !u!1 &6572466069015109467
 GameObject:
   m_ObjectHideFlags: 0

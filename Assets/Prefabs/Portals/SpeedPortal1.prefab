@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VelocityPortal: 4
-  BlueSpeedPortal: 0
-  GreenSpeedPortal: 0
-  PinkSpeedPortal: 0
-  RedSpeedPortal: 0
+  BlueSpeedPortal: 5.8
+  GreenSpeedPortal: 7
+  PinkSpeedPortal: 8.5
+  RedSpeedPortal: 11
   DecreasingSpeedPortal: 4.5
 --- !u!61 &3356105901873789032
 BoxCollider2D:
@@ -169,7 +169,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1311779, y: 0.018740058}
+  m_Offset: {x: -0.05331886, y: -0.071097255}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -180,7 +180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4736419, y: 3.8859155}
+  m_Size: {x: 2.2398775, y: 3.2989795}
   m_EdgeRadius: 0
 --- !u!1001 &5244210085974320616
 PrefabInstance:

@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerInputManager = GetComponent<PlayerInputManager>();
         VFXManager = GetComponent<VFXManager>();
@@ -52,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         PlayerCollider2D = GetComponent<Collider2D>();
+        transform.localScale = PlayerData.DefaultSize;
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
@@ -112,6 +112,9 @@ public struct PlayerData
     public float Time;
     [HideInInspector]
     public bool IsGravityChange;
+    public Vector3 DefaultSize;
+    public Vector3 Size;
+
 
 }
 [System.Serializable]

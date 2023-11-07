@@ -177,11 +177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VelocityPortal: 3
-  BlueSpeedPortal: 0
-  GreenSpeedPortal: 0
-  PinkSpeedPortal: 0
+  BlueSpeedPortal: 5.8
+  GreenSpeedPortal: 7
+  PinkSpeedPortal: 8.5
   RedSpeedPortal: 11
-  DecreasingSpeedPortal: 0
+  DecreasingSpeedPortal: 4.5
 --- !u!1001 &500241498350882821
 PrefabInstance:
   m_ObjectHideFlags: 0

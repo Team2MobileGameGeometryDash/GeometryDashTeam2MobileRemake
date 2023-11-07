@@ -133,10 +133,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VelocityPortal: 0
   BlueSpeedPortal: 5.8
-  GreenSpeedPortal: 0
-  PinkSpeedPortal: 0
-  RedSpeedPortal: 0
-  DecreasingSpeedPortal: 0
+  GreenSpeedPortal: 7
+  PinkSpeedPortal: 8.5
+  RedSpeedPortal: 11
+  DecreasingSpeedPortal: 4.5
 --- !u!61 &990852345510606158
 BoxCollider2D:
   m_ObjectHideFlags: 0
