@@ -14,7 +14,13 @@ public class JumpPadsWithInput : MonoBehaviour
             if(PlayerInputManager.IsTouchEnded || PlayerInputManager.IsTouchStationary)
             {
                 playerController.PlayerRigidBody2D.velocity = new Vector2(playerController.PlayerRigidBody2D.velocity.x, 0f);
-                playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * JumpPadForce * Time.deltaTime * _multiplier, ForceMode2D.Impulse);
+                if (!playerController.PlayerData.IsGravityChange)
+                    playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * JumpPadForce * Time.deltaTime * _multiplier, ForceMode2D.Impulse);
+
+                else
+                    playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * JumpPadForce * Time.deltaTime * _multiplier * -1, ForceMode2D.Impulse);
+
+
             }
             
 
