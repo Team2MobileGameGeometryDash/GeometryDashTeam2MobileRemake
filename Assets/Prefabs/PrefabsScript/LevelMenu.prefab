@@ -3453,9 +3453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioMixer: {fileID: 24100000, guid: 5bd47ab8df4868247816ecdc17e0fe48, type: 2}
-  MasterSlider: {fileID: 0}
-  MusicSlider: {fileID: 0}
-  EffectsSlider: {fileID: 0}
+  MasterSlider: {fileID: 766705809734943622}
+  MusicSlider: {fileID: 4313810237730263572}
+  EffectsSlider: {fileID: 4223497956605064983}
 --- !u!114 &7871240312156172301
 MonoBehaviour:
   m_ObjectHideFlags: 0
