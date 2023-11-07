@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public PlayerStateManager PlayerStateManager;
     [HideInInspector]
     public PlayerInputManager PlayerInputManager;
-
+    [HideInInspector]
+    public VFXManager VFXManager;
 
     [Header("Player input and Player locomotion")]
     [HideInInspector]
@@ -28,10 +29,12 @@ public class PlayerController : MonoBehaviour
 
     public UfoCharacterData UfoCharacterData;
 
+    public RobotData RobotData;
+
     public MeteoraModeData MeteoraModeData;
 
-
-    private Coins[] coinList;
+    
+    
 
 
     private void Awake()
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
         
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerInputManager = GetComponent<PlayerInputManager>();
+        VFXManager = GetComponent<VFXManager>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
         PlayerData.WalkingSpeed = PlayerData.DefaultWalkingSpeed;
@@ -51,7 +55,7 @@ public class PlayerController : MonoBehaviour
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
-        coinList = FindObjectsOfType<Coins>();
+        
     }
 
 
@@ -106,7 +110,8 @@ public struct PlayerData
     public bool isWin;
     [HideInInspector]
     public float Time;
-
+    [HideInInspector]
+    public bool IsGravityChange;
 
 }
 [System.Serializable]
@@ -120,8 +125,7 @@ public struct DefaultCharacterData
     
     [Header("PlayerGravity")]
     public float GravityScale;
-    [HideInInspector]
-    public bool IsGravityChange;
+ 
     
 
 }
@@ -132,7 +136,7 @@ public struct SpaceShipCharacterData
     public bool IsSpaceShip;
     public float JumpHeight;
     public float JumpImpulse;
-    
+    public SpriteRenderer SpriteRenderer;
     [Header("PlayerGravity")]
     public float GravityScale;
 
@@ -147,8 +151,7 @@ public struct GearModeData
     [Header("PlayerGravity")]
     public float GravityScale;
     public float GravityVelocity;
-    [HideInInspector]
-    public bool IsGravityChange;
+
  
 }
 
@@ -160,6 +163,7 @@ public struct UfoCharacterData
     public float JumpHeight;
     [Header("PlayerGravity")]
     public float GravityScale;
+  
 
 }
 
@@ -169,6 +173,24 @@ public struct MeteoraModeData
     [Header("PlayerShips")]
     public bool IsMeteora;
     public float MeteoraVelocity;
+
+}
+
+
+
+[System.Serializable]
+public struct RobotData
+{
+    [Header("PlayerShips")]
+    public bool IsRobot;
+
+    [Header("PlayerGravity")]
+    public float GravityScale;
+    public float JumpHeight;
+    public float MaxJumpHight;
+    public SpriteRenderer SpriteRenderer;
+    public float TimerHoldJump;
+
 
 }
 

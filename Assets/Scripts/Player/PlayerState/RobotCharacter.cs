@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearModeCharacter : State<PlayerState>
+public class RobotCharacter : State<PlayerState>
 {
     PlayerController _playerController;
     PlayerStateManager _playerStateManager;
+    PlayerInputManager _playerInputManager;
 
-    public GearModeCharacter(PlayerState playerState, StatesMachine<PlayerState> stateManager = null) : base(playerState, stateManager)
+    public RobotCharacter(PlayerState playerState, StatesMachine<PlayerState> stateManager = null) : base(playerState, stateManager)
     {
         _playerStateManager = (PlayerStateManager)m_stateMachine;
 
     }
 
-
     public override void OnEnter()
     {
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
-        ActionManager.OnChangeShip?.Invoke(new GearModeInput());
-        _playerController.ChangeCharacter(true, 2);
-        _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;
-        _playerController.GearModeData.IsGearMode = true;
-        _playerController.PlayerData.IsGravityChange = false;
+        ActionManager.OnChangeShip?.Invoke(new RobotInput());
+        _playerController.ChangeCharacter(true, 4);
+        _playerController.PlayerRigidBody2D.gravityScale = _playerController.RobotData.GravityScale;
+        _playerController.RobotData.IsRobot = true;
     }
 
 
@@ -33,7 +32,7 @@ public class GearModeCharacter : State<PlayerState>
         ChangeState();
     }
 
- 
+
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,34 +48,17 @@ public class GearModeCharacter : State<PlayerState>
 
         if (!_playerController.PlayerData.isWin && !_playerController.MeteoraModeData.IsMeteora)
         {
-            _playerController.ChangeCharacter(false, 2);
-            _playerController.GearModeData.IsGearMode = false;
+            _playerController.ChangeCharacter(false, 4);
+            _playerController.RobotData.IsRobot = false;
         }
-
-
-        
     }
 
 
-    
+
     private void HandleMouvement()
     {
-
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter();
-
-        if (PlayerInputManager.IsTouchEnded)
-        {
-            if (_playerController.PlayerRigidBody2D.gravityScale < 0)
-            {
-                _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;
-                PlayerInputManager.IsTouchEnded = false;
-            }
-            else
-            {
-                _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * -1 * _playerController.GearModeData.GravityVelocity;
-                PlayerInputManager.IsTouchEnded = false;
-            }
-        }
+        _playerController.PlayerMouvement.HandleJumpRobotCharacter();
     }
 
 
@@ -88,8 +70,8 @@ public class GearModeCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
         else if (_playerController.UfoCharacterData.IsUfo)
             _playerStateManager.ChangeState(PlayerState.UfoCharacter);
-        else if (_playerController.RobotData.IsRobot)
-            _playerStateManager.ChangeState(PlayerState.RobotCharacter);
+        else if (_playerController.GearModeData.IsGearMode)
+            _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
         else if (_playerController.MeteoraModeData.IsMeteora)
             _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
