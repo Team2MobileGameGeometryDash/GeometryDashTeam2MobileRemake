@@ -277,6 +277,8 @@ MonoBehaviour:
     isWin: 0
     Time: 0
     IsGravityChange: 0
+    DefaultSize: {x: 1, y: 1, z: 1}
+    Size: {x: 2, y: 2, z: 2}
   InitialPosition: {x: 0, y: 0, z: 0}
   DefaultCharacterData:
     IsDefaultCharacter: 0
@@ -285,10 +287,10 @@ MonoBehaviour:
     GravityScale: 12.4
   SpaceShipCharacterData:
     IsSpaceShip: 0
-    JumpHeight: 15
-    JumpImpulse: 1
+    JumpHeight: 0.85
+    JumpImpulse: 0.4
     SpriteRenderer: {fileID: 6318005975141044951}
-    GravityScale: 5
+    GravityScale: 1.7
   GearModeData:
     IsGearMode: 0
     GravityScale: 12
