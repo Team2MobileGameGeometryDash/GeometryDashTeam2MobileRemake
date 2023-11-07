@@ -287,18 +287,18 @@ MonoBehaviour:
     GravityScale: 12.4
   SpaceShipCharacterData:
     IsSpaceShip: 0
-    JumpHeight: 0.85
-    JumpImpulse: 0.4
+    JumpHeight: 1.3
+    JumpImpulse: 0.63
     SpriteRenderer: {fileID: 6318005975141044951}
-    GravityScale: 1.7
+    GravityScale: 2.8
   GearModeData:
     IsGearMode: 0
     GravityScale: 12
     GravityVelocity: 2
   UfoCharacterData:
     IsUfo: 0
-    JumpHeight: 32
-    GravityScale: 12.4
+    JumpHeight: 15.5
+    GravityScale: 6.8
   RobotData:
     IsRobot: 0
     GravityScale: 12
