@@ -102,8 +102,6 @@ public struct PlayerData
     public float Direction;
     [Header("PlayerLayer")]
     public LayerMask GroundLayer;
-    [Header("PlayerDeath")]
-    public float Death;
     [HideInInspector]
     public bool isWin;
     [HideInInspector]

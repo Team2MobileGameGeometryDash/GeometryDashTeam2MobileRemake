@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,13 +64,14 @@ public class BackgroundChange : MonoBehaviour
     {
         _cameraPosition = transform.position.x - _camera.offset.x;
 
-        if (ChangePoint.Count !=0 && _cameraPosition > ChangePoint[_currentChangePoint].Target.position.x )
+        if (ChangePoint.Count != 0 && _cameraPosition > ChangePoint[_currentChangePoint].Target.position.x)
         {
-            SetNewBackgroundColors();            
+            SetNewBackgroundColors();
         }
+        else colorTimer = 0f;
         MoveBackground();
         //if (Input.GetKeyDown(KeyCode.F)) ResetBackGround();
-        //Debug.Log(colorTimer);
+        Debug.Log(colorTimer);
     }
 
     /// <summary>
@@ -86,14 +88,14 @@ public class BackgroundChange : MonoBehaviour
     /// </summary>
     private void SetInitialColors()
     {
-        foreach (Renderer baseRenderer in BaseBackground)
+        foreach (SpriteRenderer baseRenderer in BaseBackground)
         {
-            baseRenderer.material.color = StartBaseBackgroundColor;
+            baseRenderer.color = StartBaseBackgroundColor;
         }
 
-        foreach (Renderer gradientRenderer in Gradient)
+        foreach (SpriteRenderer gradientRenderer in Gradient)
         {
-            gradientRenderer.material.color = StartGradientColor;
+            gradientRenderer.color = StartGradientColor;
         }
     }
 
@@ -106,16 +108,16 @@ public class BackgroundChange : MonoBehaviour
         {
             colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;            
             
-            foreach (Renderer baseRenderer in BaseBackground)
+            foreach (SpriteRenderer baseRenderer in BaseBackground)
             {
-                Color CurrentColor = baseRenderer.material.color;
-                baseRenderer.material.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer * Time.deltaTime);
+                Color CurrentColor = baseRenderer.color;
+                baseRenderer.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
             }
 
-            foreach (Renderer gradientRenderer in Gradient)
+            foreach (SpriteRenderer gradientRenderer in Gradient)
             {
-                Color CurrentColor = gradientRenderer.material.color;
-                gradientRenderer.material.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer * Time.deltaTime);
+                Color CurrentColor = gradientRenderer.color;
+                gradientRenderer.color = Color.Lerp(CurrentColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
             }
         }
         else
@@ -126,16 +128,20 @@ public class BackgroundChange : MonoBehaviour
         }
     }
 
+    public void ResetInitialPosContainer()
+    {
+        AllBackgroundObject.localPosition = initialPosContainer;
+        timer = 0f;
+        _currentChangePoint = 0;
+    }
+
     /// <summary>
     /// Reset on Death
     /// </summary>
     public void ResetBackGround()
-    {
-        colorTimer = 0f;
-        _currentChangePoint = 0;
-        SetInitialColors();
-        AllBackgroundObject.localPosition = initialPosContainer;
-        timer = 0f;
+    {              
+        Invoke("SetInitialColors",0.5f);
+        Invoke("ResetInitialPosContainer", 0.5f);        
     }
 
     private void MoveBackground()
@@ -148,6 +154,8 @@ public class BackgroundChange : MonoBehaviour
         AllBackgroundObject.localPosition = newPosContainer;
     }
 }
+
+
 
 [System.Serializable]
 public class BackgroundChangeData

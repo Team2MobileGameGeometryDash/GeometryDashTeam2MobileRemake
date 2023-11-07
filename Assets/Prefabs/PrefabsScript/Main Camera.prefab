@@ -195,8 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   smoothSpeed: 12
-  offset: {x: 8, y: 1, z: 0}
-  thresholdY: 2
+  offset: {x: 8, y: 0, z: 0}
+  thresholdY: 3
 --- !u!114 &2485529753307332239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,11 +355,27 @@ MonoBehaviour:
   MusicDurationInSeconds: 150
   BaseBackground:
   - {fileID: 4952576725409339513}
-  StartBaseBackgroundColor: {r: 0.04221201, g: 0, b: 1, a: 1}
+  - {fileID: 4135232954068541381}
+  - {fileID: 1342556987314733239}
+  - {fileID: 4426236131219292764}
+  - {fileID: 7221132159944111738}
+  StartBaseBackgroundColor: {r: 0.4905791, g: 0.29141027, b: 0.5660378, a: 1}
   Gradient:
   - {fileID: 5853332659714301047}
-  StartGradientColor: {r: 0, g: 0.94509804, b: 0, a: 0.49019608}
-  ChangePoint: []
+  - {fileID: 7758705841164373828}
+  - {fileID: 2838979677266224262}
+  - {fileID: 4962178900925258704}
+  - {fileID: 1214276076392094953}
+  StartGradientColor: {r: 0.18041497, g: 0.3195637, b: 0.8113208, a: 1}
+  ChangePoint:
+  - BaseBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    GradientColor: {r: 0, g: 0, b: 0, a: 1}
+    Target: {fileID: 0}
+    colorTransitionDuration: 1
+  - BaseBackgroundColor: {r: 0.4905791, g: 0.29141027, b: 0.5660378, a: 1}
+    GradientColor: {r: 0.18041497, g: 0.3195637, b: 0.8113208, a: 1}
+    Target: {fileID: 0}
+    colorTransitionDuration: 1
 --- !u!1 &3338241428859769445
 GameObject:
   m_ObjectHideFlags: 0

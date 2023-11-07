@@ -11,12 +11,12 @@ public class LevelSelect : MonoBehaviour
     public Slider ScoreSlider;
     public Image[] MissCoins;
 
-    private void Start()
+    private void OnEnable()
     {
         ScoreProgress = PlayerPrefs.GetFloat(LevelName);
         if (ScoreProgress > 0) ScoreSlider.value = ScoreProgress;
         else ScoreSlider.value = 0;
-        ScoreText.text = (ScoreSlider.value * 100).ToString() + "%";
+        ScoreText.text = (ScoreSlider.value * 100).ToString("F2") + "%";
         for (int i = 0; i < MissCoins.Length; i++)
         {
             if (PlayerPrefs.GetInt(LevelName + i) == 1)
