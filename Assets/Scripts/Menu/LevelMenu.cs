@@ -44,18 +44,10 @@ public class LevelMenu : MonoBehaviour
         }
     }
 
-    public void LoadNextScene()
+    public void ReloadScene()
     {
-        int nextSceneIndex = currentSceneIndex + 1;
-
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
+        int thisIndex = currentSceneIndex;
+        SceneManager.LoadScene(thisIndex);
     }
 
     public void WinPanelCoins()
