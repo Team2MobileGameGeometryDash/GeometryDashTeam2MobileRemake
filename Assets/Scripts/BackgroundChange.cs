@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -19,8 +21,8 @@ public class BackgroundChange : MonoBehaviour
     [SerializeField]
     [Tooltip("Duration in Second of the Music")]
     private float MusicDurationInSeconds;
-    private float timer = 0.0f;
-    private float colorTimer = 0.0f;
+    private float timer;
+    private float colorTimer;
     private float MaxDistance;
     private Vector3 initialPosContainer;
 
@@ -49,33 +51,47 @@ public class BackgroundChange : MonoBehaviour
 
     private CameraFollow _camera;
 
+    private bool finishColorsChange;
+
     private void Start()
     {
 
         SetInitialColors();
 
-        if (ChangePoint.Count != 0)
-            SortChangePointByX();
+        if (ChangePoint.Count != 0) SortChangePointByX();
 
         _camera = GetComponentInParent<CameraFollow>();
         MaxDistance = LastBackground.position.x - FirstBackground.position.x;
         initialPosContainer = AllBackgroundObject.localPosition;
         _currentChangePoint = 0;
+        colorTimer = 0.0f;
+        timer = 0.0f;
+        finishColorsChange = false;
     }
 
     private void FixedUpdate()
     {
         _cameraPosition = transform.position.x - _camera.offset.x;
-
-        if (ChangePoint.Count != 0 && _cameraPosition > ChangePoint[_currentChangePoint].Target.position.x)
-        {
-            SetNewBackgroundColors();
-        }
-        else
-        {
-            colorTimer = 0f;
-        }
         MoveBackground();
+        if (ChangePoint.Count != 0 && !finishColorsChange)
+        {
+            if (_cameraPosition > ChangePoint[_currentChangePoint].Target.position.x && ChangePoint[_currentChangePoint].colorTransitionDuration == 0f)
+            {
+                BackgroundNoTransition();
+                //Debug.Log("1");
+            }
+            else if (_cameraPosition > ChangePoint[_currentChangePoint].Target.position.x && ChangePoint[_currentChangePoint].colorTransitionDuration != 0f)
+            {
+                if (colorTimer ==  0.0f) SaveLastBackgroundColor();
+                BackgroundTransition();
+                //Debug.Log("2");
+            }
+            else if (_cameraPosition < ChangePoint[_currentChangePoint].Target.position.x && colorTimer != 0)
+            {
+                colorTimer = 0;
+                //Debug.Log("3");
+            }
+        }
         //if (Input.GetKeyDown(KeyCode.F)) ResetBackGround();
         //Debug.Log(colorTimer);
     }
@@ -103,12 +119,10 @@ public class BackgroundChange : MonoBehaviour
         {
             gradientRenderer.color = StartGradientColor;
         }
+        if (finishColorsChange) finishColorsChange = false;
     }
 
-    /// <summary>
-    /// Change Background, use it when reach the new target
-    /// </summary>
-    private void SetNewBackgroundColors()
+    private void SaveLastBackgroundColor()
     {
         if (_currentChangePoint == 0)
         {
@@ -120,44 +134,59 @@ public class BackgroundChange : MonoBehaviour
             ActualBaseBackgroundColor = ChangePoint[_currentChangePoint - 1].BaseBackgroundColor;
             ActualGradientColor = ChangePoint[_currentChangePoint - 1].GradientColor;
         }
+    }
 
-        if (ChangePoint[_currentChangePoint].colorTransitionDuration > 0)
+    private void BackgroundNoTransition()
+    {
+        SaveLastBackgroundColor();
+        foreach (SpriteRenderer baseRenderer in BaseBackground)
         {
-            if (colorTimer < 1f)
-            {
-                colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;
-
-                foreach (SpriteRenderer baseRenderer in BaseBackground)
-                {
-                    baseRenderer.color = Color.Lerp(ActualBaseBackgroundColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
-                }
-
-                foreach (SpriteRenderer gradientRenderer in Gradient)
-                {
-                    gradientRenderer.color = Color.Lerp(ActualGradientColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
-                }
-            }
-            else
-            {
-                if (_currentChangePoint == ChangePoint.Count - 1) return;
-                _currentChangePoint++;
-                //colorTimer = 0f;
-            }
+            baseRenderer.color = ChangePoint[_currentChangePoint].BaseBackgroundColor;
         }
-        else if (ChangePoint[_currentChangePoint].colorTransitionDuration == 0)
+
+        foreach (SpriteRenderer gradientRenderer in Gradient)
         {
+            gradientRenderer.color = ChangePoint[_currentChangePoint].GradientColor;
+        }
+        if (_currentChangePoint == ChangePoint.Count - 1)
+        {
+            finishColorsChange = true;
+            return;
+        }
+        _currentChangePoint++;
+        //Debug.Log("1.1");
+    }
+
+    /// <summary>
+    /// Change Background, use it when reach the new target
+    /// </summary>
+    private void BackgroundTransition()
+    {
+        if (colorTimer < 1f)
+        {
+            colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;
+
             foreach (SpriteRenderer baseRenderer in BaseBackground)
             {
-                baseRenderer.color = ChangePoint[_currentChangePoint].BaseBackgroundColor;
+                baseRenderer.color = Color.Lerp(ActualBaseBackgroundColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
             }
 
             foreach (SpriteRenderer gradientRenderer in Gradient)
             {
-                gradientRenderer.color = ChangePoint[_currentChangePoint].GradientColor;
+                gradientRenderer.color = Color.Lerp(ActualGradientColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
             }
-            if (_currentChangePoint == ChangePoint.Count - 1) return;
+            //Debug.Log("2.1");
+        }
+        else
+        {
+            if (_currentChangePoint == ChangePoint.Count - 1)
+            {
+                finishColorsChange = true;
+                return;
+            }
             _currentChangePoint++;
-            //colorTimer = 0f;
+            colorTimer = 0f;
+            //Debug.Log("2.2");
         }
     }
 
