@@ -22,6 +22,7 @@ public class GearModeCharacter : State<PlayerState>
         _playerController.ChangeCharacter(true, 2);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.GearModeData.GravityScale * _playerController.GearModeData.GravityVelocity;
         _playerController.GearModeData.IsGearMode = true;
+        _playerController.PlayerData.IsGravityChange = false;
     }
 
 
@@ -87,6 +88,8 @@ public class GearModeCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.SpaceshipCharacter);
         else if (_playerController.UfoCharacterData.IsUfo)
             _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.RobotData.IsRobot)
+            _playerStateManager.ChangeState(PlayerState.RobotCharacter);
         else if (_playerController.MeteoraModeData.IsMeteora)
             _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }

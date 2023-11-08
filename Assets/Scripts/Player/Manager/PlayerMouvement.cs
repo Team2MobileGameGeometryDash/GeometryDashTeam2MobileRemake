@@ -47,7 +47,7 @@ public class PlayerMouvement
     {
         float jumpTime = Mathf.Sqrt(_playerController.DefaultCharacterData.JumpHeight * 2f * -Physics2D.gravity.y);
         float jump = jumpTime - (9.81f * Time());
-        if(_playerController.DefaultCharacterData.IsGravityChange)
+        if(_playerController.PlayerData.IsGravityChange)
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump );
         else
             _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
@@ -61,7 +61,10 @@ public class PlayerMouvement
     {
         float jumpTime = Mathf.Sqrt(_playerController.SpaceShipCharacterData.JumpHeight * 2f * -Physics2D.gravity.y);
         float jump = jumpTime - (9.81f * Time());
-        _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+        if (_playerController.PlayerData.IsGravityChange)
+            _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump);
+        else
+            _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
 
         PlayerInputManager.IsTouchEnded = false;
 
@@ -69,8 +72,10 @@ public class PlayerMouvement
 
     public void HandleJumpingForceShipCharacter()
     {
-        
-        _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceShipCharacterData.JumpImpulse * _multiplier * UnityEngine.Time.fixedDeltaTime, ForceMode2D.Impulse);
+        if(!_playerController.PlayerData.IsGravityChange)
+            _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceShipCharacterData.JumpImpulse * _multiplier * UnityEngine.Time.fixedDeltaTime, ForceMode2D.Impulse);
+        else
+            _playerController.PlayerRigidBody2D.AddRelativeForce(Vector2.up * _playerController.SpaceShipCharacterData.JumpImpulse * _multiplier * UnityEngine.Time.fixedDeltaTime * -1, ForceMode2D.Impulse);
     }
 
 
@@ -78,7 +83,12 @@ public class PlayerMouvement
     {
         float jumpTime = Mathf.Sqrt(_playerController.UfoCharacterData.JumpHeight * 2f * -Physics2D.gravity.y);
         float jump = jumpTime - (9.81f * Time());
-        _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+
+        if (_playerController.PlayerData.IsGravityChange)
+            _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump);
+        else
+            _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+
 
         PlayerInputManager.IsTouchEnded = false;
 
@@ -97,4 +107,62 @@ public class PlayerMouvement
         return Physics2D.OverlapBox(center, GroundCheckBox, 0, _playerController.PlayerData.GroundLayer);
     }
 
+
+
+
+
+    float ActualJumpTime = 0;
+    public void HandleJumpRobotCharacter()
+    {
+        float jumpTime = Mathf.Sqrt(_playerController.RobotData.JumpHeight * 2f * -Physics2D.gravity.y);
+        float jump = jumpTime - (9.81f * Time());
+        
+
+        if (PlayerInputManager.IsTouchEnded)
+        {
+            if (_playerController.PlayerData.IsGravityChange)
+            {
+                _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump);
+                _playerController.RobotData.SpriteRenderer.flipY = true;
+                PlayerInputManager.IsTouchEnded = false;
+            }
+            else
+            {
+                _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+                _playerController.RobotData.SpriteRenderer.flipY = true;
+                PlayerInputManager.IsTouchEnded = false;
+            }
+        }
+
+        if (PlayerInputManager.IsTouchStationary)
+        {
+           if(ActualJumpTime < _playerController.RobotData.TimerHoldJump)
+           {
+                ActualJumpTime += Time();
+                Debug.Log(ActualJumpTime);
+                Debug.Log("DENTRO IF");
+                jump += ActualJumpTime;
+                if (jump >= _playerController.RobotData.MaxJumpHight)
+                    jump = _playerController.RobotData.MaxJumpHight;
+                if (_playerController.PlayerData.IsGravityChange)
+                {
+                    _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, -jump);
+                    _playerController.RobotData.SpriteRenderer.flipY = false;
+                }
+                else
+                {
+                    _playerController.PlayerRigidBody2D.velocity = new Vector2(_playerController.PlayerRigidBody2D.velocity.x, jump);
+                    _playerController.RobotData.SpriteRenderer.flipY = true;
+                }
+           }
+   
+        }
+
+        if(!PlayerInputManager.IsTouchEnded && !PlayerInputManager.IsTouchStationary)
+            ActualJumpTime = 0;
+       
+    }
+
+
+    
 }

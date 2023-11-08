@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public PlayerStateManager PlayerStateManager;
     [HideInInspector]
     public PlayerInputManager PlayerInputManager;
-
+    [HideInInspector]
+    public VFXManager VFXManager;
 
     [Header("Player input and Player locomotion")]
     [HideInInspector]
@@ -28,17 +29,19 @@ public class PlayerController : MonoBehaviour
 
     public UfoCharacterData UfoCharacterData;
 
+    public RobotData RobotData;
+
     public MeteoraModeData MeteoraModeData;
 
-
-    private Coins[] coinList;
+    
+    
 
 
     private void Awake()
     {
-        
         PlayerRigidBody2D = GetComponent<Rigidbody2D>();
         PlayerInputManager = GetComponent<PlayerInputManager>();
+        VFXManager = GetComponent<VFXManager>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
         PlayerData.WalkingSpeed = PlayerData.DefaultWalkingSpeed;
@@ -48,10 +51,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         PlayerCollider2D = GetComponent<Collider2D>();
+        transform.localScale = PlayerData.DefaultSize;
         InitialPosition = transform.position;
         PlayerData.Direction = 1f;
         PlayerRigidBody2D.gravityScale = DefaultCharacterData.GravityScale;
-        coinList = FindObjectsOfType<Coins>();
+        
     }
 
 
@@ -85,34 +89,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //TOOOOOOO FIXXXXXXXXXXX
-    private void CoinsDetectionWin()
-    {
-        foreach (Coins coin in coinList)
-        {
-            coin.SaveCoins();
-        }
-    }
-
-    private void CoinsDetectionDeath()
-    {
-        foreach (Coins coin in coinList)
-        {
-            coin.ResetCoins();
-        }
-    }
-
-    private void OnEnable()
-    {
-        ActionManager.OnDeath += CoinsDetectionDeath;
-        ActionManager.OnWin += CoinsDetectionWin;
-    }
-
-    private void OnDisable()
-    {
-        ActionManager.OnDeath -= CoinsDetectionDeath;
-        ActionManager.OnWin -= CoinsDetectionWin;
-    }
 }
 
 
@@ -130,12 +106,14 @@ public struct PlayerData
     public float Direction;
     [Header("PlayerLayer")]
     public LayerMask GroundLayer;
-    [Header("PlayerDeath")]
-    public float Death;
     [HideInInspector]
     public bool isWin;
     [HideInInspector]
     public float Time;
+    [HideInInspector]
+    public bool IsGravityChange;
+    public Vector3 DefaultSize;
+    public Vector3 Size;
 
 
 }
@@ -150,8 +128,7 @@ public struct DefaultCharacterData
     
     [Header("PlayerGravity")]
     public float GravityScale;
-    [HideInInspector]
-    public bool IsGravityChange;
+ 
     
 
 }
@@ -162,7 +139,7 @@ public struct SpaceShipCharacterData
     public bool IsSpaceShip;
     public float JumpHeight;
     public float JumpImpulse;
-    
+    public SpriteRenderer SpriteRenderer;
     [Header("PlayerGravity")]
     public float GravityScale;
 
@@ -177,8 +154,7 @@ public struct GearModeData
     [Header("PlayerGravity")]
     public float GravityScale;
     public float GravityVelocity;
-    [HideInInspector]
-    public bool IsGravityChange;
+
  
 }
 
@@ -190,6 +166,7 @@ public struct UfoCharacterData
     public float JumpHeight;
     [Header("PlayerGravity")]
     public float GravityScale;
+  
 
 }
 
@@ -199,6 +176,24 @@ public struct MeteoraModeData
     [Header("PlayerShips")]
     public bool IsMeteora;
     public float MeteoraVelocity;
+
+}
+
+
+
+[System.Serializable]
+public struct RobotData
+{
+    [Header("PlayerShips")]
+    public bool IsRobot;
+
+    [Header("PlayerGravity")]
+    public float GravityScale;
+    public float JumpHeight;
+    public float MaxJumpHight;
+    public SpriteRenderer SpriteRenderer;
+    public float TimerHoldJump;
+
 
 }
 

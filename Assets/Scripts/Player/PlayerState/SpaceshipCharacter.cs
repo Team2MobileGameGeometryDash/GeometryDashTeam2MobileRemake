@@ -24,6 +24,7 @@ public class SpaceShipCharacter : State<PlayerState>
         _playerController.ChangeCharacter(true, 1);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.SpaceShipCharacterData.GravityScale;
         _playerController.SpaceShipCharacterData.IsSpaceShip = true;
+        _playerController.PlayerData.IsGravityChange = false;
 
         //Debug.Log(" SECOND STATE ON ENTER _PlayerController : " + _playerController);
         //Debug.Log(_playerController);
@@ -34,7 +35,11 @@ public class SpaceShipCharacter : State<PlayerState>
     {
         base.OnUpdate();
         ChangeState();
-       
+        if (_playerController.PlayerData.IsGravityChange)
+            _playerController.SpaceShipCharacterData.SpriteRenderer.flipY = true;
+        else
+            _playerController.SpaceShipCharacterData.SpriteRenderer.flipY = false;
+
     }
 
 
@@ -90,6 +95,8 @@ public class SpaceShipCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
         else if (_playerController.UfoCharacterData.IsUfo)
             _playerStateManager.ChangeState(PlayerState.UfoCharacter);
+        else if (_playerController.RobotData.IsRobot)
+            _playerStateManager.ChangeState(PlayerState.RobotCharacter);
         else if (_playerController.MeteoraModeData.IsMeteora)
             _playerStateManager.ChangeState(PlayerState.MeteoraMode);
   }

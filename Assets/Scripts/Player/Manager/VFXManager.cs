@@ -47,6 +47,7 @@ public class VFXManager : MonoBehaviour
     private void ActiveCubeCollisionVFX()
     {
         CubeCollision.Play();
+        
     }
 
     private void DisactiveCubeCollisionVFX()

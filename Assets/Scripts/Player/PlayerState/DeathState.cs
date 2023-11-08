@@ -51,7 +51,9 @@ public class DeathState : State<PlayerState>
         ActionManager.OnResetCamera?.Invoke();
         _time = 0.5f;
         _playerController.PlayerData.WalkingSpeed = _playerController.PlayerData.DefaultWalkingSpeed;
-
+        _playerController.transform.localScale = _playerController.PlayerData.DefaultSize;
+        PlayerInputManager.IsTouchEnded = false;
+        PlayerInputManager.IsTouchStationary = false;
     }
 
 

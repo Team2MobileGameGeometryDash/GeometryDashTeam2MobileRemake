@@ -24,6 +24,7 @@ public class UfoCharacter : State<PlayerState>
         _playerController.ChangeCharacter(true, 3);
         _playerController.PlayerRigidBody2D.gravityScale = _playerController.UfoCharacterData.GravityScale;
         _playerController.UfoCharacterData.IsUfo = true;
+        _playerController.PlayerData.IsGravityChange = false;
 
     }
 
@@ -89,6 +90,8 @@ public class UfoCharacter : State<PlayerState>
             _playerStateManager.ChangeState(PlayerState.GearModeCharacter);
         else if (_playerController.DefaultCharacterData.IsDefaultCharacter)
             _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+        else if (_playerController.RobotData.IsRobot)
+            _playerStateManager.ChangeState(PlayerState.RobotCharacter);
         else if (_playerController.MeteoraModeData.IsMeteora)
             _playerStateManager.ChangeState(PlayerState.MeteoraMode);
     }
