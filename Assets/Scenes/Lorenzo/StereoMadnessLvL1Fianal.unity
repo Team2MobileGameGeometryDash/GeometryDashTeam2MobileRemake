@@ -19175,6 +19175,10 @@ PrefabInstance:
       propertyPath: DefaultCharacterData.JumpHeight
       value: 33.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
+      propertyPath: SpaceShipCharacterData.JumpHeight
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2898993248877707728, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_Name
       value: Player
@@ -19185,11 +19189,11 @@ PrefabInstance:
       objectReference: {fileID: 1431313069}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.522
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.z
