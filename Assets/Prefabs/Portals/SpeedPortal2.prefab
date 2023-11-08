@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VelocityPortal: 0
-  BlueSpeedPortal: 5.8
+  BlueSpeedPortal: 5.57
   GreenSpeedPortal: 7
   PinkSpeedPortal: 8.5
   RedSpeedPortal: 11
