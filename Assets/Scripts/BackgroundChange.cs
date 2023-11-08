@@ -63,7 +63,7 @@ public class BackgroundChange : MonoBehaviour
         _currentChangePoint = 0;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _cameraPosition = transform.position.x - _camera.offset.x;
 
@@ -141,7 +141,7 @@ public class BackgroundChange : MonoBehaviour
             {
                 if (_currentChangePoint == ChangePoint.Count - 1) return;
                 _currentChangePoint++;
-                colorTimer = 0f;
+                //colorTimer = 0f;
             }
         }
         else if (ChangePoint[_currentChangePoint].colorTransitionDuration == 0)
@@ -155,10 +155,10 @@ public class BackgroundChange : MonoBehaviour
             {
                 gradientRenderer.color = ChangePoint[_currentChangePoint].GradientColor;
             }
+            if (_currentChangePoint == ChangePoint.Count - 1) return;
+            _currentChangePoint++;
+            //colorTimer = 0f;
         }
-        if (_currentChangePoint == ChangePoint.Count - 1) return;
-        _currentChangePoint++;
-        colorTimer = 0f;
     }
 
     public void ResetInitialPosContainer()
