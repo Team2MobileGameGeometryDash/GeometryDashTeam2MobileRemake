@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(CameraFollow))]
@@ -116,29 +117,48 @@ public class BackgroundChange : MonoBehaviour
         }
         else
         {
-            ActualBaseBackgroundColor = ChangePoint[_currentChangePoint].BaseBackgroundColor;
-            ActualGradientColor = ChangePoint[_currentChangePoint].GradientColor;
+            ActualBaseBackgroundColor = ChangePoint[_currentChangePoint - 1].BaseBackgroundColor;
+            ActualGradientColor = ChangePoint[_currentChangePoint - 1].GradientColor;
         }
-        if (colorTimer < 1f)
-        {
-            colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;
 
+        if (ChangePoint[_currentChangePoint].colorTransitionDuration > 0)
+        {
+            if (colorTimer < 1f)
+            {
+                colorTimer += Time.deltaTime / ChangePoint[_currentChangePoint].colorTransitionDuration;
+
+                foreach (SpriteRenderer baseRenderer in BaseBackground)
+                {
+                    baseRenderer.color = Color.Lerp(ActualBaseBackgroundColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
+                }
+
+                foreach (SpriteRenderer gradientRenderer in Gradient)
+                {
+                    gradientRenderer.color = Color.Lerp(ActualGradientColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
+                }
+            }
+            else
+            {
+                if (_currentChangePoint == ChangePoint.Count - 1) return;
+                _currentChangePoint++;
+                colorTimer = 0f;
+            }
+        }
+        else if (ChangePoint[_currentChangePoint].colorTransitionDuration == 0)
+        {
             foreach (SpriteRenderer baseRenderer in BaseBackground)
             {
-                baseRenderer.color = Color.Lerp(ActualBaseBackgroundColor, ChangePoint[_currentChangePoint].BaseBackgroundColor, colorTimer);
+                baseRenderer.color = ChangePoint[_currentChangePoint].BaseBackgroundColor;
             }
 
             foreach (SpriteRenderer gradientRenderer in Gradient)
             {
-                gradientRenderer.color = Color.Lerp(ActualGradientColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
+                gradientRenderer.color = ChangePoint[_currentChangePoint].GradientColor;
             }
         }
-        else
-        {
-            if (_currentChangePoint == ChangePoint.Count - 1) return;
-            _currentChangePoint++;
-            colorTimer = 0f;
-        }
+        if (_currentChangePoint == ChangePoint.Count - 1) return;
+        _currentChangePoint++;
+        colorTimer = 0f;
     }
 
     public void ResetInitialPosContainer()
@@ -176,5 +196,6 @@ public class BackgroundChangeData
     public Color BaseBackgroundColor;
     public Color GradientColor;
     public Transform Target;
+    [Range(0, float.MaxValue)]
     public float colorTransitionDuration;
 }
