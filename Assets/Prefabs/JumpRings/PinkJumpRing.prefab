@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpPadForce: 5
+  playerSO: {fileID: 11400000, guid: 711df470a9b86e64cb0445d7801617be, type: 2}
 --- !u!58 &6565407484923492203
 CircleCollider2D:
   m_ObjectHideFlags: 0

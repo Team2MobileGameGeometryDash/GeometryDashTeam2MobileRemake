@@ -12,7 +12,8 @@ public class SpeedPortal : MonoBehaviour
     public float RedSpeedPortal;
     public float DecreasingSpeedPortal;
 
-
+    [SerializeField]
+    PlayerSOBaseData playerSO;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,23 +22,23 @@ public class SpeedPortal : MonoBehaviour
             switch (VelocityPortal)
             {
                 case EVelocityPortal.BlueSpeedPortal:
-                    playerController.PlayerData.WalkingSpeed = BlueSpeedPortal;
+                    playerSO.WalkingSpeed = BlueSpeedPortal;
 
                     break;
                 case EVelocityPortal.GreenSpeedPortal:
-                    playerController.PlayerData.WalkingSpeed = GreenSpeedPortal;
+                    playerSO.WalkingSpeed = GreenSpeedPortal;
 
                     break;
                 case EVelocityPortal.PinkSpeedPortal:
-                    playerController.PlayerData.WalkingSpeed = PinkSpeedPortal;
+                    playerSO.WalkingSpeed = PinkSpeedPortal;
 
                     break;
                 case EVelocityPortal.RedSpeedPortal:
-                    playerController.PlayerData.WalkingSpeed = RedSpeedPortal;
+                    playerSO.WalkingSpeed = RedSpeedPortal;
 
                     break;
                 case EVelocityPortal.DecreasingSpeedPortal:
-                    playerController.PlayerData.WalkingSpeed = DecreasingSpeedPortal;
+                    playerSO.WalkingSpeed = DecreasingSpeedPortal;
 
                     break;
             }
