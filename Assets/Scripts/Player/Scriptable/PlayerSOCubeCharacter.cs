@@ -31,7 +31,6 @@ public class PlayerSOCubeCharacter : PlayerSOBaseData
     public override void ApplyDefaultParameters(PlayerController playerController)
     {
         base.ApplyDefaultParameters(playerController);
-        WalkingSpeed = DefaultWalkingSpeed;
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         SpriteRotation = playerController.PlayerSprite;

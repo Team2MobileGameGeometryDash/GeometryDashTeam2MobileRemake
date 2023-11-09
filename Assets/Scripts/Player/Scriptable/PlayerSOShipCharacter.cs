@@ -28,7 +28,6 @@ public class PlayerSOShipCharacter : PlayerSOBaseData
     public override void ApplyDefaultParameters(PlayerController playerController)
     {
         base.ApplyDefaultParameters(playerController);
-        WalkingSpeed = DefaultWalkingSpeed;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerSpriteRenderer.sprite = ShipSprite;

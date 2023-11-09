@@ -47,7 +47,7 @@ public class CubeCharacterState : State<PlayerState>
         
     }
 
-
+  
     private void HandleAllMouvement()
     {
         _playerController.PlayerMouvement.HandleMouvementBaseCharacter(_playerController.PlayerSOBaseData);

@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9701690b4e495174c9635c8506cd0d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: ColliderTest
+  LevelName: StereoMadnessLvL1Final
   ScoreText: {fileID: 952658619}
   ScoreSlider: {fileID: 1925432003}
   MissCoins:
@@ -2682,7 +2682,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 42038187}
-        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
         m_MethodName: LoadLevelScene
         m_Mode: 1
         m_Arguments:

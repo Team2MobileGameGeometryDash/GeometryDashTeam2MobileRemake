@@ -52,6 +52,7 @@ public class DeathState : State<PlayerState>
         PlayerInputManager.IsTouchEnded = false;
         PlayerInputManager.IsTouchStationary = false;
         _playerController.PlayerSOBaseData.Death(_playerController, true);
+        _playerController.PlayerSOBaseData.WalkingSpeed = _playerController.PlayerSOBaseData.DefaultWalkingSpeed;
 
     }
 

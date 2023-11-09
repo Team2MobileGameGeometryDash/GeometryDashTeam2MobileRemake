@@ -45,7 +45,7 @@ public class SpaceShipCharacterState : State<PlayerState>
 
     private void HandleAllMouvement()
     {
-        //_playerController.PlayerMouvement.HandleMouvementBaseCharacter(_playerController.PlayerSOShipCharacter);
+        _playerController.PlayerMouvement.HandleMouvementBaseCharacter(_playerController.PlayerSOShipCharacter);
 
         if (PlayerInputManager.IsTouchEnded)
         {

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Ship
   m_EditorClassIdentifier: 
   DefaultWalkingSpeed: 5.57
-  WalkingSpeed: 0
+  WalkingSpeed: 5.57
   Direction: 1
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   isWin: 0
   Time: 0.02
   IsGravityChange: 0
@@ -29,3 +29,4 @@ MonoBehaviour:
   JumpHeight: 1.3
   JumpImpulse: 0.66
   GravityScale: 2.8
+  isShipMeteora: 0

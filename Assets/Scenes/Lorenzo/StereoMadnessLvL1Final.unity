@@ -19115,113 +19115,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 711df470a9b86e64cb0445d7801617be, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: playerSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 1090384b33525a74ca4906ccdc428b4f, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: gameObject
-      value: 
-      objectReference: {fileID: 1896695641}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSprite
-      value: 
-      objectReference: {fileID: 1896695641}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: SpriteRenderer
-      value: 
-      objectReference: {fileID: 1896695643}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSOBaseData
-      value: 
-      objectReference: {fileID: 11400000, guid: 711df470a9b86e64cb0445d7801617be, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSOGearMode
-      value: 
-      objectReference: {fileID: 11400000, guid: 4d7e1c55c8afcab42ad68dda63ca9939, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: rotationGameObject
-      value: 
-      objectReference: {fileID: 1896695641}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: DefaultWalkingSpeed
-      value: 5.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSOUfoCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e32c4d96f88d934f8950da454035719, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSpriteRenderer
-      value: 
-      objectReference: {fileID: 1896695643}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSOCubeCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: 1090384b33525a74ca4906ccdc428b4f, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSOShipCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: b2b3b07d5e6f7dc49bf9889120448b7a, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSORobotCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: 94e3133aa8cd01748944cd48c2b2c5a7, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSODefaultCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: 1090384b33525a74ca4906ccdc428b4f, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: RobotData.SpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerSOGearModeCharacter
-      value: 
-      objectReference: {fileID: 11400000, guid: 4d7e1c55c8afcab42ad68dda63ca9939, type: 2}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerData.Ships.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerData.Ships.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerData.Ships.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: PlayerData.Ships.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553580326564878273, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: SpaceShipCharacterData.SpriteRenderer
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2898993248877707728, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3983134631035707570, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ecd711d92261c934a89d5bcf5a56b97d, type: 3}
     - target: {fileID: 4405868498544022688, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: BackGroundMusic
       value: 
       objectReference: {fileID: 1431313069}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.96
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19255,16 +19163,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6707310233220062754, guid: 96af4461634162b40a8eea321c332899, type: 3}
-      propertyPath: m_Name
-      value: PlayerSprite
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8312414749504027930, guid: 96af4461634162b40a8eea321c332899, type: 3}
-    - {fileID: 1313445946143345091, guid: 96af4461634162b40a8eea321c332899, type: 3}
-    - {fileID: 7899246669664419290, guid: 96af4461634162b40a8eea321c332899, type: 3}
-    - {fileID: 3483646696757760253, guid: 96af4461634162b40a8eea321c332899, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96af4461634162b40a8eea321c332899, type: 3}
@@ -58912,149 +58812,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1298158651
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1298158656}
-  - component: {fileID: 1298158655}
-  - component: {fileID: 1298158654}
-  - component: {fileID: 1298158653}
-  - component: {fileID: 1298158652}
-  m_Layer: 3
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1298158652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298158651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89f35fc977c96f459bb89a21fa99481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSO: {fileID: 11400000, guid: 4d7e1c55c8afcab42ad68dda63ca9939, type: 2}
---- !u!61 &1298158653
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298158651}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!23 &1298158654
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298158651}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1298158655
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298158651}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1298158656
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298158651}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.63, y: 14.15, z: 0}
-  m_LocalScale: {x: 79.18956, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298280966
 GameObject:
   m_ObjectHideFlags: 0
@@ -69370,6 +69127,10 @@ PrefabInstance:
       propertyPath: eShip
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4519195078563606409, guid: 9a4e4f8a98caaef4d8076d42e46559a5, type: 3}
+      propertyPath: playerSO
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b3b07d5e6f7dc49bf9889120448b7a, type: 2}
     - target: {fileID: 6996468179470070792, guid: 9a4e4f8a98caaef4d8076d42e46559a5, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -70560,16 +70321,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1896695641 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6707310233220062754, guid: 96af4461634162b40a8eea321c332899, type: 3}
-  m_PrefabInstance: {fileID: 192183137}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1896695643 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3983134631035707570, guid: 96af4461634162b40a8eea321c332899, type: 3}
-  m_PrefabInstance: {fileID: 192183137}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1901240097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3560074286301723979, guid: 33028bc6f0c8cb8468b220a21fb3c9da, type: 3}
@@ -86653,4 +86404,3 @@ SceneRoots:
   - {fileID: 3710484255005180666}
   - {fileID: 81508322}
   - {fileID: 468193303}
-  - {fileID: 1298158656}
