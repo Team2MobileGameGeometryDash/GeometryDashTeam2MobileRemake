@@ -27678,7 +27678,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 40c8c7bb2b84fc14e9462cfeb8aaabcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29284,7 +29284,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 40c8c7bb2b84fc14e9462cfeb8aaabcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39637,7 +39637,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 40c8c7bb2b84fc14e9462cfeb8aaabcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54018,6 +54018,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 192183138}
+    - target: {fileID: 2331486541460868744, guid: a041785816fc82648abe1d7df7201603, type: 3}
+      propertyPath: offset.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331486541460868744, guid: a041785816fc82648abe1d7df7201603, type: 3}
+      propertyPath: offset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331486541460868744, guid: a041785816fc82648abe1d7df7201603, type: 3}
+      propertyPath: thresholdY
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331486541460868744, guid: a041785816fc82648abe1d7df7201603, type: 3}
+      propertyPath: smoothSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2740630317308083908, guid: a041785816fc82648abe1d7df7201603, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -60574,7 +60590,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 40c8c7bb2b84fc14e9462cfeb8aaabcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76623,7 +76639,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 40c8c7bb2b84fc14e9462cfeb8aaabcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
