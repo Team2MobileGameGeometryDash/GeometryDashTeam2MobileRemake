@@ -5,11 +5,13 @@ using UnityEngine;
 public class BaseCharacterInput : BaseInput
 {
 
+
     public override void GetInput(PlayerInputManager playerInputManager)
     {
-        if (isTouching()) return;
-        //Debug.Log("input 1");
+        if (IsNotTouching()) return;
+
         Touch touch = Input.GetTouch(0);
+        if (IsTopLeft(touch)) return;
         if (touch.phase == TouchPhase.Began)
         {
 

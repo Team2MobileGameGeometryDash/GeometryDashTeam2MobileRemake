@@ -6,8 +6,9 @@ public class RobotInput : BaseInput
 {
     public override void GetInput(PlayerInputManager playerInputManager)
     {
-        if (isTouching()) return;
+        if (IsNotTouching()) return;
         Touch touch = Input.GetTouch(0);
+        if (IsTopLeft(touch)) return;
         if (touch.phase == TouchPhase.Began)
         {
             playerInputManager.startTimer = true;

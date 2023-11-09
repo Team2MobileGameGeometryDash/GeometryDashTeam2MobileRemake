@@ -12,6 +12,7 @@ public class PlayerMouvement
         _playerController = playerController;
     }
 
+
     /// <summary>
     /// Set the rotation to the 90° rotation more close 
     /// 90° multiple
@@ -106,9 +107,6 @@ public class PlayerMouvement
         Vector2 GroundCheckBox = new Vector2(_playerController.PlayerCollider2D.bounds.size.x + 0.01f, _playerController.PlayerCollider2D.bounds.size.y + 0.01f); //Size of collider + 0.01f
         return Physics2D.OverlapBox(center, GroundCheckBox, 0, _playerController.PlayerData.GroundLayer);
     }
-
-
-
 
 
     float ActualJumpTime = 0;

@@ -117,6 +117,7 @@ public struct PlayerData
 
 
 }
+
 [System.Serializable]
 public struct DefaultCharacterData
 {
