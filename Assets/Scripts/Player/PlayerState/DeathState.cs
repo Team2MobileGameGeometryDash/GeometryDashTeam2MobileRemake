@@ -24,9 +24,8 @@ public class DeathState : State<PlayerState>
         ActionManager.OnUpdateScoreProgress?.Invoke();
         ActionManager.OnDeath?.Invoke();
         _playerController.PlayerSOBaseData.Death(_playerController, false);
-
         
- 
+
     }
 
 
@@ -49,6 +48,7 @@ public class DeathState : State<PlayerState>
         ActionManager.OnDisableVFX?.Invoke();
         ActionManager.OnResetCamera?.Invoke();
         _time = 0.5f;
+        
         PlayerInputManager.IsTouchEnded = false;
         PlayerInputManager.IsTouchStationary = false;
         _playerController.PlayerSOBaseData.Death(_playerController, true);
