@@ -43,7 +43,7 @@ public class RobotCharacterState : State<PlayerState>
     public override void OnExit()
     {
         base.OnExit();
-
+        _playerController.GetComponentInChildren<Animator>().enabled = false;
     }
 
 

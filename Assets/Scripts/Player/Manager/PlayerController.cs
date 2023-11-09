@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public VFXManager VFXManager;
 
+
     [Header("Player input and Player locomotion")]
     [HideInInspector]
     public Rigidbody2D PlayerRigidBody2D;

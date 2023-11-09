@@ -24,7 +24,7 @@ public class PlayerSORobotCharacter : PlayerSOBaseData
         playerController.PlayerSpriteRenderer.sprite = ShipSprite;
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
-
+        playerController.GetComponentInChildren<Animator>().enabled = true;
     }
 
     public override void ApplyDefaultParameters(PlayerController playerController)
