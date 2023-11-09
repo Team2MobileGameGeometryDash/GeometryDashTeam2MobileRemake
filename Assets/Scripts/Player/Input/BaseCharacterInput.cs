@@ -8,6 +8,9 @@ public class BaseCharacterInput : BaseInput
 
     public override void GetInput(PlayerInputManager playerInputManager)
     {
+        PlayerInputManager.IsTouchEnded = false;
+        PlayerInputManager.IsTouchStationary = false;
+
         if (IsNotTouching()) return;
 
         Touch touch = Input.GetTouch(0);

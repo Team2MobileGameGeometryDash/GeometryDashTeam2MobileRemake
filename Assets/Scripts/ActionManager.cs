@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class ActionManager 
 {
-
+    
     
 
     public static Action OnDeath;

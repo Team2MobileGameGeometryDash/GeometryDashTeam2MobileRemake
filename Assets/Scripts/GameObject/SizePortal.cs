@@ -5,16 +5,17 @@ using UnityEngine;
 public class SizePortal : MonoBehaviour
 {
     public bool IsSizeChange;
-
+    [SerializeField]
+    PlayerSOBaseData playerSO;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent(out PlayerController playerController))
+        if (collision.gameObject.TryGetComponent(out PlayerController playerController))
         {
-            if(IsSizeChange)
-                playerController.transform.localScale = playerController.PlayerData.Size;
+            if (IsSizeChange)
+                playerController.transform.localScale = playerSO.Size;
             else
-                playerController.transform.localScale = playerController.PlayerData.DefaultSize;
+                playerController.transform.localScale = playerSO.DefaultSize;
         }
     }
 }

@@ -23,10 +23,9 @@ public class DeathState : State<PlayerState>
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
         ActionManager.OnUpdateScoreProgress?.Invoke();
         ActionManager.OnDeath?.Invoke();
-
-
+        _playerController.PlayerSOBaseData.Death(_playerController, false);
         
- 
+
     }
 
 
@@ -37,7 +36,7 @@ public class DeathState : State<PlayerState>
         if (_time <= 0)
         {
             _playerController.transform.position = _playerController.InitialPosition;
-            _playerStateManager.ChangeState(PlayerState.DefaultCharacter);
+            _playerStateManager.ChangeState(PlayerState.CubeCharacter);
         }
     }
 
@@ -45,15 +44,16 @@ public class DeathState : State<PlayerState>
     public override void OnExit()
     {
         base.OnExit();
-        _playerController.PlayerRigidBody2D.gravityScale = _playerController.DefaultCharacterData.GravityScale;
         _playerController.PlayerRigidBody2D.velocity = Vector2.zero;
         ActionManager.OnDisableVFX?.Invoke();
         ActionManager.OnResetCamera?.Invoke();
         _time = 0.5f;
-        _playerController.PlayerData.WalkingSpeed = _playerController.PlayerData.DefaultWalkingSpeed;
-        _playerController.transform.localScale = _playerController.PlayerData.DefaultSize;
+        
         PlayerInputManager.IsTouchEnded = false;
         PlayerInputManager.IsTouchStationary = false;
+        _playerController.PlayerSOBaseData.Death(_playerController, true);
+        _playerController.PlayerSOBaseData.WalkingSpeed = _playerController.PlayerSOBaseData.DefaultWalkingSpeed;
+
     }
 
 

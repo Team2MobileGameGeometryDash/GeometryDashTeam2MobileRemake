@@ -16,17 +16,17 @@ public class PlayerStateManager : StatesMachine<PlayerState>
 
     protected override void InitStates()
     {
-        AllStates.Add(PlayerState.DefaultCharacter, new DefaultCharacter(PlayerState.DefaultCharacter,this));
-        AllStates.Add(PlayerState.SpaceshipCharacter, new SpaceShipCharacter(PlayerState.SpaceshipCharacter, this));
-        AllStates.Add(PlayerState.GearModeCharacter, new GearModeCharacter(PlayerState.GearModeCharacter, this));
-        AllStates.Add(PlayerState.UfoCharacter, new UfoCharacter(PlayerState.UfoCharacter, this));
-        AllStates.Add(PlayerState.RobotCharacter, new RobotCharacter(PlayerState.RobotCharacter, this));
-        AllStates.Add(PlayerState.MeteoraMode, new MeteoraMode(PlayerState.MeteoraMode, this));
+        AllStates.Add(PlayerState.CubeCharacter, new CubeCharacterState(PlayerState.CubeCharacter,this));
+        AllStates.Add(PlayerState.SpaceshipCharacter, new SpaceShipCharacterState(PlayerState.SpaceshipCharacter, this));
+        AllStates.Add(PlayerState.GearModeCharacter, new GearModeCharacterState(PlayerState.GearModeCharacter, this));
+        AllStates.Add(PlayerState.UfoCharacter, new UfoCharacterState(PlayerState.UfoCharacter, this));
+        AllStates.Add(PlayerState.RobotCharacter, new RobotCharacterState(PlayerState.RobotCharacter, this));
+        AllStates.Add(PlayerState.MeteoraMode, new MeteoraModeState(PlayerState.MeteoraMode, this));
         AllStates.Add(PlayerState.Win, new WinState(PlayerState.Win, this));
         AllStates.Add(PlayerState.Death, new DeathState(PlayerState.Death, this));
 
 
-        CurrentState = AllStates[PlayerState.DefaultCharacter];
+        CurrentState = AllStates[PlayerState.CubeCharacter];
         CurrentState.OnEnter();
     }
 
@@ -37,7 +37,7 @@ public class PlayerStateManager : StatesMachine<PlayerState>
 
 public enum PlayerState
 {
-    DefaultCharacter,
+    CubeCharacter,
     SpaceshipCharacter,
     GearModeCharacter,
     UfoCharacter,

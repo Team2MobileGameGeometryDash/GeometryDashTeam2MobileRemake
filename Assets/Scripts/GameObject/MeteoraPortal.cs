@@ -5,19 +5,22 @@ using UnityEngine;
 public class MeteoraPortal : MonoBehaviour
 {
 
+    [SerializeField]
+    PlayerSOBaseData PlayerSOBaseData;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out PlayerController playerController))
         {
             if (PlayerInputManager.IsTouchEnded || PlayerInputManager.IsTouchStationary)
             {
-                playerController.MeteoraModeData.IsMeteora = true;
+                PlayerSOBaseData.ApplyChangesMeteora(playerController);
+
             }
-
-
+            
         }
     }
-    
+
 
 
 }
