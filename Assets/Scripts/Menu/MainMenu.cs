@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         PressCount = 0;
+        Time.timeScale = 1;
     }
 
     #region ButtonsFunctions
@@ -90,8 +91,10 @@ public class MainMenu : MonoBehaviour
         if (PressCount < 4) PressCount++;
         if (PressCount == 4)
         {
+            
             PressCount = 0;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            Time.timeScale = 1;
         }
     }
 
