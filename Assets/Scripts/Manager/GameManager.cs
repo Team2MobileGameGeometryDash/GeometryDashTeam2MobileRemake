@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         _playerController =  Player.GetComponent<PlayerController>();
         _audioSources = FindObjectsOfType<AudioSource>();
         _uiManager = GetComponentInChildren<UIManager>();
