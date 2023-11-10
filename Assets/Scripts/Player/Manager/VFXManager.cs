@@ -26,6 +26,7 @@ public class VFXManager : MonoBehaviour
         ActionManager.OnMeteoraDisactiveVFX += DisactiveMeteoraVFX;
     }
 
+
     private void ActiveDeathVFX()
     {
         DeathVFX.SetActive(true);

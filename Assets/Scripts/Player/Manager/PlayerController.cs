@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInputManager PlayerInputManager;
     [HideInInspector]
     public VFXManager VFXManager;
+    [HideInInspector]
     public Animator animator;
 
     [Header("Player input and Player locomotion")]

@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lorenzo/StereoMadnessLvL1Final.unity
     guid: 7221da91abe1baa41a8962093e3fedbf
+  - enabled: 1
+    path: Assets/Scenes/RhythmicAscentLvL2.unity
+    guid: 5db489da02cbfe94bb96ec102554a83a
+  - enabled: 1
+    path: Assets/Scenes/PulseChallengelvL3.unity
+    guid: a649a7573d6cedb45928f4849e1e8837
+  - enabled: 1
+    path: Assets/Scenes/DemostrationScene.unity
+    guid: dc46fb57eff88de4190f90da9a793b07
   m_configObjects: {}

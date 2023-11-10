@@ -27,6 +27,14 @@ public class CubeCharacterState : State<PlayerState>
         
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        if (_playerController.PlayerSOCubeCharacter.IsGravityChange)
+            _playerController.VFXManager.CubeCollision.transform.localPosition = new Vector3(-0.26f,0.31f, 0);
+        else
+            _playerController.VFXManager.CubeCollision.transform.localPosition = new Vector3(-0.26f,-0.31f,0);
+    }
 
     public override void OnFixedUpdate()
     {
