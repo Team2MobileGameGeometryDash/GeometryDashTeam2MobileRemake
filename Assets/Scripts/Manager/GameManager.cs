@@ -15,6 +15,8 @@ public class GameManager : Singleton<GameManager>
     float _sliderValue => UpdatedSliderValue();
     PlayerController _playerController;
 
+    public int LevelIndex => SceneManager.GetActiveScene().buildIndex-1;
+
     private void Start()
     {
         _playerController =  Player.GetComponent<PlayerController>();

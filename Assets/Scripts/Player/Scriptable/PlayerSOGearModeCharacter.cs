@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Ship GearModeCharacterData")]
 public class PlayerSOGearModeCharacter : PlayerSOBaseData
 {
-    public Sprite ShipSprite;
+    public Sprite[] ShipSprite;
     public PlayerState state;
 
     [Header("PlayerGravity")]
@@ -18,7 +18,7 @@ public class PlayerSOGearModeCharacter : PlayerSOBaseData
     {
         base.ApplyChangeShip(playerController);
         playerController.PlayerStateManager.ChangeState(state);
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
     }
@@ -28,7 +28,7 @@ public class PlayerSOGearModeCharacter : PlayerSOBaseData
         base.ApplyDefaultParameters(playerController);
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         IsGravityChange = false;
         playerController.transform.localScale = DefaultSize;
 

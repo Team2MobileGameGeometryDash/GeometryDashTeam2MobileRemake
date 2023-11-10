@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cube
   m_EditorClassIdentifier: 
   DefaultWalkingSpeed: 5.57
-  WalkingSpeed: 0
+  WalkingSpeed: 30
   Direction: 1
   GroundLayer:
     serializedVersion: 2
@@ -23,8 +23,12 @@ MonoBehaviour:
   IsGravityChange: 0
   DefaultSize: {x: 1, y: 1, z: 1}
   Size: {x: 3, y: 3, z: 3}
-  MeteoraVelocity: 10
-  ShipSprite: {fileID: 21300000, guid: 41ef2b79c4917504fa1a040687d54396, type: 3}
+  MeteoraVelocity: 30
+  ShipSprite:
+  - {fileID: 21300000, guid: 41ef2b79c4917504fa1a040687d54396, type: 3}
+  - {fileID: 21300000, guid: ecd711d92261c934a89d5bcf5a56b97d, type: 3}
+  - {fileID: 21300000, guid: ecd711d92261c934a89d5bcf5a56b97d, type: 3}
+  - {fileID: 21300000, guid: 41ef2b79c4917504fa1a040687d54396, type: 3}
   SpriteRotation: {fileID: 0}
   state: 0
   JumpHeight: 34

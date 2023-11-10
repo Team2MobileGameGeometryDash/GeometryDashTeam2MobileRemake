@@ -24,8 +24,13 @@ MonoBehaviour:
   DefaultSize: {x: 1, y: 1, z: 1}
   Size: {x: 3, y: 3, z: 3}
   MeteoraVelocity: 10
-  ShipSprite: {fileID: 21300000, guid: af77845a0c623734e887a883e0eaad7b, type: 3}
+  ShipSprite:
+  - {fileID: 21300000, guid: af77845a0c623734e887a883e0eaad7b, type: 3}
+  - {fileID: 21300000, guid: af77845a0c623734e887a883e0eaad7b, type: 3}
+  - {fileID: 21300000, guid: af77845a0c623734e887a883e0eaad7b, type: 3}
+  - {fileID: 21300000, guid: af77845a0c623734e887a883e0eaad7b, type: 3}
   SpriteRotation: {fileID: 0}
   state: 3
   JumpHeight: 15.5
   GravityScale: 6.8
+  isUfoMeteora: 0

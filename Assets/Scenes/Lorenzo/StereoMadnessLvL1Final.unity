@@ -19201,7 +19201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 5465404703075232734, guid: 96af4461634162b40a8eea321c332899, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38446,6 +38446,10 @@ PrefabInstance:
       propertyPath: levelMenu
       value: 
       objectReference: {fileID: 81508323}
+    - target: {fileID: 2476300806184581045, guid: 3fb1bfaaf2b85c84e87a2c0bd91c2861, type: 3}
+      propertyPath: LevelIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2476300806184581045, guid: 3fb1bfaaf2b85c84e87a2c0bd91c2861, type: 3}
       propertyPath: BackgroundChange
       value: 

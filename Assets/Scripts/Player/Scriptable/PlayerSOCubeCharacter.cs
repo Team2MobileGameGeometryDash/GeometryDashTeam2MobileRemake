@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Ship CubeCharacterData")]
 public class PlayerSOCubeCharacter : PlayerSOBaseData
 {
-    public Sprite ShipSprite;
+    public Sprite[] ShipSprite;
     [HideInInspector]
     public GameObject SpriteRotation;
     public PlayerState state;
@@ -22,7 +22,7 @@ public class PlayerSOCubeCharacter : PlayerSOBaseData
     {
         base.ApplyChangeShip(playerController);
         playerController.PlayerStateManager.ChangeState(state);
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
 
@@ -34,7 +34,7 @@ public class PlayerSOCubeCharacter : PlayerSOBaseData
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         SpriteRotation = playerController.PlayerSprite;
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         IsGravityChange = false;
         playerController.transform.localScale = DefaultSize;
          
@@ -52,5 +52,6 @@ public class PlayerSOCubeCharacter : PlayerSOBaseData
         base.ApplyChangesMeteora(playerController);
         playerController.PlayerStateManager.ChangeState(PlayerState.MeteoraMode);
         isCubeMeteora = true;
+        WalkingSpeed = MeteoraVelocity;
     }
 }

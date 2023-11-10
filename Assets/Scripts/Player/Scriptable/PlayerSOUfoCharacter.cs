@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Ship UfoCharacterData")]
 public class PlayerSOUfoCharacter : PlayerSOBaseData
 {
-    public Sprite ShipSprite;
+    public Sprite[] ShipSprite;
     [HideInInspector]
     public GameObject SpriteRotation;
     public PlayerState state;
@@ -19,7 +19,7 @@ public class PlayerSOUfoCharacter : PlayerSOBaseData
     {
         base.ApplyChangeShip(playerController);
         playerController.PlayerStateManager.ChangeState(state);
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
     }
@@ -29,7 +29,7 @@ public class PlayerSOUfoCharacter : PlayerSOBaseData
         base.ApplyDefaultParameters(playerController);
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         IsGravityChange = false;
         playerController.PlayerSpriteRenderer.flipY = false;
         playerController.transform.localScale = DefaultSize;

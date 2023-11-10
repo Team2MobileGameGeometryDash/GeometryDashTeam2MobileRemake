@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSOShipCharacter : PlayerSOBaseData
 {
 
-    public Sprite ShipSprite;
+    public Sprite[] ShipSprite;
     public PlayerState state;
     public float JumpHeight;
     public float JumpImpulse;
@@ -20,7 +20,7 @@ public class PlayerSOShipCharacter : PlayerSOBaseData
     {
         base.ApplyChangeShip(playerController);
         playerController.PlayerStateManager.ChangeState(state);
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
     }
@@ -30,7 +30,7 @@ public class PlayerSOShipCharacter : PlayerSOBaseData
         base.ApplyDefaultParameters(playerController);
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         IsGravityChange = false;
         playerController.PlayerSpriteRenderer.flipY = false;
         playerController.transform.localScale = DefaultSize;

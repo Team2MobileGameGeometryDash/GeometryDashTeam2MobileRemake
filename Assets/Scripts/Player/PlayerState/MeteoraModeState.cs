@@ -19,10 +19,9 @@ public class MeteoraModeState : State<PlayerState>
         base.OnEnter();
         if (_playerController == null) _playerController = _playerStateManager.PlayerController;
         _playerInputManager = _playerController.PlayerInputManager;
-        MeteoraVelocity();
         ActionManager.OnMeteoraActiveVFX?.Invoke();
         _playerController.PlayerRigidBody2D.constraints = RigidbodyConstraints2D.FreezePositionY;
-        //Debug.Log("meteora");
+        Debug.Log("meteora");
 
     }
 
@@ -64,15 +63,10 @@ public class MeteoraModeState : State<PlayerState>
 
     }
 
-    private void MeteoraVelocity()
-    {
-        _playerController.PlayerSOBaseData.WalkingSpeed = _playerController.PlayerSOBaseData.MeteoraVelocity;
-    }
-
 
     private void ChangeState()
     {
-        if (!PlayerInputManager.IsTouchEnded || !PlayerInputManager.IsTouchStationary)
+        if (!PlayerInputManager.IsTouchStationary)
         {
             if (_playerController.PlayerSOCubeCharacter.isCubeMeteora)
             {

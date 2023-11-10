@@ -30,7 +30,7 @@ public class PlayerSOBaseData : ScriptableObject
    
 
     public virtual void ApplyChangeShip(PlayerController playerController) { }
-  
+    
     public virtual void Death(PlayerController playerController,bool isEnabled)
     {
         playerController.PlayerSpriteRenderer.enabled = isEnabled;

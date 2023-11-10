@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSORobotCharacter : PlayerSOBaseData
 {
 
-    public Sprite ShipSprite;
+    public Sprite[] ShipSprite;
     public PlayerState state;
 
     [Header("PlayerGravity")]
@@ -21,7 +21,7 @@ public class PlayerSORobotCharacter : PlayerSOBaseData
     {
         base.ApplyChangeShip(playerController);
         playerController.PlayerStateManager.ChangeState(state);
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
         playerController.GetComponentInChildren<Animator>().enabled = true;
@@ -32,10 +32,11 @@ public class PlayerSORobotCharacter : PlayerSOBaseData
         base.ApplyDefaultParameters(playerController);
         playerController.PlayerSpriteRenderer.transform.rotation = Quaternion.identity;
         playerController.PlayerRigidBody2D.gravityScale = GravityScale;
-        playerController.PlayerSpriteRenderer.sprite = ShipSprite;
+        playerController.PlayerSpriteRenderer.sprite = ShipSprite[GameManager.Instance.LevelIndex];
         IsGravityChange = false;
         playerController.transform.localScale = DefaultSize;
         playerController.PlayerSpriteRenderer.flipY = false;
+
 
     }
 

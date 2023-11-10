@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInputManager PlayerInputManager;
     [HideInInspector]
     public VFXManager VFXManager;
-
+    public Animator animator;
 
     [Header("Player input and Player locomotion")]
     [HideInInspector]
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         PlayerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         PlayerStateManager = new PlayerStateManager(this);
         PlayerMouvement = new PlayerMouvement(this);
-
+        
         //Debug.Log(InitialPosition);
     }
 

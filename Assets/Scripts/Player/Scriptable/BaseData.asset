@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseData
   m_EditorClassIdentifier: 
   DefaultWalkingSpeed: 5.57
-  WalkingSpeed: 6
+  WalkingSpeed: 5.57
   Direction: 1
   GroundLayer:
     serializedVersion: 2
@@ -23,4 +23,4 @@ MonoBehaviour:
   IsGravityChange: 0
   DefaultSize: {x: 1, y: 1, z: 1}
   Size: {x: 3, y: 3, z: 3}
-  MeteoraVelocity: 10
+  MeteoraVelocity: 20
