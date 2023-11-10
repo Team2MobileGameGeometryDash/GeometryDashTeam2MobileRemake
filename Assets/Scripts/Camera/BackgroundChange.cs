@@ -42,6 +42,14 @@ public class BackgroundChange : MonoBehaviour
     private Color StartGradientColor;
     private Color ActualGradientColor;
 
+    [Header("Grounds")]
+    [SerializeField]
+    private Transform Grounds;
+    private List<SpriteRenderer> GroundsRenderers = new List<SpriteRenderer>();
+    [SerializeField]
+    private Color StartGroundColor;
+    private Color ActualGroundColor;
+
     [Header("Target")]
     [SerializeField]
     [Tooltip("Add the position when need to change the colors of the background and set it.")]
@@ -53,8 +61,29 @@ public class BackgroundChange : MonoBehaviour
 
     private bool finishColorsChange;
 
+
+    void GetSpriteRenderersInChildren(Transform parent)
+    {
+        // Iterare tra tutti i figli del genitore
+        foreach (Transform child in parent)
+        {
+            // Ottenere il componente SpriteRenderer del figlio, se presente
+            SpriteRenderer spriteRenderer = child.GetComponent<SpriteRenderer>();
+
+            // Se è presente un SpriteRenderer, aggiungerlo alla lista
+            if (spriteRenderer != null)
+            {
+                GroundsRenderers.Add(spriteRenderer);
+            }
+
+            // Chiamare ricorsivamente la funzione per i figli del figlio corrente
+            GetSpriteRenderersInChildren(child);
+        }
+    }
+
     private void Start()
     {
+        GetSpriteRenderersInChildren(Grounds);
 
         SetInitialColors();
 
@@ -119,6 +148,11 @@ public class BackgroundChange : MonoBehaviour
         {
             gradientRenderer.color = StartGradientColor;
         }
+
+        foreach (SpriteRenderer groundRenderer in GroundsRenderers)
+        {
+            groundRenderer.color = StartGroundColor;
+        }
         if (finishColorsChange) finishColorsChange = false;
     }
 
@@ -128,11 +162,13 @@ public class BackgroundChange : MonoBehaviour
         {
             ActualBaseBackgroundColor = StartBaseBackgroundColor;
             ActualGradientColor = StartGradientColor;
+            ActualGroundColor = StartGroundColor;
         }
         else
         {
             ActualBaseBackgroundColor = ChangePoint[_currentChangePoint - 1].BaseBackgroundColor;
             ActualGradientColor = ChangePoint[_currentChangePoint - 1].GradientColor;
+            ActualGroundColor = ChangePoint[_currentChangePoint - 1].GroundColor;
         }
     }
 
@@ -147,6 +183,10 @@ public class BackgroundChange : MonoBehaviour
         foreach (SpriteRenderer gradientRenderer in Gradient)
         {
             gradientRenderer.color = ChangePoint[_currentChangePoint].GradientColor;
+        }
+        foreach (SpriteRenderer groundRenderer in GroundsRenderers)
+        {
+            groundRenderer.color = ChangePoint[_currentChangePoint].GroundColor;
         }
         if (_currentChangePoint == ChangePoint.Count - 1)
         {
@@ -174,6 +214,10 @@ public class BackgroundChange : MonoBehaviour
             foreach (SpriteRenderer gradientRenderer in Gradient)
             {
                 gradientRenderer.color = Color.Lerp(ActualGradientColor, ChangePoint[_currentChangePoint].GradientColor, colorTimer);
+            }
+            foreach (SpriteRenderer groundRenderer in GroundsRenderers)
+            {
+                groundRenderer.color = Color.Lerp(ActualGroundColor, ChangePoint[_currentChangePoint].GroundColor, colorTimer);
             }
             //Debug.Log("2.1");
         }
@@ -224,6 +268,7 @@ public class BackgroundChangeData
 {
     public Color BaseBackgroundColor;
     public Color GradientColor;
+    public Color GroundColor;
     public Transform Target;
     [Range(0, float.MaxValue)]
     public float colorTransitionDuration;
