@@ -39,7 +39,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sound Effects
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 7984b0e809dcd9542a0d5e9914dbca79
   m_Children: []
@@ -73,7 +73,7 @@ AudioMixerController:
   - guid: 1292843cdd5edf5469cd8b5805fcba0e
     name: MusicVol
   - guid: 4257e74fb37e73e4c924d65057b46cae
-    name: EffectsVol
+    name: SFXVol
   m_AudioMixerGroupViews:
   - guids:
     - d4bce44b17f126a4eb00ba0eaa54d734
@@ -92,8 +92,8 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d4bce44b17f126a4eb00ba0eaa54d734
   m_Children:
-  - {fileID: -3894765197523019114}
   - {fileID: -8324846504915180957}
+  - {fileID: -3894765197523019114}
   m_Volume: 25b6959dac59bf544ae60463e4357497
   m_Pitch: 729a1fea6a95fc14796d6851c9bcb213
   m_Send: 00000000000000000000000000000000

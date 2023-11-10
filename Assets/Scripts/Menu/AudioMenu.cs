@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,44 +8,49 @@ using UnityEngine.UI;
 public class AudioMenu : MonoBehaviour
 {
     public AudioMixer AudioMixer;
-    public Slider MasterSlider, MusicSlider, EffectsSlider;
+    public Slider MasterSlider, MusicSlider, SFXSlider;
 
-    private void Start()
+    private void OnEnable()
     {
-        SetSliderSettings(MasterSlider, "MasterVolume");
-        SetSliderSettings(MusicSlider, "MusicVolume");
-        SetSliderSettings(EffectsSlider, "EffectsVolume");
+        if (!PlayerPrefs.HasKey("MasterVol")) SetStartVolume("MasterVol", MasterSlider);
+        else LoadVolume("MasterVol", MasterSlider);
+        if (!PlayerPrefs.HasKey("MusicVol")) SetStartVolume("MusicVol", MusicSlider);
+        else LoadVolume("MusicVol", MusicSlider);
+        if (!PlayerPrefs.HasKey("SFXVol")) SetStartVolume("SFXVol", SFXSlider);
+        else LoadVolume("SFXVol", SFXSlider);
     }
 
-    /// <summary>
-    /// Changes values of the audio mixer's groups by using sliders
-    /// </summary>
-    public void SetVolume()
+    private void SetStartVolume(string key, Slider slider)
     {
-        SetAudioLevel(MasterSlider, "MasterVolume", "MasterVol");
-        SetAudioLevel(MusicSlider, "MusicVolume", "MusicVol");
-        SetAudioLevel(EffectsSlider, "EffectsVolume", "EffectsVol");
+        PlayerPrefs.SetFloat(key, 1f);
+        slider.value = PlayerPrefs.GetFloat(key);
     }
 
-    /// <summary>
-    /// set the slider value to 1
-    /// </summary>
-    /// <param name="slider"></param>
-    /// <param name="key"></param>
-    private void SetSliderSettings(Slider slider, string key)
+    private void LoadVolume(string key, Slider slider)
     {
-        slider.value = PlayerPrefs.GetFloat(key, 1f);
+        slider.value = PlayerPrefs.GetFloat(key);
     }
 
-    /// <summary>
-    /// saves the audio slider in the PlayerPrefs and perform the actual volume changing
-    /// </summary>
-    /// <param name="slider"></param>
-    /// <param name="key"> string name used as key for the PlayerPrefs</param>
-    /// <param name="groupName">Audio Mixer group name</param>
-    private void SetAudioLevel(Slider slider, string key, string groupName)
+    #region Sliders
+
+    public void MasterVolume()
     {
-        AudioMixer.SetFloat(groupName, Mathf.Log10(slider.value) * 20);
-        PlayerPrefs.SetFloat(key, slider.value);
+        float volume = MasterSlider.value;
+        AudioMixer.SetFloat("MasterVol", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("MasterVol", volume);
     }
+    public void MusicVolume()
+    {
+        float volume = MusicSlider.value;
+        AudioMixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("MusicVol", volume);
+    }
+    public void SFXVolume()
+    {
+        float volume = SFXSlider.value;
+        AudioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("SFXVol", volume);
+    }
+
+    #endregion
 }

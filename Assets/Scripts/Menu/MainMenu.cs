@@ -11,9 +11,14 @@ public class MainMenu : MonoBehaviour
     public Image OptionsScreen;
     public Image LevelsScreen;
     private AudioListener[] audioListeners;
+    private int PressCount;
 
     #endregion
 
+    private void Start()
+    {
+        PressCount = 0;
+    }
 
     #region ButtonsFunctions
 
@@ -80,6 +85,15 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void EasterEgg(string sceneName)
+    {
+        if (PressCount < 4) PressCount++;
+        if (PressCount == 4)
+        {
+            PressCount = 0;
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
+    }
 
     public void ResetData()
     {
