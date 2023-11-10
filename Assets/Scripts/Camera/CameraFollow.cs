@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -9,12 +10,15 @@ public class CameraFollow : MonoBehaviour
 
     
     public Transform player;
-    public float smoothSpeed = 0.125f;
+    public float smoothSpeed;
     public Vector3 offset;
+    [Tooltip("The first threshold before the new value")]
+    public float StartThresholdY;
+    [Tooltip("Threshold value after the first")]
     public float thresholdY;
 
-    private float startPositionY;
     private float currentPositionY;
+    private Vector3 cameraStartPosition;
 
 
     private void OnEnable()
@@ -27,13 +31,19 @@ public class CameraFollow : MonoBehaviour
         ActionManager.OnResetCamera -= ResetCamera;
     }
 
-
+    private void Start()
+    {
+        cameraStartPosition = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
+        transform.position = cameraStartPosition;
+        currentPositionY = cameraStartPosition.y;
+    }
 
     private void Update()
     {
         if (Mathf.Abs(player.position.y - currentPositionY) >= thresholdY)
         {
-            currentPositionY = player.position.y;
+            if (player.position.y > StartThresholdY) currentPositionY = player.position.y;
+            else currentPositionY = cameraStartPosition.y;
         }
         SmoothFollow();
     }
@@ -41,17 +51,14 @@ public class CameraFollow : MonoBehaviour
 
     private void SmoothFollow()
     {
-        Vector3 Position = new Vector3(player.position.x + offset.x, currentPositionY + offset.y, transform.position.z);
+        Vector3 Position = new Vector3(player.position.x + offset.x, currentPositionY, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, Position, smoothSpeed * Time.deltaTime);
     }
 
 
     public void ResetCamera()
     {
-        Vector3 cameraStart = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
-        startPositionY = cameraStart.y;
-        currentPositionY = startPositionY;
-        transform.position = cameraStart;
+        transform.position = cameraStartPosition;
     }
 
 }

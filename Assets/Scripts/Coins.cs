@@ -21,12 +21,12 @@ public class Coins : MonoBehaviour
 
     private void OnEnable()
     {
+        animator = GetComponent<Animator>();
         animator.SetBool("isAlreadyCollected", isAlreadyCollected);
     }
     private void Start()
     {
         isCollected = false;
-        animator = GetComponent<Animator>();
         animator.SetBool("isAlreadyCollected", isAlreadyCollected);
     }
 
