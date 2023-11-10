@@ -20,6 +20,16 @@ public class AudioMenu : MonoBehaviour
         else LoadVolume("SFXVol", SFXSlider);
     }
 
+    private void Start()
+    {
+        if (!PlayerPrefs.HasKey("MasterVol")) SetStartVolume("MasterVol", MasterSlider);
+        else LoadVolume("MasterVol", MasterSlider);
+        if (!PlayerPrefs.HasKey("MusicVol")) SetStartVolume("MusicVol", MusicSlider);
+        else LoadVolume("MusicVol", MusicSlider);
+        if (!PlayerPrefs.HasKey("SFXVol")) SetStartVolume("SFXVol", SFXSlider);
+        else LoadVolume("SFXVol", SFXSlider);
+    }
+
     private void SetStartVolume(string key, Slider slider)
     {
         PlayerPrefs.SetFloat(key, 1f);
