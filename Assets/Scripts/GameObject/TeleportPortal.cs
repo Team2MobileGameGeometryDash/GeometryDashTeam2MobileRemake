@@ -14,6 +14,11 @@ public class TeleportPortal : MonoBehaviour
             playerController.transform.position = Portal2.transform.position;
 
         }
+
+        if(collision.gameObject.TryGetComponent(out MenuAnimation menuAnimation))
+        {
+            menuAnimation.transform.position = Portal2.transform.position;
+        }
     }
 
 
